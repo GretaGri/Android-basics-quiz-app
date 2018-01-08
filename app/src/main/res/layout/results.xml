@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.android.quiz.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/picture_finish"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/sinatra"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/sinatra"/>
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance"
+            android:layout_below="@id/picture_finish"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="You scored 9-10 points"/>
+
+        <TextView
+            android:id="@+id/lyrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/score"
+            android:fontFamily="@font/grand_hotel"
+            android:gravity="center"
+            android:text="@string/lyrics9to10"
+            android:textColor="@color/colorHeading"
+            android:textStyle="italic"
+            android:textSize="26sp" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/results"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/lyrics"
+            android:layout_margin="@dimen/margin_standard"
+            app:riv_corner_radius="10dip"
+            app:riv_oval="true"
+            android:src="@drawable/button" />
+    </RelativeLayout>
+</ScrollView>

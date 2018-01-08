@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.android.quiz.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/picture_question2"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/question2_answer"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/welcome_picture"/>
+
+        <RadioGroup
+            android:id="@+id/rg_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/picture_question2"
+            android:orientation="vertical"
+            android:layout_margin="16dp" >
+
+            <TextView
+                android:id="@+id/tv_rb_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/rb_answer_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/padding_standard"
+                android:paddingEnd="@dimen/padding_standard"
+                android:paddingLeft="@dimen/padding_standard"
+                android:paddingStart="@dimen/padding_standard"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_answer_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/padding_standard"
+                android:paddingEnd="@dimen/padding_standard"
+                android:paddingLeft="@dimen/padding_standard"
+                android:paddingStart="@dimen/padding_standard"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_answer_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/padding_standard"
+                android:paddingEnd="@dimen/padding_standard"
+                android:paddingLeft="@dimen/padding_standard"
+                android:paddingStart="@dimen/padding_standard"/>
+
+        </RadioGroup>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/navigation"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="190dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:riv_corner_radius="10dip"
+            app:riv_oval="true"
+            android:src="@drawable/button" />
+    </RelativeLayout>
+</ScrollView>
