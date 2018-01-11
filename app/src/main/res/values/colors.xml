@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#dce775</color>
     <color name="colorPrimaryDark">#a8b545</color>
-    <color name="colorAccent">#DC5169</color>
+    <color name="colorAccent">#dc5169</color>
     <color name="colorHeading">#438363</color>
     <color name="colorText">#000000</color>
+    <color name="colorRipple">#c2dc5169</color>
 </resources>

@@ -2,7 +2,11 @@
 <resources>
     <dimen name="padding_standard">16dp</dimen>
     <dimen name="margin_standard">16dp</dimen>
+    <dimen name="halfmargin_standard">8dp</dimen>
     <dimen name="padding_little">8dp</dimen>
     <dimen name="text_size_heading">60sp</dimen>
+    <dimen name="text_size_answer">20sp</dimen>
     <dimen name="text_size">16sp</dimen>
+    <dimen name="text_size_landscape">22sp</dimen>
+    <dimen name="text_size_heading_lanscape">80sp</dimen>
 </resources>

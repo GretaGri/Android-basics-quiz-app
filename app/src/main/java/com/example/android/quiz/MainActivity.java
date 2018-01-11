@@ -3,6 +3,8 @@ package com.example.android.quiz;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,11 +47,13 @@ String studentName = "";
                         points++; //add points for first answer
                     }
                     displayMessage(message);
-                    answer1.setVisibility(View.INVISIBLE); //set editText et_answer invisible
+                    //answer1.setVisibility(View.INVISIBLE); //set editText et_answer invisible
                     TextView instructions = (TextView) findViewById(R.id.et_instructions);
                     instructions.setVisibility(View.INVISIBLE); //set textView et_instructions invisible
-                    TextView question = (TextView) findViewById(R.id.et_question);
-                    question.setVisibility(View.INVISIBLE); //set textView et_question invisible
+                    //TextView question = (TextView) findViewById(R.id.et_question);
+                    //question.setVisibility(View.INVISIBLE); //set textView et_question invisible
+                    CardView question1 = (CardView) findViewById(R.id.cw_question1);
+                    question1.setVisibility(View.INVISIBLE); //set textView cw_question1 invisible
                     clicked = true;
                 }
                 else {Intent myIntent = new Intent(MainActivity.this, CheckboxActivity.class);
@@ -80,12 +84,14 @@ String studentName = "";
         studentName = savedInstanceState.getString(STATE_NAME);
         if (clicked) {
             displayName(studentName);
-            EditText answer1 = (EditText) findViewById(R.id.et_answer);
-            answer1.setVisibility(View.INVISIBLE); //set editText et_answer invisible
+          //  EditText answer1 = (EditText) findViewById(R.id.et_answer);
+           // answer1.setVisibility(View.INVISIBLE); //set editText et_answer invisible
             TextView instructions = (TextView) findViewById(R.id.et_instructions);
             instructions.setVisibility(View.INVISIBLE); //set textView et_instructions invisible
-            TextView question = (TextView) findViewById(R.id.et_question);
-            question.setVisibility(View.INVISIBLE); //set textView et_question invisible
+           // TextView question = (TextView) findViewById(R.id.et_question);
+           // question.setVisibility(View.INVISIBLE); //set textView et_question invisible
+            CardView question1 = (CardView) findViewById(R.id.cw_question1);
+            question1.setVisibility(View.INVISIBLE); //set textView cw_question1 invisible
             displayMessage(message);
         }
 
@@ -94,7 +100,9 @@ String studentName = "";
         TextView description = (TextView) findViewById(R.id.description);
         message = getString(R.string.firstQuestionAnswered1) + " " + points + " " + getString(R.string.firstQuestionAnswered2);
         description.setText(message);
-    }
+        description.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_answer));
+        }
+
     public void displayName (String studentName) {
         TextView name = (TextView) findViewById(R.id.name);
         name.setText(studentName);
