@@ -44,18 +44,20 @@
             android:textStyle="italic"
             android:textSize="26sp" />
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/results"
-            android:layout_height="80dp"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/navigation"
             android:layout_width="80dp"
-            android:layout_alignParentBottom="true"
+            android:layout_height="80dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/lyrics"
+            android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/margin_standard"
-            app:riv_corner_radius="10dip"
-            app:riv_oval="true"
-            android:src="@drawable/button" />
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="visible"
+            app:elevation="8dp"
+            app:fabSize="normal"
+            app:rippleColor="@color/colorHeading"
+            app:srcCompat="@drawable/checksign" />
     </RelativeLayout>
 </ScrollView>

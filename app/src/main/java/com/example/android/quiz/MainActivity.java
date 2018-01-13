@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +33,11 @@ String studentName = "";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Apply animation to animeView
+        ImageView animeView = (ImageView) findViewById(R.id.arrow);
+        Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
+        animeView.startAnimation(pulsingArrow);
 
         //Set navigation
         ImageView navigation = (ImageView) findViewById(R.id.navigation);

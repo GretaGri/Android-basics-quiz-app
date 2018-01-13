@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.quiz.MainActivity"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
-    tools:context="com.example.android.quiz.MainActivity">
+    android:background="@color/colorPrimary">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -97,21 +102,30 @@
                 android:textStyle="italic" />
 
         </LinearLayout>
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/navigation"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:layout_below="@id/checkbox"
-            android:layout_margin="@dimen/margin_standard"
-            android:clickable="true"
-            android:focusable="true"
-            android:visibility="visible"
-            app:elevation="8dp"
-            app:fabSize="normal"
-            app:rippleColor="@color/colorHeading"
-            app:srcCompat="@drawable/checksign" />
+            android:background="@color/colorPrimary"/>
 
     </RelativeLayout>
 </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/navigation"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_standard"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="visible"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/colorHeading"
+        app:srcCompat="@drawable/checksign" />
+
+</RelativeLayout>

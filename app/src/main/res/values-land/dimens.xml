@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">22sp</dimen>
+    <dimen name="text_size_heading">90sp</dimen>
+    <dimen name="margin_bottom_name">70dp</dimen>
+    <dimen name="text_size_answer">22sp</dimen>
+</resources>

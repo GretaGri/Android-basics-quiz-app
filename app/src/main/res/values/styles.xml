@@ -12,4 +12,9 @@
     <item name="android:textSize">@dimen/text_size</item>
     <item name="android:fontFamily">@font/alice</item>
 </style>
+    <style name="TextAppearance_land" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:textColor">@color/colorText</item>
+    <item name="android:textSize">@dimen/text_size_landscape</item>
+    <item name="android:fontFamily">@font/alice</item>
+    </style>
 </resources>
