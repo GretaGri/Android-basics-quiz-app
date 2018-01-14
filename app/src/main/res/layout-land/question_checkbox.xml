@@ -32,7 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/margin_standard" />
+            android:layout_marginTop="@dimen/margin_standard"
+            android:src="@drawable/arrow"
+            />
 
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -124,10 +126,35 @@
         </LinearLayout>
 
         </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/descriptionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cw_question2"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginLeft="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/halfmargin_standard"
+            android:textSize="14sp"
+            android:fontFamily="@font/alice"
+            android:textColor="@color/colorHeading"
+            android:text="Questions answered"/>
+
+        <ProgressBar
+            android:id="@+id/determinateBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descriptionBar"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:layout_marginRight="@dimen/margin_standard"
+            android:progress="0"/>
 
     </RelativeLayout>
-</ScrollView>
 
+</ScrollView>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/navigation"
         android:layout_width="80dp"
@@ -144,29 +171,4 @@
         app:rippleColor="@color/colorHeading"
         app:srcCompat="@drawable/checksign" />
 
-    <TextView
-        android:id="@+id/descriptionBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/determinateBar"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginBottom="@dimen/halfmargin_standard"
-        android:textSize="14sp"
-        android:fontFamily="@font/alice"
-        android:textColor="@color/colorHeading"
-        android:text="Questions answered"/>
-
-    <ProgressBar
-        android:id="@+id/determinateBar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:progress="0"/>
 </RelativeLayout>
