@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_standard"
             android:src="@drawable/arrow"
             />
@@ -137,7 +137,7 @@
             android:textSize="14sp"
             android:fontFamily="@font/alice"
             android:textColor="@color/colorHeading"
-            android:text="Questions answered"/>
+            android:text="@string/description_of_bar"/>
 
         <ProgressBar
             android:id="@+id/determinateBar"

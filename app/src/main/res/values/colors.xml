@@ -6,4 +6,6 @@
     <color name="colorHeading">#438363</color>
     <color name="colorText">#000000</color>
     <color name="colorRipple">#c2dc5169</color>
+    <color name="colorWrongAnswer">#EF5350</color>
+    <color name="colorCorrectAnswer">#66BB6A</color>
 </resources>

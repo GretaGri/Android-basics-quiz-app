@@ -8,6 +8,7 @@
     android:layout_height="match_parent">
 
 <ScrollView
+    android:id="@+id/mainScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -31,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_standard" />
 
         <android.support.v7.widget.CardView
@@ -58,8 +59,9 @@
                 android:id="@+id/cb_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_standard"
-                android:text=""
+                android:layout_marginBottom="@dimen/halfmargin_standard"
+                android:text="@string/question2"
+                android:textSize="@dimen/text_size"
                 android:textAppearance="@style/TextAppearance"
                 android:textStyle="italic"/>
 
@@ -68,14 +70,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alice"
-                android:text=""
+                android:text="@string/question2_answer1_correct"
                 android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
-                android:layout_marginLeft="@dimen/margin_standard"
-                android:layout_marginStart="@dimen/margin_standard"
+                android:textSize="@dimen/text_size_answers"
+                android:paddingStart="@dimen/padding_little"
+                android:paddingLeft="@dimen/padding_little"
+                android:paddingEnd="@dimen/padding_little"
+                android:paddingRight="@dimen/padding_little"
+                android:layout_marginLeft="@dimen/halfmargin_standard"
+                android:layout_marginStart="@dimen/halfmargin_standard"
                 android:textStyle="italic" />
 
             <CheckBox
@@ -83,13 +86,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alice"
-                android:text=""
+                android:text="@string/question2_answer2"
                 android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
-                android:layout_margin="@dimen/margin_standard"
+                android:textSize="@dimen/text_size_answers"
+                android:paddingStart="@dimen/padding_little"
+                android:paddingLeft="@dimen/padding_little"
+                android:paddingEnd="@dimen/padding_little"
+                android:paddingRight="@dimen/padding_little"
+                android:layout_margin="@dimen/halfmargin_standard"
                 android:textStyle="italic" />
 
             <CheckBox
@@ -97,14 +101,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alice"
-                android:text=""
+                android:text="@string/question2_answer3_correct"
                 android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
-                android:layout_marginLeft="@dimen/margin_standard"
-                android:layout_marginStart="@dimen/margin_standard"
+                android:textSize="@dimen/text_size_answers"
+                android:paddingStart="@dimen/padding_little"
+                android:paddingLeft="@dimen/padding_little"
+                android:paddingEnd="@dimen/padding_little"
+                android:paddingRight="@dimen/padding_little"
+                android:layout_marginLeft="@dimen/halfmargin_standard"
+                android:layout_marginStart="@dimen/halfmargin_standard"
                 android:textStyle="italic" />
 
             <CheckBox
@@ -112,18 +117,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alice"
-                android:text=""
+                android:text="@string/question2_answer4"
                 android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
-                android:layout_margin="@dimen/margin_standard"
+                android:textSize="@dimen/text_size_answers"
+                android:paddingStart="@dimen/padding_little"
+                android:paddingLeft="@dimen/padding_little"
+                android:paddingEnd="@dimen/padding_little"
+                android:paddingRight="@dimen/padding_little"
+                android:layout_margin="@dimen/halfmargin_standard"
                 android:textStyle="italic" />
 
         </LinearLayout>
-
         </android.support.v7.widget.CardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@id/cw_question2"/>
 
     </RelativeLayout>
 </ScrollView>
@@ -156,7 +166,7 @@
         android:textSize="14sp"
         android:fontFamily="@font/alice"
         android:textColor="@color/colorHeading"
-        android:text="Questions answered"/>
+        android:text="@string/description_of_bar"/>
 
     <ProgressBar
         android:id="@+id/determinateBar"

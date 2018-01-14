@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/margin_standard" />
 
             <TextView
@@ -155,7 +155,7 @@
         android:layout_marginStart="@dimen/margin_standard"
         android:layout_marginTop="@dimen/margin_standard"
         android:fontFamily="@font/alice"
-        android:text="Questions answered"
+        android:text="@string/description_of_bar"
         android:textColor="@color/colorHeading"
         android:textSize="14sp" />
 

@@ -10,6 +10,9 @@
     <string name="toastNoName">You did not enter your name!</string>
     <string name="firstQuestionAnswered1">Beautiful name and amazing start! \n You get </string>
     <string name="firstQuestionAnswered2"> point already! \nPlease, click check button to proceed.</string>
+    <string name="toastNoAnswer">, your answer is empty! \nPlease, check at least one option.</string>
+    <string name="toastCorrectAnswer">, your answer is correct! \nYou get plus 1 point.\nClick check button to proceed.</string>
+    <string name="toastWrongAnswer">, your answer is wrong! \nYou get 0 points.\nClick check button to proceed.</string>
     <string name="question2">2.	Who welcomes students to Udacity and Google Developer Challenge Scholarship in introduction video? \n(please, check all correct answers)</string>
     <string name="question2_answer1_correct">Chaitra Ramanathan, program manager</string>
     <string name="question2_answer2">Sebastian Thrun, Udacity founder</string>
@@ -53,4 +56,6 @@
     <string name="lyrics9to10">You\'re just too marvelous, \nToo marvelous for words \nLike \"\glorious\", \"glamorous\" \nAnd that old standby \"amorous\".</string>
     <string name="link9to10"> https://youtu.be/NJFj1YCyN6w</string>
     <string name="lyrics7to8"> </string>
-   </resources>
+    <string name="answer_picture">Answer picture</string>
+    <string name="description_of_bar">Questions answered</string>
+</resources>

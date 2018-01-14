@@ -10,4 +10,5 @@
     <dimen name="text_size_landscape">22sp</dimen>
     <dimen name="text_size_heading_lanscape">90sp</dimen>
     <dimen name="margin_bottom_name">30dp</dimen>
+    <dimen name="text_size_answers">14sp</dimen>
 </resources>

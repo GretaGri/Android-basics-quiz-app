@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    tools:context="com.example.android.quiz.MainActivity"
     android:background="@color/colorPrimary"
-    tools:context="com.example.android.quiz.MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,6 +25,14 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:contentDescription="@string/sinatra"/>
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_standard" />
 
         <TextView
             android:id="@+id/score"
@@ -44,20 +57,48 @@
             android:textStyle="italic"
             android:textSize="26sp" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/navigation"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="@dimen/margin_standard"
-            android:clickable="true"
-            android:focusable="true"
-            android:visibility="visible"
-            app:elevation="8dp"
-            app:fabSize="normal"
-            app:rippleColor="@color/colorHeading"
-            app:srcCompat="@drawable/checksign" />
     </RelativeLayout>
 </ScrollView>
+<android.support.design.widget.FloatingActionButton
+android:id="@+id/navigation"
+android:layout_width="80dp"
+android:layout_height="80dp"
+android:layout_alignParentEnd="true"
+android:layout_alignParentRight="true"
+android:layout_alignParentBottom="true"
+android:layout_margin="@dimen/margin_standard"
+android:clickable="true"
+android:focusable="true"
+android:visibility="visible"
+app:elevation="8dp"
+app:fabSize="normal"
+app:rippleColor="@color/colorHeading"
+app:srcCompat="@drawable/checksign" />
+
+<TextView
+android:id="@+id/descriptionBar"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_above="@id/determinateBar"
+android:layout_marginTop="@dimen/margin_standard"
+android:layout_marginLeft="@dimen/margin_standard"
+android:layout_marginStart="@dimen/margin_standard"
+android:layout_marginBottom="@dimen/halfmargin_standard"
+android:textSize="14sp"
+android:fontFamily="@font/alice"
+android:textColor="@color/colorHeading"
+android:text="@string/description_of_bar"/>
+
+<ProgressBar
+android:id="@+id/determinateBar"
+style="@android:style/Widget.ProgressBar.Horizontal"
+android:layout_width="150dp"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+android:layout_marginBottom="20dp"
+android:layout_marginLeft="@dimen/margin_standard"
+android:layout_marginStart="@dimen/margin_standard"
+android:layout_marginRight="@dimen/margin_standard"
+android:progress="0"/>
+
+    </RelativeLayout>
