@@ -29,37 +29,37 @@
     <string name="question3_answer3">Nick Blumenthal, program manager</string>
     <string name="question3_answer4_correct">Kunal Chawla, instructor, Udacity</string>
 
-    <string name="question4">4.	Who is the secret lady in the background? \n(only one correct answer)</string>
+    <string name="question4">4.	Who is the secret lady in the background?</string>
     <string name="question4_answer1">Just a kitchen lady</string>
     <string name="question4_answer2">Kunal’s admirer secretly following him</string>
     <string name="question4_answer3_correct">Lyla Fujiwara, course developer/Udacity barista</string>
 
-    <string name="question5">5.	What is basically the first step towards becoming Android developer? \n(only one correct answer)</string>
+    <string name="question5">5.	What is basically the first step towards becoming Android developer?</string>
     <string name="question5_answer1">Installing Android studio</string>
     <string name="question5_answer2_correct">Making a “Hello world” app</string>
     <string name="question5_answer3">Making a “Goodbye world” app</string>
 
-    <string name="question6">6.	What was Kunal learning and have to struggle? \n(only one correct answer)</string>
+    <string name="question6">6.	What was Kunal learning and have to struggle?</string>
     <string name="question6_answer1_correct">Learn to play the piano</string>
     <string name="question6_answer2">Learn how to play chess</string>
     <string name="question6_answer3">Learn Japanese language</string>
 
-    <string name="question7">7.	What was Katherine learning and have to struggle?\n(only one correct answer)</string>
+    <string name="question7">7.	What was Katherine learning and have to struggle?</string>
     <string name="question7_answer1">Learn to play violin</string>
     <string name="question7_answer2_correct">Learn Chinese language</string>
     <string name="question7_answer3">Learn how to dance tango</string>
 
-    <string name="question8">8.	Who/What is Chloe?\n(only one correct answer)</string>
+    <string name="question8">8.	Who/What is Chloe?</string>
     <string name="question8_answer1">Katherine’s friend</string>
     <string name="question8_answer2">Katherine’s second name</string>
     <string name="question8_answer3_correct">Kunal’s office plant</string>
 
-    <string name="question9">9.	Who was this really special quest?\n(only one correct answer)</string>
+    <string name="question9">9.	Who was this really special quest? </string>
     <string name="question9_answer1">Kunal’s manager</string>
     <string name="question9_answer2">Katherine’s sister</string>
     <string name="question9_answer3_correct">Alice Young, technical lead, Google</string>
 
-    <string name="question10">10.	Guess what time it is?\n(only one correct answer)</string>
+    <string name="question10">10.	Guess what time it is?</string>
     <string name="question10_answer1_correct">Time to end this quiz</string>
     <string name="question10_answer2">Time for more cake</string>
     <string name="question10_answer3">Time to start learning</string>
@@ -69,7 +69,9 @@
 
     <string name="lyrics9to10">You\'re just too marvelous, \nToo marvelous for words \nLike \"\glorious\", \"glamorous\" \nAnd that old standby \"amorous\".</string>
     <string name="lyrics7to8"> </string>
-    <string name="link9to10"> https://youtu.be/NJFj1YCyN6w</string>
+    <string name="lyrics5to6"> </string>
+    <string name="lyrics3to4"> </string>
+    <string name="lyrics1to2"> </string>
 
     <string name="welcome_picture">Welcome picture</string>
     <string name="question_picture">Question picture</string>
@@ -80,4 +82,5 @@
     <string name="sinatra">Frank Sinatra picture</string>
 
     <string name="open_present">"Open your present\n↓     "</string>
+    <string name="open_present_land">Open your present</string>
 </resources>

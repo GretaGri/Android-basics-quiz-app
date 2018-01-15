@@ -8,6 +8,7 @@
     android:layout_height="match_parent">
 
     <ScrollView
+        android:id="@+id/mainScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -57,41 +58,58 @@
             android:orientation="vertical"
             android:layout_margin="16dp" >
 
-            <TextView
-                android:id="@+id/tv_rb_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_rb_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/halfmargin_standard"
+                    android:text="@string/question4"
+                    android:textAppearance="@style/TextAppearance"
+                    android:textStyle="italic" />
 
-            <RadioButton
-                android:id="@+id/rb_answer_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingStart="@dimen/padding_standard"
-                />
+                <RadioButton
+                    android:id="@+id/rb_answer_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alice"
+                    android:paddingEnd="@dimen/padding_standard"
+                    android:paddingLeft="@dimen/padding_little"
+                    android:paddingRight="@dimen/padding_standard"
+                    android:paddingStart="@dimen/padding_little"
+                    android:text="@string/question4_answer1"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/text_size_answers"
+                    android:textStyle="italic" />
 
-            <RadioButton
-                android:id="@+id/rb_answer_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingStart="@dimen/padding_standard"
-                />
+                <RadioButton
+                    android:id="@+id/rb_answer_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alice"
+                    android:paddingEnd="@dimen/padding_standard"
+                    android:paddingLeft="@dimen/padding_little"
+                    android:paddingRight="@dimen/padding_standard"
+                    android:paddingStart="@dimen/padding_little"
+                    android:text="@string/question4_answer2"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/text_size_answers"
+                    android:textStyle="italic" />
 
-            <RadioButton
-                android:id="@+id/rb_answer_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingStart="@dimen/padding_standard"/>
+                <RadioButton
+                    android:id="@+id/rb_answer_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alice"
+                    android:paddingEnd="@dimen/padding_standard"
+                    android:paddingLeft="@dimen/padding_little"
+                    android:paddingRight="@dimen/padding_standard"
+                    android:paddingStart="@dimen/padding_little"
+                    android:text="@string/question4_answer3_correct"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/text_size_answers"
+                    android:textStyle="italic" />
 
-        </RadioGroup>
+            </RadioGroup>
         </android.support.v7.widget.CardView>
 
         <TextView

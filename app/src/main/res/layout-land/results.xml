@@ -69,7 +69,7 @@
         android:paddingRight="@dimen/padding_standard"
         android:textAlignment="gravity"
         android:fontFamily="@font/grand_hotel"
-        android:text="Open your present"
+        android:text="@string/open_present_land"
         android:gravity="center|end"
         android:textColor="@color/colorAccent"
         android:textSize="40sp" />

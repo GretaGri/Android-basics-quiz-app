@@ -61,7 +61,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/halfmargin_standard"
                 android:text="@string/question2"
-                android:textSize="@dimen/text_size"
                 android:textAppearance="@style/TextAppearance"
                 android:textStyle="italic"/>
 

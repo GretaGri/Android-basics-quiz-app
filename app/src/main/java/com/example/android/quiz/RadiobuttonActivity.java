@@ -10,9 +10,12 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -33,15 +36,32 @@ public class RadiobuttonActivity extends AppCompatActivity {
     int clicked = 0;
     boolean back_pressed = false;
 
+    // Saves the message in case of changing activity
+    static final String STATE_CLICKED = "clicked";
+    static final String STATE_SCORE = "score";
+    static final String STATE_NAME = "name";
+    static final String STATE_PROGRESS = "progress";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_radiobutton);
 
+        // locate views
+        final ImageView animeView = (ImageView) findViewById(R.id.arrow);
+        final ImageView navigation = (ImageView) findViewById(R.id.navigation);
+        final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
+        final TextView question = (TextView) findViewById(R.id.tv_rb_question);
+        final RadioButton answer1 = (RadioButton) findViewById(R.id.rb_answer_1);
+        final RadioButton answer2 = (RadioButton) findViewById(R.id.rb_answer_2);
+        final RadioButton answer3 = (RadioButton) findViewById(R.id.rb_answer_3);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
+        final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
+
         //Apply animation to animeView
-        ImageView animeView = (ImageView) findViewById(R.id.arrow);
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
         animeView.startAnimation(pulsingArrow);
+
         //get extras
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
@@ -56,30 +76,537 @@ public class RadiobuttonActivity extends AppCompatActivity {
         toast_message3 = userName + getString(R.string.toastWrongAnswer);
 
         progress = extras.getInt("progress");
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
         progressBar.setProgress(progress);
 
         // locate views
-        ImageView navigation = (ImageView) findViewById(R.id.navigation);
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (clicked == 0) {
+                    if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        return;
+                    } else if (answer3.isChecked()) {
+                        points++; //add points for second answer
+                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                    }
+                    //after pushing button go to the screen top.
+                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @SuppressLint("NewApi")
+                        @Override
+                        public void onGlobalLayout() {
+                            // Ready, move up
+                            scrollView.fullScroll(View.FOCUS_UP);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            }
+                        }
+                    });
+                    picture.setImageResource(R.drawable.question4_answer);
+                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer1.setClickable(false);
+                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer2.setClickable(false);
+                    answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+                    answer3.setClickable(false);
+                    progress = progress + 10;
+                    progressBar.setProgress(progress);
+                    clicked++;
+                } else if (clicked == 1) {
+                    picture.setImageResource(R.drawable.question5);
+                    question.setText(R.string.question5);
+                    answer1.setText(R.string.question5_answer1);
+                    answer1.setTextColor(getResources().getColor(R.color.colorText));
+                    answer1.setClickable(true);
+                    answer1.setChecked(false);
+                    answer2.setText(R.string.question5_answer2_correct);
+                    answer2.setTextColor(getResources().getColor(R.color.colorText));
+                    answer2.setClickable(true);
+                    answer2.setChecked(false);
+                    answer3.setText(R.string.question5_answer3);
+                    answer3.setTextColor(getResources().getColor(R.color.colorText));
+                    answer3.setClickable(true);
+                    answer3.setChecked(false);
+                    clicked++;
+                } else if (clicked == 2) {
+                    if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        return;
+                    } else if (answer2.isChecked()) {
+                        points++; //add points for second answer
+                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                    }
+                    //after pushing button go to the screen top.
+                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @SuppressLint("NewApi")
+                        @Override
+                        public void onGlobalLayout() {
+                            // Ready, move up
+                            scrollView.fullScroll(View.FOCUS_UP);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            }
+                        }
+                    });
+                    picture.setImageResource(R.drawable.question5_answer);
+                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer1.setClickable(false);
+                    answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+                    answer2.setClickable(false);
+                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer3.setClickable(false);
+                    progress = progress + 10;
+                    progressBar.setProgress(progress);
+                    clicked++;
+                } else if (clicked == 3) {
+                    picture.setImageResource(R.drawable.question6);
+                    question.setText(R.string.question6);
+                    answer1.setText(R.string.question6_answer1_correct);
+                    answer1.setTextColor(getResources().getColor(R.color.colorText));
+                    answer1.setClickable(true);
+                    answer1.setChecked(false);
+                    answer2.setText(R.string.question6_answer2);
+                    answer2.setTextColor(getResources().getColor(R.color.colorText));
+                    answer2.setClickable(true);
+                    answer2.setChecked(false);
+                    answer3.setText(R.string.question6_answer3);
+                    answer3.setTextColor(getResources().getColor(R.color.colorText));
+                    answer3.setClickable(true);
+                    answer3.setChecked(false);
+                    clicked++;
+                } else if (clicked == 4) {
+                    if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        return;
+                    } else if (answer1.isChecked()) {
+                        points++; //add points for second answer
+                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                    }
+                    //after pushing button go to the screen top.
+                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @SuppressLint("NewApi")
+                        @Override
+                        public void onGlobalLayout() {
+                            // Ready, move up
+                            scrollView.fullScroll(View.FOCUS_UP);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            }
+                        }
+                    });
+                    picture.setImageResource(R.drawable.question6_answer);
+                    answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+                    answer1.setClickable(false);
+                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer2.setClickable(false);
+                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer3.setClickable(false);
+                    progress = progress + 10;
+                    progressBar.setProgress(progress);
+                    clicked++;
+                } else if (clicked == 5) {
+                    picture.setImageResource(R.drawable.question7);
+                    question.setText(R.string.question7);
+                    answer1.setText(R.string.question7_answer1);
+                    answer1.setTextColor(getResources().getColor(R.color.colorText));
+                    answer1.setClickable(true);
+                    answer1.setChecked(false);
+                    answer2.setText(R.string.question7_answer2_correct);
+                    answer2.setTextColor(getResources().getColor(R.color.colorText));
+                    answer2.setClickable(true);
+                    answer2.setChecked(false);
+                    answer3.setText(R.string.question7_answer3);
+                    answer3.setTextColor(getResources().getColor(R.color.colorText));
+                    answer3.setClickable(true);
+                    answer3.setChecked(false);
+                    clicked++;
+                } else if (clicked == 6) {
+                    if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        return;
+                    } else if (answer2.isChecked()) {
+                        points++; //add points for second answer
+                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                    }
+                    //after pushing button go to the screen top.
+                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @SuppressLint("NewApi")
+                        @Override
+                        public void onGlobalLayout() {
+                            // Ready, move up
+                            scrollView.fullScroll(View.FOCUS_UP);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            }
+                        }
+                    });
+                    picture.setImageResource(R.drawable.question7_answer);
+                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer1.setClickable(false);
+                    answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+                    answer2.setClickable(false);
+                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer3.setClickable(false);
+                    progress = progress + 10;
+                    progressBar.setProgress(progress);
+                    clicked++;
+                } else if (clicked == 7) {
+                    picture.setImageResource(R.drawable.question8);
+                    question.setText(R.string.question8);
+                    answer1.setText(R.string.question8_answer1);
+                    answer1.setTextColor(getResources().getColor(R.color.colorText));
+                    answer1.setClickable(true);
+                    answer1.setChecked(false);
+                    answer2.setText(R.string.question8_answer2);
+                    answer2.setTextColor(getResources().getColor(R.color.colorText));
+                    answer2.setClickable(true);
+                    answer2.setChecked(false);
+                    answer3.setText(R.string.question8_answer3_correct);
+                    answer3.setTextColor(getResources().getColor(R.color.colorText));
+                    answer3.setClickable(true);
+                    answer3.setChecked(false);
+                    clicked++;
+                } else if (clicked == 8) {
+                    if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        return;
+                    } else if (answer3.isChecked()) {
+                        points++; //add points for second answer
+                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                    }
+                    //after pushing button go to the screen top.
+                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @SuppressLint("NewApi")
+                        @Override
+                        public void onGlobalLayout() {
+                            // Ready, move up
+                            scrollView.fullScroll(View.FOCUS_UP);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            }
+                        }
+                    });
+                    picture.setImageResource(R.drawable.question8_answer);
+                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer1.setClickable(false);
+                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer2.setClickable(false);
+                    answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+                    answer3.setClickable(false);
+                    progress = progress + 10;
+                    progressBar.setProgress(progress);
+                    clicked++;
+                } else if (clicked == 9) {
+                    picture.setImageResource(R.drawable.question9);
+                    question.setText(R.string.question9);
+                    answer1.setText(R.string.question9_answer1);
+                    answer1.setTextColor(getResources().getColor(R.color.colorText));
+                    answer1.setClickable(true);
+                    answer1.setChecked(false);
+                    answer2.setText(R.string.question9_answer2);
+                    answer2.setTextColor(getResources().getColor(R.color.colorText));
+                    answer2.setClickable(true);
+                    answer2.setChecked(false);
+                    answer3.setText(R.string.question9_answer3_correct);
+                    answer3.setTextColor(getResources().getColor(R.color.colorText));
+                    answer3.setClickable(true);
+                    answer3.setChecked(false);
+                    clicked++;
+                } else if (clicked == 10) {
+                    if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        return;
+                    } else if (answer3.isChecked()) {
+                        points++; //add points for second answer
+                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                    }
+                    //after pushing button go to the screen top.
+                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @SuppressLint("NewApi")
+                        @Override
+                        public void onGlobalLayout() {
+                            // Ready, move up
+                            scrollView.fullScroll(View.FOCUS_UP);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            }
+                        }
+                    });
+                    picture.setImageResource(R.drawable.question9_answer);
+                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer1.setClickable(false);
+                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer2.setClickable(false);
+                    answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+                    answer3.setClickable(false);
+                    progress = progress + 10;
+                    progressBar.setProgress(progress);
+                    clicked++;
+                } else if (clicked == 11) {
+                    picture.setImageResource(R.drawable.question10);
+                    question.setText(R.string.question10);
+                    answer1.setText(R.string.question10_answer1_correct);
+                    answer1.setTextColor(getResources().getColor(R.color.colorText));
+                    answer1.setClickable(true);
+                    answer1.setChecked(false);
+                    answer2.setText(R.string.question10_answer2);
+                    answer2.setTextColor(getResources().getColor(R.color.colorText));
+                    answer2.setClickable(true);
+                    answer2.setChecked(false);
+                    answer3.setText(R.string.question10_answer3);
+                    answer3.setTextColor(getResources().getColor(R.color.colorText));
+                    answer3.setClickable(true);
+                    answer3.setChecked(false);
+                    clicked++;
+                } else if (clicked == 12) {
+                    if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        return;
+                    } else if (answer1.isChecked()) {
+                        points++; //add points for second answer
+                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                    }
+                    //after pushing button go to the screen top.
+                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @SuppressLint("NewApi")
+                        @Override
+                        public void onGlobalLayout() {
+                            // Ready, move up
+                            scrollView.fullScroll(View.FOCUS_UP);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            }
+                        }
+                    });
+                    picture.setImageResource(R.drawable.question10_answer);
+                    answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+                    answer1.setClickable(false);
+                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer2.setClickable(false);
+                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+                    answer3.setClickable(false);
+                    progress = progress + 10;
+                    progressBar.setProgress(progress);
+                    clicked++;
+                } else {
                     Intent myIntent = new Intent(RadiobuttonActivity.this, Results.class);
                     myIntent.putExtra("points", points);
                     myIntent.putExtra("name", userName);
                     myIntent.putExtra("progress", progress);
                     RadiobuttonActivity.this.startActivity(myIntent);
                 }
+            }
         });
     }
+
+    // Save the user's current app state
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt(STATE_CLICKED, clicked);
+        savedInstanceState.putInt(STATE_SCORE, points);
+        savedInstanceState.putString(STATE_NAME, userName);
+        savedInstanceState.putInt(STATE_PROGRESS, progress);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    // Always call the superclass so it can restore the view hierarchy
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // Restore state members from saved instance
+        points = savedInstanceState.getInt(STATE_SCORE);
+        clicked = savedInstanceState.getInt(STATE_CLICKED);
+        userName = savedInstanceState.getString(STATE_NAME);
+        progress = savedInstanceState.getInt(STATE_PROGRESS);
+
+        //locate views
+        final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
+        final TextView question = (TextView) findViewById(R.id.tv_rb_question);
+        final RadioButton answer1 = (RadioButton) findViewById(R.id.rb_answer_1);
+        final RadioButton answer2 = (RadioButton) findViewById(R.id.rb_answer_2);
+        final RadioButton answer3 = (RadioButton) findViewById(R.id.rb_answer_3);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
+        final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
+
+        scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onGlobalLayout() {
+                // Ready, move up
+                scrollView.fullScroll(View.FOCUS_UP);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
+            }
+        });
+        progressBar.setProgress(progress);
+        if (clicked == 1) {
+            picture.setImageResource(R.drawable.question4_answer);
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer1.setClickable(false);
+            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer2.setClickable(false);
+            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+            answer3.setClickable(false);
+        }
+        else if (clicked == 2) {
+            picture.setImageResource(R.drawable.question5);
+            question.setText(R.string.question5);
+            answer1.setText(R.string.question5_answer1);
+            answer1.setTextColor(getResources().getColor(R.color.colorText));
+            answer1.setClickable(true);
+            answer2.setText(R.string.question5_answer2_correct);
+            answer2.setTextColor(getResources().getColor(R.color.colorText));
+            answer2.setClickable(true);
+            answer3.setText(R.string.question5_answer3);
+            answer3.setTextColor(getResources().getColor(R.color.colorText));
+            answer3.setClickable(true);
+        }
+        else if (clicked == 3) {
+            picture.setImageResource(R.drawable.question5_answer);
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer1.setClickable(false);
+            answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+            answer2.setClickable(false);
+            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer3.setClickable(false);
+        }
+        else if (clicked == 4) {
+            picture.setImageResource(R.drawable.question6);
+            question.setText(R.string.question6);
+            answer1.setText(R.string.question6_answer1_correct);
+            answer1.setTextColor(getResources().getColor(R.color.colorText));
+            answer1.setClickable(true);
+            answer2.setText(R.string.question6_answer2);
+            answer2.setTextColor(getResources().getColor(R.color.colorText));
+            answer2.setClickable(true);
+            answer3.setText(R.string.question6_answer3);
+            answer3.setTextColor(getResources().getColor(R.color.colorText));
+            answer3.setClickable(true);
+        }
+        else if (clicked == 5) {
+            picture.setImageResource(R.drawable.question6_answer);
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer1.setClickable(false);
+            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer2.setClickable(false);
+            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+            answer3.setClickable(false);
+        }
+        else if (clicked == 6) {
+            picture.setImageResource(R.drawable.question7);
+            question.setText(R.string.question7);
+            answer1.setText(R.string.question7_answer1);
+            answer1.setTextColor(getResources().getColor(R.color.colorText));
+            answer1.setClickable(true);
+            answer2.setText(R.string.question7_answer2_correct);
+            answer2.setTextColor(getResources().getColor(R.color.colorText));
+            answer2.setClickable(true);
+            answer3.setText(R.string.question7_answer3);
+            answer3.setTextColor(getResources().getColor(R.color.colorText));
+            answer3.setClickable(true);
+        }
+        else if (clicked == 7) {
+            picture.setImageResource(R.drawable.question7_answer);
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer1.setClickable(false);
+            answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+            answer2.setClickable(false);
+            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer3.setClickable(false);
+        }
+        else if (clicked == 8) {
+            picture.setImageResource(R.drawable.question8);
+            question.setText(R.string.question8);
+            answer1.setText(R.string.question8_answer1);
+            answer1.setTextColor(getResources().getColor(R.color.colorText));
+            answer1.setClickable(true);
+            answer2.setText(R.string.question8_answer2);
+            answer2.setTextColor(getResources().getColor(R.color.colorText));
+            answer2.setClickable(true);
+            answer3.setText(R.string.question8_answer3_correct);
+            answer3.setTextColor(getResources().getColor(R.color.colorText));
+            answer3.setClickable(true);
+        }
+        else if (clicked == 9) {
+            picture.setImageResource(R.drawable.question8_answer);
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer1.setClickable(false);
+            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer2.setClickable(false);
+            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+            answer3.setClickable(false);
+        }
+        else if (clicked == 10) {
+            picture.setImageResource(R.drawable.question9);
+            question.setText(R.string.question9);
+            answer1.setText(R.string.question9_answer1);
+            answer1.setTextColor(getResources().getColor(R.color.colorText));
+            answer1.setClickable(true);
+            answer2.setText(R.string.question9_answer2);
+            answer2.setTextColor(getResources().getColor(R.color.colorText));
+            answer2.setClickable(true);
+            answer3.setText(R.string.question9_answer3_correct);
+            answer3.setTextColor(getResources().getColor(R.color.colorText));
+            answer3.setClickable(true);
+        }
+        else if (clicked == 11) {
+            picture.setImageResource(R.drawable.question9_answer);
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer1.setClickable(false);
+            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer2.setClickable(false);
+            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+            answer3.setClickable(false);
+        }
+        else if (clicked == 12) {
+            picture.setImageResource(R.drawable.question10);
+            question.setText(R.string.question10);
+            answer1.setText(R.string.question10_answer1_correct);
+            answer1.setTextColor(getResources().getColor(R.color.colorText));
+            answer1.setClickable(true);
+            answer2.setText(R.string.question10_answer2);
+            answer2.setTextColor(getResources().getColor(R.color.colorText));
+            answer2.setClickable(true);
+            answer3.setText(R.string.question10_answer3);
+            answer3.setTextColor(getResources().getColor(R.color.colorText));
+            answer3.setClickable(true);
+        }
+        else if (clicked == 13) {
+            picture.setImageResource(R.drawable.question10_answer);
+            answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+            answer1.setClickable(false);
+            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer2.setClickable(false);
+            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+            answer3.setClickable(false);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
-            Toast.makeText(RadiobuttonActivity.this, "Do you really want to restart quiz? \nPlease, push back one more time." , Toast.LENGTH_SHORT).show();
-            back_pressed=true;}
-        else {Intent homeIntent = new Intent(RadiobuttonActivity.this,MainActivity.class);
-            homeIntent.addCategory( Intent.CATEGORY_HOME );
+            Toast.makeText(RadiobuttonActivity.this, "Do you really want to restart quiz? \nPlease, push back one more time.", Toast.LENGTH_SHORT).show();
+            back_pressed = true;
+        } else {
+            Intent homeIntent = new Intent(RadiobuttonActivity.this, MainActivity.class);
+            homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(homeIntent);}// your code.
+            startActivity(homeIntent);
+        }// your code.
     }
-    }
+}

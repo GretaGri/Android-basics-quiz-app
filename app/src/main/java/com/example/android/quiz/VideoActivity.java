@@ -46,11 +46,9 @@ public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlay
 @Override
 public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
         Log.d (TAG, "onclick: Failed to initialize.");
-
         }
         };
 
         mYouTubePlayerView.initialize(YouTubeConfig.getApiKey(), mOnInitializedListener);
-
         };
         }

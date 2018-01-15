@@ -2,134 +2,151 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.android.quiz.MainActivity"
-    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.android.quiz.MainActivity">
 
     <ScrollView
+        android:id="@+id/mainScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/picture_question2"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:src="@drawable/question4"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/question_picture"
-            tools:ignore="HardcodedText" />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_standard"/>
+            <ImageView
+                android:id="@+id/picture_question2"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/question_picture"
+                android:scaleType="fitCenter"
+                android:src="@drawable/question4"
+                tools:ignore="HardcodedText" />
 
-        <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/cw_question4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/picture_question2"
-            android:layout_margin="@dimen/margin_standard"
-            card_view:cardBackgroundColor="@color/cardview_light_background"
-            card_view:cardElevation="@dimen/halfmargin_standard">
-
-        <RadioGroup
-            android:id="@+id/rg_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/picture_question2"
-            android:orientation="vertical"
-            android:layout_margin="16dp" >
-
-            <TextView
-                android:id="@+id/tv_rb_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <RadioButton
-                android:id="@+id/rb_answer_1"
+            <ImageView
+                android:id="@+id/arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingStart="@dimen/padding_standard"
-                />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_standard"/>
 
-            <RadioButton
-                android:id="@+id/rb_answer_2"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cw_question4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingRight="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingStart="@dimen/padding_standard"
-                />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/picture_question2"
+                android:layout_margin="@dimen/margin_standard"
+                card_view:cardBackgroundColor="@color/cardview_light_background"
+                card_view:cardElevation="@dimen/halfmargin_standard">
 
-            <RadioButton
-                android:id="@+id/rb_answer_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingStart="@dimen/padding_standard"/>
+                <RadioGroup
+                    android:id="@+id/rg_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/picture_question2"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
 
-        </RadioGroup>
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:id="@+id/tv_rb_question"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/halfmargin_standard"
+                        android:text="@string/question4"
+                        android:textAppearance="@style/TextAppearance"
+                        android:textStyle="italic" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_below="@id/cw_question4"/>
+                    <RadioButton
+                        android:id="@+id/rb_answer_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/alice"
+                        android:paddingEnd="@dimen/padding_standard"
+                        android:paddingLeft="@dimen/padding_little"
+                        android:paddingRight="@dimen/padding_standard"
+                        android:paddingStart="@dimen/padding_little"
+                        android:text="@string/question4_answer1"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text_size_answers"
+                        android:textStyle="italic" />
 
-    </RelativeLayout>
+                    <RadioButton
+                        android:id="@+id/rb_answer_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/alice"
+                        android:paddingEnd="@dimen/padding_standard"
+                        android:paddingLeft="@dimen/padding_little"
+                        android:paddingRight="@dimen/padding_standard"
+                        android:paddingStart="@dimen/padding_little"
+                        android:text="@string/question4_answer2"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text_size_answers"
+                        android:textStyle="italic" />
 
-</ScrollView>
+                    <RadioButton
+                        android:id="@+id/rb_answer_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/alice"
+                        android:paddingEnd="@dimen/padding_standard"
+                        android:paddingLeft="@dimen/padding_little"
+                        android:paddingRight="@dimen/padding_standard"
+                        android:paddingStart="@dimen/padding_little"
+                        android:text="@string/question4_answer3_correct"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/text_size_answers"
+                        android:textStyle="italic" />
 
-<android.support.design.widget.FloatingActionButton
-android:id="@+id/navigation"
-android:layout_width="80dp"
-android:layout_height="80dp"
-android:layout_alignParentEnd="true"
-android:layout_alignParentRight="true"
-android:layout_alignParentBottom="true"
-android:layout_margin="@dimen/margin_standard"
-android:clickable="true"
-android:focusable="true"
-android:visibility="visible"
-app:elevation="8dp"
-app:fabSize="normal"
-app:rippleColor="@color/colorHeading"
-app:srcCompat="@drawable/checksign" />
+                </RadioGroup>
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@id/cw_question4" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/navigation"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_standard"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="visible"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/colorHeading"
+        app:srcCompat="@drawable/checksign" />
 
     <TextView
         android:id="@+id/descriptionBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/determinateBar"
-        android:layout_marginTop="@dimen/margin_standard"
+        android:layout_marginBottom="@dimen/halfmargin_standard"
         android:layout_marginLeft="@dimen/margin_standard"
         android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginBottom="@dimen/halfmargin_standard"
-        android:textSize="14sp"
+        android:layout_marginTop="@dimen/margin_standard"
         android:fontFamily="@font/alice"
+        android:text="@string/description_of_bar"
         android:textColor="@color/colorHeading"
-        android:text="@string/description_of_bar"/>
+        android:textSize="14sp" />
 
     <ProgressBar
         android:id="@+id/determinateBar"
@@ -139,8 +156,8 @@ app:srcCompat="@drawable/checksign" />
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginStart="@dimen/margin_standard"
         android:layout_marginRight="@dimen/margin_standard"
-        android:progress="0"/>
+        android:layout_marginStart="@dimen/margin_standard"
+        android:progress="0" />
 
-    </RelativeLayout>
+</RelativeLayout>
