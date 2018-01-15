@@ -42,7 +42,7 @@
                 android:layout_below="@id/picture_finish"
                 android:layout_margin="@dimen/margin_standard"
                 android:gravity="center"
-                android:text="You scored 9-10 points"
+                android:text=""
                 android:textAppearance="@style/TextAppearance"
                 android:textStyle="bold" />
 
@@ -53,38 +53,42 @@
                 android:layout_below="@id/score"
                 android:fontFamily="@font/grand_hotel"
                 android:gravity="center"
-                android:text="@string/lyrics9to10"
+                android:text=""
                 android:textColor="@color/colorHeading"
-                android:textSize="26sp"
+                android:textSize="@dimen/text_size_lyrics"
                 android:textStyle="italic" />
 
         </RelativeLayout>
     </ScrollView>
 
     <TextView
+        android:id="@+id/open"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/navigation"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/margin_standard"
+        android:layout_toLeftOf="@id/navigation"
+        android:layout_toStartOf="@id/navigation"
         android:fontFamily="@font/grand_hotel"
+        android:gravity="center|end"
+        android:paddingRight="@dimen/padding_standard"
         android:text="@string/open_present"
-        android:gravity="end"
+        android:textAlignment="gravity"
         android:textColor="@color/colorAccent"
-        android:textSize="@dimen/text_size_landscape" />
+        android:textSize="@dimen/text_size_open" />
 
     <ImageView
         android:id="@+id/navigation"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
         android:layout_marginBottom="@dimen/margin_standard"
+        android:layout_marginEnd="@dimen/margin_standard"
+        android:layout_marginRight="@dimen/margin_standard"
         android:clickable="true"
         android:contentDescription="@string/present_picture"
         android:focusable="true"

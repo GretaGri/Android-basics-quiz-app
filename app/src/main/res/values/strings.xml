@@ -64,14 +64,15 @@
     <string name="question10_answer2">Time for more cake</string>
     <string name="question10_answer3">Time to start learning</string>
 
-    <string name="results1">"You scored "</string>
+    <string name="results">", you scored "</string>
+    <string name="results1">" point"</string>
     <string name="results2">" points"</string>
 
-    <string name="lyrics9to10">You\'re just too marvelous, \nToo marvelous for words \nLike \"\glorious\", \"glamorous\" \nAnd that old standby \"amorous\".</string>
-    <string name="lyrics7to8"> </string>
-    <string name="lyrics5to6"> </string>
-    <string name="lyrics3to4"> </string>
-    <string name="lyrics1to2"> </string>
+    <string name="lyrics9to10">You\'re just too marvelous,\nToo marvelous for words\nLike \"\glorious\", \"glamorous\"\nAnd that old standby \"amorous\".</string>
+    <string name="lyrics7to8">When you\'re smilin\', when you\'re smilin\'\nThe whole world smiles with you\nBut when you\'re cryin\', you bring on the rain\nSo stop your sighin\', be happy again!</string>
+    <string name="lyrics5to6">Regrets, I\'ve had a few\nBut then again, too few to mention\nI did what I had to do\nAnd saw it through without exemption.</string>
+    <string name="lyrics3to4">That\'s life that\'s what people say\nYou\'re riding high in April\nShot down in May\nBut I know I\'m gonna change that tune\nWhen I\'m back on top, back on top in June.</string>
+    <string name="lyrics1to2">We\'re drinkin\', my friend,\nTo the end of a brief episode\nMake it one for my baby\nAnd one more for the road.</string>
 
     <string name="welcome_picture">Welcome picture</string>
     <string name="question_picture">Question picture</string>
@@ -81,6 +82,9 @@
 
     <string name="sinatra">Frank Sinatra picture</string>
 
-    <string name="open_present">"Open your present\n↓     "</string>
-    <string name="open_present_land">Open your present</string>
+    <string name="open_present">Open your present</string>
+    <string name="share">Share this app with your friends</string>
+
+    <string name="letter_subject">You have to try this app</string>
+    <string name="letter_text">Hello, look I found a nice quiz app, you can download it here: https://drive.google.com/folderview?id=1E4StGQCzEgnRXHsryzt4zeupK6gBvBpw</string>
 </resources>

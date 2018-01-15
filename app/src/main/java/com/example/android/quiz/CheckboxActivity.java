@@ -27,8 +27,12 @@ import android.widget.ProgressBar;
 
 public class CheckboxActivity extends AppCompatActivity {
 
+    // Saves the message in case of changing activity
+    static final String STATE_CLICKED = "clicked";
+    static final String STATE_SCORE = "score";
+    static final String STATE_NAME = "name";
+    static final String STATE_PROGRESS = "progress";
     private static final String TAG = "CheckboxActivity";
-
     //declare variables
     int points;
     String userName;
@@ -38,13 +42,6 @@ public class CheckboxActivity extends AppCompatActivity {
     int progress;
     int clicked = 0;
     boolean back_pressed = false;
-
-    // Saves the message in case of changing activity
-    static final String STATE_CLICKED = "clicked";
-    static final String STATE_SCORE = "score";
-    static final String STATE_NAME = "name";
-    static final String STATE_PROGRESS = "progress";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,8 +136,8 @@ public class CheckboxActivity extends AppCompatActivity {
                     answer4.setTextColor(getResources().getColor(R.color.colorText));
                     answer4.setClickable(true);
                     answer4.setChecked(false);
-                    clicked++;}
-                    else if (clicked == 2){
+                    clicked++;
+                } else if (clicked == 2) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
                         Toast.makeText(CheckboxActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
                         return;
@@ -236,8 +233,7 @@ public class CheckboxActivity extends AppCompatActivity {
             answer3.setClickable(false);
             answer4.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer4.setClickable(false);
-        }
-        else if (clicked == 2) {
+        } else if (clicked == 2) {
             picture.setImageResource(R.drawable.question3);
             question.setText(R.string.question3);
             answer1.setText(R.string.question3_answer1);
@@ -253,8 +249,7 @@ public class CheckboxActivity extends AppCompatActivity {
             answer4.setTextColor(getResources().getColor(R.color.colorText));
             answer4.setClickable(true);
 
-        }
-        else if (clicked == 3) {
+        } else if (clicked == 3) {
             picture.setImageResource(R.drawable.question3_answer);
             answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer1.setClickable(false);

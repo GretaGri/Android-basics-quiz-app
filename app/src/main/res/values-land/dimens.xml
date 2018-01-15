@@ -5,4 +5,6 @@
     <dimen name="margin_bottom_name">70dp</dimen>
     <dimen name="text_size_answer">22sp</dimen>
     <dimen name="text_size_answers">16sp</dimen>
+    <dimen name="text_size_open">40sp</dimen>
+    <dimen name="text_size_lyrics">30sp</dimen>
 </resources>

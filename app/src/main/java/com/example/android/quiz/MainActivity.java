@@ -22,18 +22,17 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-int points = 0;
-String message = "";
-boolean clicked = false;
-String userName = "";
-int progress = 0;
-
     // Saves the message in case of changing activity
     static final String STATE_MESSAGE = "results";
     static final String STATE_SCORE = "score";
     static final String STATE_BOOLEAN = "boolean";
     static final String STATE_NAME = "name";
     static final String STATE_PROGRESS = "progress";
+    int points = 0;
+    String message = "";
+    boolean clicked = false;
+    String userName = "";
+    int progress = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ int progress = 0;
                         points++; //add points for first answer
                     }
                     //after pushing button go to the screen top.
-                    final ScrollView scrollView = (ScrollView) findViewById (R.id.mainScrollView);
+                    final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
                         @Override
@@ -75,32 +74,33 @@ int progress = 0;
                         }
                     });
                     progress = progress + 10;
-                    ProgressBar progressBar = (ProgressBar)findViewById(R.id.determinateBar);
-                    progressBar.setProgress (progress);
+                    ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
+                    progressBar.setProgress(progress);
                     displayMessage(message);
                     TextView instructions = (TextView) findViewById(R.id.et_instructions);
                     instructions.setVisibility(View.INVISIBLE); //set textView et_instructions invisible
                     CardView question1 = (CardView) findViewById(R.id.cw_question1);
                     question1.setVisibility(View.INVISIBLE); //set textView cw_question1 invisible
                     clicked = true;
+                } else {
+                    Intent myIntent = new Intent(MainActivity.this, CheckboxActivity.class);
+                    myIntent.putExtra("points", points);
+                    myIntent.putExtra("name", userName);
+                    myIntent.putExtra("progress", progress);
+                    MainActivity.this.startActivity(myIntent);
                 }
-                else {Intent myIntent = new Intent(MainActivity.this, CheckboxActivity.class);
-                        myIntent.putExtra("points", points);
-                        myIntent.putExtra("name", userName);
-                        myIntent.putExtra("progress",progress);
-                        MainActivity.this.startActivity(myIntent);
-                     }
             }
         });
     }
+
     // Save the user's current app state
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putString(STATE_MESSAGE, message);
-        savedInstanceState.putInt(STATE_SCORE,points);
-        savedInstanceState.putBoolean (STATE_BOOLEAN,clicked);
+        savedInstanceState.putInt(STATE_SCORE, points);
+        savedInstanceState.putBoolean(STATE_BOOLEAN, clicked);
         savedInstanceState.putString(STATE_NAME, userName);
-        savedInstanceState.putInt(STATE_PROGRESS,progress);
+        savedInstanceState.putInt(STATE_PROGRESS, progress);
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -116,7 +116,7 @@ int progress = 0;
         progress = savedInstanceState.getInt(STATE_PROGRESS);
         if (clicked) {
             ////after pushing button go to the screen top.
-            final ScrollView scrollView = (ScrollView) findViewById (R.id.mainScrollView);
+            final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
             scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @SuppressLint("NewApi")
                 @Override
@@ -128,8 +128,8 @@ int progress = 0;
                     }
                 }
             });
-            ProgressBar progressBar = (ProgressBar)findViewById(R.id.determinateBar);
-            progressBar.setProgress (progress);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
+            progressBar.setProgress(progress);
             displayName(userName);
             TextView instructions = (TextView) findViewById(R.id.et_instructions);
             instructions.setVisibility(View.INVISIBLE); //set textView et_instructions invisible
@@ -140,14 +140,14 @@ int progress = 0;
 
     }
 
-    public void displayMessage (String message) {
+    public void displayMessage(String message) {
         TextView description = (TextView) findViewById(R.id.description);
         message = getString(R.string.firstQuestionAnswered1) + " " + points + " " + getString(R.string.firstQuestionAnswered2);
         description.setText(message);
         description.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_answer));
-        }
+    }
 
-    public void displayName (String userName) {
+    public void displayName(String userName) {
         TextView name = (TextView) findViewById(R.id.name);
         name.setText(userName);
     }

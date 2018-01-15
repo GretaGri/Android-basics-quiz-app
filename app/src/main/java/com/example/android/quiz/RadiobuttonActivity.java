@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,8 +25,12 @@ import android.widget.Toast;
 
 public class RadiobuttonActivity extends AppCompatActivity {
 
+    // Saves the message in case of changing activity
+    static final String STATE_CLICKED = "clicked";
+    static final String STATE_SCORE = "score";
+    static final String STATE_NAME = "name";
+    static final String STATE_PROGRESS = "progress";
     private static final String TAG = "RadiobuttonActivity";
-
     //declare variables
     int points;
     String userName;
@@ -35,12 +40,6 @@ public class RadiobuttonActivity extends AppCompatActivity {
     int progress;
     int clicked = 0;
     boolean back_pressed = false;
-
-    // Saves the message in case of changing activity
-    static final String STATE_CLICKED = "clicked";
-    static final String STATE_SCORE = "score";
-    static final String STATE_NAME = "name";
-    static final String STATE_PROGRESS = "progress";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +54,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
         final RadioButton answer1 = (RadioButton) findViewById(R.id.rb_answer_1);
         final RadioButton answer2 = (RadioButton) findViewById(R.id.rb_answer_2);
         final RadioButton answer3 = (RadioButton) findViewById(R.id.rb_answer_3);
+        final RadioGroup group = (RadioGroup) findViewById(R.id.rg_question);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
         final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
 
@@ -115,20 +115,18 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 1) {
+                    group.clearCheck();
                     picture.setImageResource(R.drawable.question5);
                     question.setText(R.string.question5);
                     answer1.setText(R.string.question5_answer1);
                     answer1.setTextColor(getResources().getColor(R.color.colorText));
                     answer1.setClickable(true);
-                    answer1.setChecked(false);
                     answer2.setText(R.string.question5_answer2_correct);
                     answer2.setTextColor(getResources().getColor(R.color.colorText));
                     answer2.setClickable(true);
-                    answer2.setChecked(false);
                     answer3.setText(R.string.question5_answer3);
                     answer3.setTextColor(getResources().getColor(R.color.colorText));
                     answer3.setClickable(true);
-                    answer3.setChecked(false);
                     clicked++;
                 } else if (clicked == 2) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -163,20 +161,18 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 3) {
+                    group.clearCheck();
                     picture.setImageResource(R.drawable.question6);
                     question.setText(R.string.question6);
                     answer1.setText(R.string.question6_answer1_correct);
                     answer1.setTextColor(getResources().getColor(R.color.colorText));
                     answer1.setClickable(true);
-                    answer1.setChecked(false);
                     answer2.setText(R.string.question6_answer2);
                     answer2.setTextColor(getResources().getColor(R.color.colorText));
                     answer2.setClickable(true);
-                    answer2.setChecked(false);
                     answer3.setText(R.string.question6_answer3);
                     answer3.setTextColor(getResources().getColor(R.color.colorText));
                     answer3.setClickable(true);
-                    answer3.setChecked(false);
                     clicked++;
                 } else if (clicked == 4) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -211,20 +207,18 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 5) {
+                    group.clearCheck();
                     picture.setImageResource(R.drawable.question7);
                     question.setText(R.string.question7);
                     answer1.setText(R.string.question7_answer1);
                     answer1.setTextColor(getResources().getColor(R.color.colorText));
                     answer1.setClickable(true);
-                    answer1.setChecked(false);
                     answer2.setText(R.string.question7_answer2_correct);
                     answer2.setTextColor(getResources().getColor(R.color.colorText));
                     answer2.setClickable(true);
-                    answer2.setChecked(false);
                     answer3.setText(R.string.question7_answer3);
                     answer3.setTextColor(getResources().getColor(R.color.colorText));
                     answer3.setClickable(true);
-                    answer3.setChecked(false);
                     clicked++;
                 } else if (clicked == 6) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -259,20 +253,18 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 7) {
+                    group.clearCheck();
                     picture.setImageResource(R.drawable.question8);
                     question.setText(R.string.question8);
                     answer1.setText(R.string.question8_answer1);
                     answer1.setTextColor(getResources().getColor(R.color.colorText));
                     answer1.setClickable(true);
-                    answer1.setChecked(false);
                     answer2.setText(R.string.question8_answer2);
                     answer2.setTextColor(getResources().getColor(R.color.colorText));
                     answer2.setClickable(true);
-                    answer2.setChecked(false);
                     answer3.setText(R.string.question8_answer3_correct);
                     answer3.setTextColor(getResources().getColor(R.color.colorText));
                     answer3.setClickable(true);
-                    answer3.setChecked(false);
                     clicked++;
                 } else if (clicked == 8) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -307,20 +299,18 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 9) {
+                    group.clearCheck();
                     picture.setImageResource(R.drawable.question9);
                     question.setText(R.string.question9);
                     answer1.setText(R.string.question9_answer1);
                     answer1.setTextColor(getResources().getColor(R.color.colorText));
                     answer1.setClickable(true);
-                    answer1.setChecked(false);
                     answer2.setText(R.string.question9_answer2);
                     answer2.setTextColor(getResources().getColor(R.color.colorText));
                     answer2.setClickable(true);
-                    answer2.setChecked(false);
                     answer3.setText(R.string.question9_answer3_correct);
                     answer3.setTextColor(getResources().getColor(R.color.colorText));
                     answer3.setClickable(true);
-                    answer3.setChecked(false);
                     clicked++;
                 } else if (clicked == 10) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -355,20 +345,18 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 11) {
+                    group.clearCheck();
                     picture.setImageResource(R.drawable.question10);
                     question.setText(R.string.question10);
                     answer1.setText(R.string.question10_answer1_correct);
                     answer1.setTextColor(getResources().getColor(R.color.colorText));
                     answer1.setClickable(true);
-                    answer1.setChecked(false);
                     answer2.setText(R.string.question10_answer2);
                     answer2.setTextColor(getResources().getColor(R.color.colorText));
                     answer2.setClickable(true);
-                    answer2.setChecked(false);
                     answer3.setText(R.string.question10_answer3);
                     answer3.setTextColor(getResources().getColor(R.color.colorText));
                     answer3.setClickable(true);
-                    answer3.setChecked(false);
                     clicked++;
                 } else if (clicked == 12) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -462,8 +450,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer2.setClickable(false);
             answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
             answer3.setClickable(false);
-        }
-        else if (clicked == 2) {
+        } else if (clicked == 2) {
             picture.setImageResource(R.drawable.question5);
             question.setText(R.string.question5);
             answer1.setText(R.string.question5_answer1);
@@ -475,8 +462,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer3.setText(R.string.question5_answer3);
             answer3.setTextColor(getResources().getColor(R.color.colorText));
             answer3.setClickable(true);
-        }
-        else if (clicked == 3) {
+        } else if (clicked == 3) {
             picture.setImageResource(R.drawable.question5_answer);
             answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer1.setClickable(false);
@@ -484,8 +470,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer2.setClickable(false);
             answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer3.setClickable(false);
-        }
-        else if (clicked == 4) {
+        } else if (clicked == 4) {
             picture.setImageResource(R.drawable.question6);
             question.setText(R.string.question6);
             answer1.setText(R.string.question6_answer1_correct);
@@ -497,8 +482,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer3.setText(R.string.question6_answer3);
             answer3.setTextColor(getResources().getColor(R.color.colorText));
             answer3.setClickable(true);
-        }
-        else if (clicked == 5) {
+        } else if (clicked == 5) {
             picture.setImageResource(R.drawable.question6_answer);
             answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer1.setClickable(false);
@@ -506,8 +490,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer2.setClickable(false);
             answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
             answer3.setClickable(false);
-        }
-        else if (clicked == 6) {
+        } else if (clicked == 6) {
             picture.setImageResource(R.drawable.question7);
             question.setText(R.string.question7);
             answer1.setText(R.string.question7_answer1);
@@ -519,8 +502,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer3.setText(R.string.question7_answer3);
             answer3.setTextColor(getResources().getColor(R.color.colorText));
             answer3.setClickable(true);
-        }
-        else if (clicked == 7) {
+        } else if (clicked == 7) {
             picture.setImageResource(R.drawable.question7_answer);
             answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer1.setClickable(false);
@@ -528,8 +510,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer2.setClickable(false);
             answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer3.setClickable(false);
-        }
-        else if (clicked == 8) {
+        } else if (clicked == 8) {
             picture.setImageResource(R.drawable.question8);
             question.setText(R.string.question8);
             answer1.setText(R.string.question8_answer1);
@@ -541,8 +522,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer3.setText(R.string.question8_answer3_correct);
             answer3.setTextColor(getResources().getColor(R.color.colorText));
             answer3.setClickable(true);
-        }
-        else if (clicked == 9) {
+        } else if (clicked == 9) {
             picture.setImageResource(R.drawable.question8_answer);
             answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer1.setClickable(false);
@@ -550,8 +530,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer2.setClickable(false);
             answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
             answer3.setClickable(false);
-        }
-        else if (clicked == 10) {
+        } else if (clicked == 10) {
             picture.setImageResource(R.drawable.question9);
             question.setText(R.string.question9);
             answer1.setText(R.string.question9_answer1);
@@ -563,8 +542,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer3.setText(R.string.question9_answer3_correct);
             answer3.setTextColor(getResources().getColor(R.color.colorText));
             answer3.setClickable(true);
-        }
-        else if (clicked == 11) {
+        } else if (clicked == 11) {
             picture.setImageResource(R.drawable.question9_answer);
             answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
             answer1.setClickable(false);
@@ -572,8 +550,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer2.setClickable(false);
             answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
             answer3.setClickable(false);
-        }
-        else if (clicked == 12) {
+        } else if (clicked == 12) {
             picture.setImageResource(R.drawable.question10);
             question.setText(R.string.question10);
             answer1.setText(R.string.question10_answer1_correct);
@@ -585,8 +562,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
             answer3.setText(R.string.question10_answer3);
             answer3.setTextColor(getResources().getColor(R.color.colorText));
             answer3.setClickable(true);
-        }
-        else if (clicked == 13) {
+        } else if (clicked == 13) {
             picture.setImageResource(R.drawable.question10_answer);
             answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
             answer1.setClickable(false);

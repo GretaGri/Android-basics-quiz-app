@@ -1,93 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.android.quiz.Results">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.android.quiz.Results"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/picture_finish"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="230dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/sinatra"
+            android:scaleType="fitCenter"
+            android:src="@drawable/sinatra" />
 
-            <ImageView
-                android:id="@+id/picture_finish"
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/sinatra"
-                android:scaleType="fitCenter"
-                android:src="@drawable/sinatra" />
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:contentDescription="@string/arrow_picture"
+            android:src="@drawable/arrow" />
 
-            <ImageView
-                android:id="@+id/arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_standard"
-                android:src="@drawable/arrow"
-                android:contentDescription="@string/arrow_picture" />
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/picture_finish"
+            android:layout_margin="@dimen/margin_standard"
+            android:gravity="center"
+            android:text=""
+            android:textAppearance="@style/TextAppearance"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/picture_finish"
-                android:layout_margin="@dimen/margin_standard"
-                android:gravity="center"
-                android:text="You scored 9-10 points"
-                android:textAppearance="@style/TextAppearance"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/lyrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/score"
+            android:fontFamily="@font/grand_hotel"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/colorHeading"
+            android:textSize="@dimen/text_size_lyrics"
+            android:textStyle="italic" />
 
-            <TextView
-                android:id="@+id/lyrics"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/score"
-                android:fontFamily="@font/grand_hotel"
-                android:gravity="center"
-                android:text="@string/lyrics9to10"
-                android:textColor="@color/colorHeading"
-                android:textSize="26sp"
-                android:textStyle="italic" />
+        <TextView
+            android:id="@+id/open"
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/margin_standard"
+            android:layout_toLeftOf="@id/navigation"
+            android:layout_toStartOf="@id/navigation"
+            android:fontFamily="@font/grand_hotel"
+            android:gravity="center|end"
+            android:paddingRight="@dimen/padding_standard"
+            android:text="@string/open_present"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size_open" />
 
-    <TextView
-        android:id="@+id/open"
-        android:layout_width="wrap_content"
-        android:layout_height="140dp"
-        android:layout_toLeftOf="@id/navigation"
-        android:layout_toStartOf="@id/navigation"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/margin_standard"
-        android:paddingRight="@dimen/padding_standard"
-        android:textAlignment="gravity"
-        android:fontFamily="@font/grand_hotel"
-        android:text="@string/open_present_land"
-        android:gravity="center|end"
-        android:textColor="@color/colorAccent"
-        android:textSize="40sp" />
+        <ImageView
+            android:id="@+id/navigation"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/lyrics"
+            android:clickable="true"
+            android:contentDescription="@string/present_picture"
+            android:focusable="true"
+            android:padding="@dimen/padding_standard"
+            android:src="@drawable/present"
+            android:visibility="visible" />
 
-    <ImageView
-        android:id="@+id/navigation"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_below="@id/lyrics"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:padding="@dimen/padding_standard"
-        android:clickable="true"
-        android:contentDescription="@string/present_picture"
-        android:focusable="true"
-        android:src="@drawable/present"
-        android:visibility="visible" />
-
-</RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
+</ScrollView>
