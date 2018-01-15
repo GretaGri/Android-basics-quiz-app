@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.example.android.quiz.Results">
 
     <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context="com.example.android.quiz.Results"
         android:background="@color/colorPrimary"
         android:orientation="vertical">
 
@@ -33,6 +30,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/margin_standard"
+                android:src="@drawable/arrow"
                 android:contentDescription="@string/arrow_picture" />
 
             <TextView
@@ -58,33 +56,33 @@
                 android:textSize="26sp"
                 android:textStyle="italic" />
 
-        </RelativeLayout>
-    </ScrollView>
-
     <TextView
+        android:id="@+id/open"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/navigation"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
+        android:layout_height="140dp"
+        android:layout_toLeftOf="@id/navigation"
+        android:layout_toStartOf="@id/navigation"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_standard"
+        android:paddingRight="@dimen/padding_standard"
+        android:textAlignment="gravity"
         android:fontFamily="@font/grand_hotel"
-        android:text="@string/open_present"
-        android:gravity="end"
+        android:text="Open your present"
+        android:gravity="center|end"
         android:textColor="@color/colorAccent"
-        android:textSize="@dimen/text_size_landscape" />
+        android:textSize="40sp" />
 
     <ImageView
         android:id="@+id/navigation"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_below="@id/lyrics"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:layout_marginEnd="@dimen/margin_standard"
-        android:layout_marginBottom="@dimen/margin_standard"
+        android:padding="@dimen/padding_standard"
         android:clickable="true"
         android:contentDescription="@string/present_picture"
         android:focusable="true"
@@ -92,3 +90,4 @@
         android:visibility="visible" />
 
 </RelativeLayout>
+    </ScrollView>

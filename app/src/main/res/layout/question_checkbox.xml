@@ -24,8 +24,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/question2"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/question_picture"/>
+            android:scaleType="centerCrop"/>
 
         <ImageView
             android:id="@+id/arrow"
@@ -33,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_standard" />
+            android:layout_marginTop="@dimen/margin_standard"
+            android:contentDescription="@string/arrow_picture"/>
 
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"

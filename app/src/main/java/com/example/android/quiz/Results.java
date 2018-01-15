@@ -22,7 +22,6 @@ public class Results extends AppCompatActivity {
     //declare variables
     int points;
     String userName;
-    int progress;
     boolean back_pressed = false;
     String toast_message1;
     String toast_message2;
@@ -33,7 +32,7 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results);
 
-        //Apply animation to animeView
+        //Apply animation to arrow
         ImageView animeView = (ImageView) findViewById(R.id.arrow);
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
         animeView.startAnimation(pulsingArrow);
@@ -51,18 +50,14 @@ public class Results extends AppCompatActivity {
         toast_message2 = userName + getString(R.string.toastCorrectAnswer);
         toast_message3 = userName + getString(R.string.toastWrongAnswer);
 
-        progress = extras.getInt("progress");
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
-        progressBar.setProgress(progress);
-
         ImageView navigation = (ImageView) findViewById(R.id.navigation);
+        Animation pulsingPresent = AnimationUtils.loadAnimation(this, R.anim.pulse);
+        navigation.startAnimation(pulsingPresent);
 
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {Intent myIntent = new Intent(Results.this, VideoActivity.class);
-                myIntent.putExtra("points", points);
                 myIntent.putExtra("name", userName);
-                myIntent.putExtra("progress",progress);
                 Results.this.startActivity(myIntent);
 
             }
