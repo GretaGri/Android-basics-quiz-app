@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Quiz</string>
 
-    <string name="description">This is a short quiz app, which aims to check \nyour ability not only to learn to code well, \nbut to keep smiling all the way through \nthe Android Basic course by Udacity.</string>
+    <string name="description">This is a short quiz, which aims to check \nyour ability not only to learn to code well, \nbut to keep smiling all the way through \nthe Android Basic course by Udacity.</string>
     <string name="rules">Answer questions carefully, \nget 1 point for each correct answer. \nLet\'s start from the trickiest one! \nGood luck!</string>
 
     <string name="question1">1. What is your name?</string>
@@ -16,6 +16,7 @@
     <string name="toastNoAnswer">, your answer is empty! \nPlease, check at least one option.</string>
     <string name="toastCorrectAnswer">, your answer is correct! \nYou get plus 1 point.\nClick check button to proceed.</string>
     <string name="toastWrongAnswer">, your answer is wrong! \nYou get 0 points.\nClick check button to proceed.</string>
+    <string name="toastRestart">Do you really want to restart quiz? \nPlease, push back one more time.</string>
 
     <string name="question2">2.	Who welcomes students to Udacity and Google Developer Challenge Scholarship in introduction video? \n(please, check all correct answers)</string>
     <string name="question2_answer1_correct">Chaitra Ramanathan, program manager</string>
@@ -35,7 +36,7 @@
     <string name="question4_answer3_correct">Lyla Fujiwara, course developer/Udacity barista</string>
 
     <string name="question5">5.	What is basically the first step towards becoming Android developer?</string>
-    <string name="question5_answer1">Installing Android studio</string>
+    <string name="question5_answer1">Installing Android Studio</string>
     <string name="question5_answer2_correct">Making a “Hello world” app</string>
     <string name="question5_answer3">Making a “Goodbye world” app</string>
 

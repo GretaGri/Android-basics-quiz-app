@@ -20,7 +20,7 @@ public class Results extends AppCompatActivity {
 
     private static final String TAG = "ResultsActivity";
 
-    //declare variables
+    // Declare variables.
     int points;
     String userName;
     boolean back_pressed = false;
@@ -31,17 +31,17 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results);
 
-        // locate views
+        // Locate views.
         final ImageView animeView = (ImageView) findViewById(R.id.arrow);
         final ImageView navigation = (ImageView) findViewById(R.id.navigation);
         final TextView score = (TextView) findViewById(R.id.score);
         final TextView lyrics = (TextView) findViewById(R.id.lyrics);
 
-        //Apply animation to arrow
+        // Apply animation to arrow.
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
         animeView.startAnimation(pulsingArrow);
 
-        //get extras
+        // Get extras.
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             return;
@@ -52,6 +52,7 @@ public class Results extends AppCompatActivity {
         userName = extras.getString("name");
         message = userName + getString(R.string.results) + points + getString(R.string.results2);
 
+        // Show final result and message depending on points.
         if (points == 1) {
             message = userName + getString(R.string.results) + points + getString(R.string.results1);
             lyrics.setText(R.string.lyrics1to2);
@@ -69,14 +70,15 @@ public class Results extends AppCompatActivity {
 
         score.setText(message);
 
-        //Apply animation to present
+        // Apply animation to present.
         Animation pulsingPresent = AnimationUtils.loadAnimation(this, R.anim.pulse);
         navigation.startAnimation(pulsingPresent);
 
+        // Set on click listener to navigation button.
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(Results.this, VideoActivity.class);
+                Intent myIntent = new Intent(Results.this, VideoActivity.class); // Go to another activity, send extra variables with points.
                 myIntent.putExtra("points", points);
                 Results.this.startActivity(myIntent);
 
@@ -85,16 +87,17 @@ public class Results extends AppCompatActivity {
         });
     }
 
+    // Go to the beginning/restart app when back button is pushed second time, first time - show toast with question if user wants to go back.
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
-            Toast.makeText(Results.this, "Do you really want to restart quiz? \nPlease, push back one more time.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Results.this, getString(R.string.toastRestart), Toast.LENGTH_SHORT).show();
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(Results.this, MainActivity.class);
             homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
-        }// your code.
+        }
     }
 }

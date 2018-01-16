@@ -27,13 +27,13 @@ import android.widget.ProgressBar;
 
 public class CheckboxActivity extends AppCompatActivity {
 
-    // Saves the message in case of changing activity
+    // Saves clicked navigation button count, points, name and progress in case of changing activity.
     static final String STATE_CLICKED = "clicked";
     static final String STATE_SCORE = "score";
     static final String STATE_NAME = "name";
     static final String STATE_PROGRESS = "progress";
-    private static final String TAG = "CheckboxActivity";
-    //declare variables
+
+    // Declare variables.
     int points;
     String userName;
     String toast_message1;
@@ -48,7 +48,7 @@ public class CheckboxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_checkbox);
 
-        // locate views
+        // Locate views.
         final ImageView animeView = (ImageView) findViewById(R.id.arrow);
         final ImageView navigation = (ImageView) findViewById(R.id.navigation);
         final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
@@ -60,17 +60,16 @@ public class CheckboxActivity extends AppCompatActivity {
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
         final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
 
-        //Apply animation to animeView
+        // Apply animation to animeView.
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
         animeView.startAnimation(pulsingArrow);
 
-        //get extras
+        // Get extras.
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             return;
         }
         points = extras.getInt("points");
-        Log.d(TAG, "points" + points);
 
         userName = extras.getString("name");
         toast_message1 = userName + getString(R.string.toastNoAnswer);
@@ -78,22 +77,24 @@ public class CheckboxActivity extends AppCompatActivity {
         toast_message3 = userName + getString(R.string.toastWrongAnswer);
 
         progress = extras.getInt("progress");
-        progressBar.setProgress(progress);
+        progressBar.setProgress(progress); // Show progress on progress bar.
 
+        // Set on click listener to navigation button.
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (clicked == 0) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
-                        Toast.makeText(CheckboxActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        Toast.makeText(CheckboxActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); // Toast message, if user didn't check any answer.
                         return;
                     } else if (answer1.isChecked() & !answer2.isChecked() & answer3.isChecked() & !answer4.isChecked()) {
-                        points++; //add points for second answer
-                        Toast.makeText(CheckboxActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        points++; // Add points for correct answer.
+                        Toast.makeText(CheckboxActivity.this, toast_message2, Toast.LENGTH_SHORT).show(); // Toast message, when the answer is correct.
                     } else {
-                        Toast.makeText(CheckboxActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckboxActivity.this, toast_message3, Toast.LENGTH_SHORT).show(); // Toast message, when the answer is wrong.
                     }
-                    //after pushing button go to the screen top.
+
+                    // Set scrollview that after pushing button the layout top is visible.
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
                         @Override
@@ -105,6 +106,8 @@ public class CheckboxActivity extends AppCompatActivity {
                             }
                         }
                     });
+
+                    // Show correct/wrong answers, check boxes is not clickable.
                     picture.setImageResource(R.drawable.question2_answer);
                     answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
                     answer1.setClickable(false);
@@ -114,10 +117,16 @@ public class CheckboxActivity extends AppCompatActivity {
                     answer3.setClickable(false);
                     answer4.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
                     answer4.setClickable(false);
+
+                    // Calculate progress and show it on progress bar
                     progress = progress + 10;
                     progressBar.setProgress(progress);
+
+                    // Count navigation button clicks
                     clicked++;
+
                 } else if (clicked == 1) {
+                    // Set new question picture/question/answers, checkboxes clickable/empty, color black.
                     picture.setImageResource(R.drawable.question3);
                     question.setText(R.string.question3);
                     answer1.setText(R.string.question3_answer1);
@@ -136,18 +145,21 @@ public class CheckboxActivity extends AppCompatActivity {
                     answer4.setTextColor(getResources().getColor(R.color.colorText));
                     answer4.setClickable(true);
                     answer4.setChecked(false);
+
+                    // Count navigation button clicks.
                     clicked++;
                 } else if (clicked == 2) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
-                        Toast.makeText(CheckboxActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        Toast.makeText(CheckboxActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); // Toast message, if user didn't check any answer.
                         return;
                     } else if (!answer1.isChecked() & answer2.isChecked() & !answer3.isChecked() & answer4.isChecked()) {
-                        points++; //add points for second answer
-                        Toast.makeText(CheckboxActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        points++; // Add points for correct answer.
+                        Toast.makeText(CheckboxActivity.this, toast_message2, Toast.LENGTH_SHORT).show(); // Toast message, when the answer is correct.
                     } else {
-                        Toast.makeText(CheckboxActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckboxActivity.this, toast_message3, Toast.LENGTH_SHORT).show(); // Toast message, when the answer is wrong.
                     }
-                    //after pushing button go to the screen top.
+
+                    // Set scrollview that after pushing button the layout top is visible.
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
                         @Override
@@ -159,6 +171,8 @@ public class CheckboxActivity extends AppCompatActivity {
                             }
                         }
                     });
+
+                    // Show correct/wrong answers, check boxes is not clickable.
                     picture.setImageResource(R.drawable.question3_answer);
                     answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
                     answer1.setClickable(false);
@@ -172,7 +186,7 @@ public class CheckboxActivity extends AppCompatActivity {
                     progressBar.setProgress(progress);
                     clicked++;
                 } else {
-                    Intent myIntent = new Intent(CheckboxActivity.this, RadiobuttonActivity.class);
+                    Intent myIntent = new Intent(CheckboxActivity.this, RadiobuttonActivity.class); // Go to another activity, send extra variables with points, progress and name.
                     myIntent.putExtra("points", points);
                     myIntent.putExtra("name", userName);
                     myIntent.putExtra("progress", progress);
@@ -182,7 +196,7 @@ public class CheckboxActivity extends AppCompatActivity {
         });
     }
 
-    // Save the user's current app state
+    // Save the user's current app state (remember to put static final strings!).
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt(STATE_CLICKED, clicked);
@@ -192,16 +206,17 @@ public class CheckboxActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
-    // Always call the superclass so it can restore the view hierarchy
+    // Always call the superclass so it can restore the view hierarchy.
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        // Restore state members from saved instance
+        // Restore state members from saved instance.
         points = savedInstanceState.getInt(STATE_SCORE);
         clicked = savedInstanceState.getInt(STATE_CLICKED);
         userName = savedInstanceState.getString(STATE_NAME);
         progress = savedInstanceState.getInt(STATE_PROGRESS);
-        //locate views
+
+        // Locate views.
         final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
         final TextView question = (TextView) findViewById(R.id.cb_question);
         final CheckBox answer1 = (CheckBox) findViewById(R.id.cb_answer_1);
@@ -215,7 +230,7 @@ public class CheckboxActivity extends AppCompatActivity {
             @SuppressLint("NewApi")
             @Override
             public void onGlobalLayout() {
-                // Ready, move up
+                // Ready, move up.
                 scrollView.fullScroll(View.FOCUS_UP);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -262,16 +277,17 @@ public class CheckboxActivity extends AppCompatActivity {
         }
     }
 
+    // Go to the beginning/restart app when back button is pushed second time, first time - show toast with question if user wants to go back.
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
-            Toast.makeText(CheckboxActivity.this, "Do you really want to restart quiz? \nPlease, push back one more time.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CheckboxActivity.this, getString(R.string.toastRestart), Toast.LENGTH_SHORT).show();
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(CheckboxActivity.this, MainActivity.class);
             homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
-        }// your code.
+        }
     }
 }

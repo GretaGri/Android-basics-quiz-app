@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">Testas</string>
+
+    <string name="description">Tai nedidelės apimties testas, kuris siekia patikrinti jūsų gebėjimus ne tik gerai programuoti, bet ir šypsotis mokantis Androido pagrindus Udacity platformoje.</string>
+    <string name="rules">Atsakykite į klausimus atidžiai, \ngaukite po 1 tašką už teisingą atsakymą. \nPradėkime nuo sudėtingiausio klausimo! \nSėkmės!</string>
+
+    <string name="question1">1. Koks jūsų vardas?</string>
+    <string name="hint">Įveskite atsakymą čia</string>
+
+    <string name="description_of_bar">Atsakyti klausimai</string>
+
+    <string name="firstQuestionAnswered1">Gražus vardas ir puiki pradžia! \n Jau gavote</string>
+    <string name="firstQuestionAnswered2">tašką! \nPrašau, paspauskite mygtuką, kad tęstumėte.</string>
+
+    <string name="toastNoName">Neįrašėte savo vardo!</string>
+    <string name="toastNoAnswer">, jūsų atsakymas tuščias! \nPrašau, pažymėkite bent vieną atsakymą.</string>
+    <string name="toastCorrectAnswer">, jūsų atsakymas teisingas! \nGaunate 1 tašką.\nPaspauskite mygtuką, kad tęstumėte.</string>
+    <string name="toastWrongAnswer">, jūsų atsakymas klaidingas!\nGaunate 0 taškų.\nPaspauskite mygtuką, kad tęstumėte.</string>
+    <string name="toastRestart">Ar tikrai norite pradėti testą iš naujo? \nPrašau, paspauskyte mygtuką atgal dar kartą.</string>
+
+    <string name="question2">2.	Kas pasveikina studentus Udacity ir Google Programuotojo iššūkio stipendijos prisistatymo video? \n(prašau, pažymėkite visus teisingus atsakymus)</string>
+    <string name="question2_answer1_correct">Chaitra Ramanathan, programos vadovė</string>
+    <string name="question2_answer2">Sebastian Thrun, Udacity steigėjas</string>
+    <string name="question2_answer3_correct">Nick Blumenthal, programos vadovas</string>
+    <string name="question2_answer4">Sundar Pichai, Google Generalinis direktorius</string>
+
+    <string name="question3">3.	Kas jau kurį laiką dirbo su kurso Androido pagrindai medžiaga ir pasveikino studentus \"Sveiki atvykę į kursą\" video? \n(prašau, pažymėkite visus teisingus atsakymus)</string>
+    <string name="question3_answer1">Chaitra Ramanathan, programos vadovė</string>
+    <string name="question3_answer2_correct">Katherine Kuan, programuotoja kūrėja, Google</string>
+    <string name="question3_answer3">Nick Blumenthal, programos vadovas</string>
+    <string name="question3_answer4_correct">Kunal Chawla, dėstytojas, Udacity</string>
+
+    <string name="question4">4.	Kas ta paslaptinga dama fone?</string>
+    <string name="question4_answer1">Tiesiog virtuvės šeimininkė</string>
+    <string name="question4_answer2">Kunal gerbėja, kuri slapta jį seka.</string>
+    <string name="question4_answer3_correct">Lyla Fujiwara, kurso kūrėja/Udacity barista</string>
+
+    <string name="question5">5.	Kas galima sakyti yra pirmasis žingsnis tampant Androido programuotoju?</string>
+    <string name="question5_answer1">Android Studio programos įsirašymas</string>
+    <string name="question5_answer2_correct">Programos \“Labas pasauli\” sukūrimas</string>
+    <string name="question5_answer3">Programos \“Sudie pasauli\” sukūrimas</string>
+
+    <string name="question6">6.	Ką mokydamasis Kunal turėjo sunkumų?</string>
+    <string name="question6_answer1_correct">Mokydamasis groti pianinu</string>
+    <string name="question6_answer2">Mokydamasis žaisti šachmatais</string>
+    <string name="question6_answer3">Mokydamasis japonų kalbos</string>
+
+    <string name="question7">7.	Ką mokydamasi Katherine turėjo sunkumų?</string>
+    <string name="question7_answer1">Mokydamasi groti smuiku</string>
+    <string name="question7_answer2_correct">Mokydamasi kinų kalbos</string>
+    <string name="question7_answer3">Mokydamasi šokti tango</string>
+
+    <string name="question8">8. Kas yra Chloe?</string>
+    <string name="question8_answer1">Katherine draugė</string>
+    <string name="question8_answer2">Katherine antras vardas</string>
+    <string name="question8_answer3_correct">Kunal ofiso augalas</string>
+
+    <string name="question9">9. Kas buvo tas labai ypatingas svečias? </string>
+    <string name="question9_answer1">Kunal vadovė</string>
+    <string name="question9_answer2">Katherine sesuo</string>
+    <string name="question9_answer3_correct">Alice Young, techninė vadovė, Google</string>
+
+    <string name="question10">10. Spėkite, ką laikas veikti?</string>
+    <string name="question10_answer1_correct">Pabaigti šį testą</string>
+    <string name="question10_answer2">Valgyti dar torto</string>
+    <string name="question10_answer3">Pradėti mokytis</string>
+
+    <string name="results">", jūs surinkote "</string>
+    <string name="results1">" tašką"</string>
+    <string name="results2">" taškus"</string>
+
+    <string name="lyrics9to10">You\'re just too marvelous,\nToo marvelous for words\nLike \"\glorious\", \"glamorous\"\nAnd that old standby \"amorous\".</string>
+    <string name="lyrics7to8">When you\'re smilin\', when you\'re smilin\'\nThe whole world smiles with you\nBut when you\'re cryin\', you bring on the rain\nSo stop your sighin\', be happy again!</string>
+    <string name="lyrics5to6">Regrets, I\'ve had a few\nBut then again, too few to mention\nI did what I had to do\nAnd saw it through without exemption.</string>
+    <string name="lyrics3to4">That\'s life that\'s what people say\nYou\'re riding high in April\nShot down in May\nBut I know I\'m gonna change that tune\nWhen I\'m back on top, back on top in June.</string>
+    <string name="lyrics1to2">We\'re drinkin\', my friend,\nTo the end of a brief episode\nMake it one for my baby\nAnd one more for the road.</string>
+
+    <string name="welcome_picture">Pasveikinimo paveikslėlis</string>
+    <string name="question_picture">Klausimo paveikslėlis</string>
+    <string name="answer_picture">Atsakymo paveikslėlis</string>
+    <string name="arrow_picture">Rodyklė rodanti žemyn</string>
+    <string name="present_picture">Dovanos paveikslėlis</string>
+
+    <string name="sinatra">Frank Sinatra paveikslėlis</string>
+
+    <string name="open_present">Atidarykite dovaną</string>
+    <string name="share">Pasidalinkite šia programa su draugais</string>
+
+    <string name="letter_subject">Turi pabandyti šią programą</string>
+    <string name="letter_text">Labas, žiūrėk, radau puikų testą, gali atsisiųsti jį čia: https://drive.google.com/folderview?id=1E4StGQCzEgnRXHsryzt4zeupK6gBvBpw</string>
+</resources>

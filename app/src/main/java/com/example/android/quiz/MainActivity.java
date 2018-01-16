@@ -22,12 +22,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Saves the message in case of changing activity
+    // Saves clicked navigation button count (boolean), points, name and progress in case of changing activity.
     static final String STATE_MESSAGE = "results";
     static final String STATE_SCORE = "score";
     static final String STATE_BOOLEAN = "boolean";
     static final String STATE_NAME = "name";
     static final String STATE_PROGRESS = "progress";
+
+    // Declare variables.
     int points = 0;
     String message = "";
     boolean clicked = false;
@@ -39,14 +41,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Apply animation to animeView
+        // Apply animation to animeView.
         ImageView animeView = (ImageView) findViewById(R.id.arrow);
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
         animeView.startAnimation(pulsingArrow);
 
-        //Set navigation
+        //  Set on click listener to navigation button.
         ImageView navigation = (ImageView) findViewById(R.id.navigation);
-
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,13 +55,13 @@ public class MainActivity extends AppCompatActivity {
                     EditText answer1 = (EditText) findViewById(R.id.et_answer);
                     userName = answer1.getText().toString();
                     if (userName.matches("")) {
-                        Toast.makeText(MainActivity.this, R.string.toastNoName, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't enter name.
+                        Toast.makeText(MainActivity.this, R.string.toastNoName, Toast.LENGTH_SHORT).show(); // Toast message, if user didn't enter name.
                         return;
                     } else {
-                        displayName(userName); //show users name in Welcome picture
-                        points++; //add points for first answer
+                        displayName(userName); // Show users name in Welcome picture.
+                        points++; // Add points for first answer.
                     }
-                    //after pushing button go to the screen top.
+                    // Set scrollview that after pushing button the layout top is visible.
                     final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
@@ -73,14 +74,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     });
+                    // Calculate progress and show it on progress bar.
                     progress = progress + 10;
                     ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
                     progressBar.setProgress(progress);
-                    displayMessage(message);
+                    displayMessage(message); // Show points and answer.
                     TextView instructions = (TextView) findViewById(R.id.et_instructions);
-                    instructions.setVisibility(View.INVISIBLE); //set textView et_instructions invisible
+                    instructions.setVisibility(View.INVISIBLE); // Set textView et_instructions invisible.
                     CardView question1 = (CardView) findViewById(R.id.cw_question1);
-                    question1.setVisibility(View.INVISIBLE); //set textView cw_question1 invisible
+                    question1.setVisibility(View.INVISIBLE); // Set textView cw_question1 invisible.
                     clicked = true;
                 } else {
                     Intent myIntent = new Intent(MainActivity.this, CheckboxActivity.class);
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Save the user's current app state
+    // Save the user's current app state (remember to put static final strings!).
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putString(STATE_MESSAGE, message);
@@ -104,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
-    // Always call the superclass so it can restore the view hierarchy
+    // Always call the superclass so it can restore the view hierarchy.
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        // Restore state members from saved instance
+        // Restore state members from saved instance.
         points = savedInstanceState.getInt(STATE_SCORE);
         message = savedInstanceState.getString(STATE_MESSAGE);
         clicked = savedInstanceState.getBoolean(STATE_BOOLEAN);
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 @SuppressLint("NewApi")
                 @Override
                 public void onGlobalLayout() {
-                    // Ready, move up
+                    // Ready, move up.
                     scrollView.fullScroll(View.FOCUS_UP);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -132,14 +134,15 @@ public class MainActivity extends AppCompatActivity {
             progressBar.setProgress(progress);
             displayName(userName);
             TextView instructions = (TextView) findViewById(R.id.et_instructions);
-            instructions.setVisibility(View.INVISIBLE); //set textView et_instructions invisible
+            instructions.setVisibility(View.INVISIBLE); // Set textView et_instructions invisible.
             CardView question1 = (CardView) findViewById(R.id.cw_question1);
-            question1.setVisibility(View.INVISIBLE); //set textView cw_question1 invisible
+            question1.setVisibility(View.INVISIBLE); // Set textView cw_question1 invisible.
             displayMessage(message);
         }
 
     }
 
+    // Method for displaying answer message with points.
     public void displayMessage(String message) {
         TextView description = (TextView) findViewById(R.id.description);
         message = getString(R.string.firstQuestionAnswered1) + " " + points + " " + getString(R.string.firstQuestionAnswered2);
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         description.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_answer));
     }
 
+    // Method for displaying user name in Welcome picture.
     public void displayName(String userName) {
         TextView name = (TextView) findViewById(R.id.name);
         name.setText(userName);

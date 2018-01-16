@@ -154,7 +154,7 @@
         android:layout_marginLeft="@dimen/margin_standard"
         android:layout_marginStart="@dimen/margin_standard"
         android:layout_marginTop="@dimen/margin_standard"
-        android:fontFamily="@font/alice"
+        android:fontFamily="serif"
         android:text="@string/description_of_bar"
         android:textColor="@color/colorHeading"
         android:textSize="14sp" />
