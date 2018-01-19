@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     // Calculate progress and show it on progress bar.
-                    progress = progress + 10;
+                    progress += 10;
                     ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
                     progressBar.setProgress(progress);
                     displayMessage(message); // Show points and answer.
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
     // Method for displaying answer message with points.
     public void displayMessage(String message) {
         TextView description = (TextView) findViewById(R.id.description);
-        message = getString(R.string.firstQuestionAnswered1) + " " + points + " " + getString(R.string.firstQuestionAnswered2);
+        message = getString(R.string.firstQuestionAnswered1) + points + getString(R.string.firstQuestionAnswered2);
         description.setText(message);
         description.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_size_answer));
     }

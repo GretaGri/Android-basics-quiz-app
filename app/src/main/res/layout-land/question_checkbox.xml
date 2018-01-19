@@ -20,34 +20,22 @@
 
         <ImageView
             android:id="@+id/picture_question2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:src="@drawable/question2"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
+            style="@style/question_picture"
             android:contentDescription="@string/question_picture"/>
 
         <ImageView
             android:id="@+id/arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_standard"
             android:src="@drawable/arrow"
-            android:contentDescription="@string/arrow_picture"/>
+            android:contentDescription="@string/arrow_picture"
+            style="@style/arrow_picture" />
 
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cw_question2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/picture_question2"
-            android:layout_margin="@dimen/margin_standard"
             card_view:cardBackgroundColor="@color/cardview_light_background"
-            card_view:cardElevation="@dimen/halfmargin_standard">
+            card_view:cardElevation="@dimen/halfmargin_standard"
+            style="@style/cardview_checkbox_radiobutton">
 
         <LinearLayout
             android:id="@+id/checkbox"
@@ -68,108 +56,53 @@
 
             <CheckBox
                 android:id="@+id/cb_answer_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="@string/question2_answer1_correct"
-                android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
                 android:layout_marginLeft="@dimen/margin_standard"
                 android:layout_marginStart="@dimen/margin_standard"
-                android:textStyle="italic" />
+                style="@style/checkbox_land" />
 
             <CheckBox
                 android:id="@+id/cb_answer_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="@string/question2_answer2"
-                android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
                 android:layout_margin="@dimen/margin_standard"
-                android:textStyle="italic" />
+                style="@style/checkbox_land" />
 
             <CheckBox
                 android:id="@+id/cb_answer_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="@string/question2_answer3_correct"
-                android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
                 android:layout_marginLeft="@dimen/margin_standard"
                 android:layout_marginStart="@dimen/margin_standard"
-                android:textStyle="italic" />
+                style="@style/checkbox_land" />
 
             <CheckBox
                 android:id="@+id/cb_answer_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="@string/question2_answer4"
-                android:textColor="@color/colorText"
-                android:paddingStart="@dimen/padding_standard"
-                android:paddingLeft="@dimen/padding_standard"
-                android:paddingEnd="@dimen/padding_standard"
-                android:paddingRight="@dimen/padding_standard"
                 android:layout_margin="@dimen/margin_standard"
-                android:textStyle="italic" />
+                style="@style/checkbox_land" />
 
         </LinearLayout>
 
         </android.support.v7.widget.CardView>
         <TextView
             android:id="@+id/descriptionBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_below="@id/cw_question2"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:layout_marginLeft="@dimen/margin_standard"
-            android:layout_marginStart="@dimen/margin_standard"
-            android:layout_marginBottom="@dimen/halfmargin_standard"
-            android:textSize="14sp"
-            android:fontFamily="serif"
-            android:textColor="@color/colorHeading"
-            android:text="@string/description_of_bar"/>
+            android:text="@string/description_of_bar"
+            style="@style/progressbar_description" />
 
         <ProgressBar
             android:id="@+id/determinateBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/descriptionBar"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="@dimen/margin_standard"
-            android:layout_marginStart="@dimen/margin_standard"
-            android:layout_marginRight="@dimen/margin_standard"
-            android:progress="0"/>
+            style="@style/progressbar"
+            android:layout_below="@id/descriptionBar" />
 
     </RelativeLayout>
 
 </ScrollView>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/navigation"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/margin_standard"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="visible"
         app:elevation="8dp"
         app:fabSize="normal"
         app:rippleColor="@color/colorHeading"
-        app:srcCompat="@drawable/checksign" />
+        app:srcCompat="@drawable/checksign"
+        style="@style/navigation_button" />
 
 </RelativeLayout>

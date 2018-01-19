@@ -182,7 +182,7 @@ public class CheckboxActivity extends AppCompatActivity {
                     answer3.setClickable(false);
                     answer4.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
                     answer4.setClickable(false);
-                    progress = progress + 10;
+                    progress += 10;
                     progressBar.setProgress(progress);
                     clicked++;
                 } else {

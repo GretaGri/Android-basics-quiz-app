@@ -9,8 +9,8 @@
 
     <string name="description_of_bar">Questions answered</string>
 
-    <string name="firstQuestionAnswered1">Beautiful name and amazing start! \n You get </string>
-    <string name="firstQuestionAnswered2"> point already! \nPlease, click check button to proceed.</string>
+    <string name="firstQuestionAnswered1">"Beautiful name and amazing start! \n You get "</string>
+    <string name="firstQuestionAnswered2">" point already! \nPlease, click check button to proceed."</string>
 
     <string name="toastNoName">You did not enter your name!</string>
     <string name="toastNoAnswer">, your answer is empty! \nPlease, check at least one option.</string>

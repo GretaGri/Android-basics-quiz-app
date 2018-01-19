@@ -114,7 +114,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     answer3.setClickable(false);
 
                     // Calculate progress and show it on progress bar
-                    progress = progress + 10;
+                    progress +=  10;
                     progressBar.setProgress(progress);
 
                     // Count navigation button clicks.
@@ -162,7 +162,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     answer2.setClickable(false);
                     answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
                     answer3.setClickable(false);
-                    progress = progress + 10;
+                    progress +=  10;
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 3) {
@@ -206,7 +206,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     answer2.setClickable(false);
                     answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
                     answer3.setClickable(false);
-                    progress = progress + 10;
+                    progress +=  10;
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 5) {
@@ -250,7 +250,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     answer2.setClickable(false);
                     answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
                     answer3.setClickable(false);
-                    progress = progress + 10;
+                    progress +=  10;
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 7) {
@@ -294,7 +294,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     answer2.setClickable(false);
                     answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
                     answer3.setClickable(false);
-                    progress = progress + 10;
+                    progress += 10;
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 9) {
@@ -338,7 +338,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     answer2.setClickable(false);
                     answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
                     answer3.setClickable(false);
-                    progress = progress + 10;
+                    progress += 10;
                     progressBar.setProgress(progress);
                     clicked++;
                 } else if (clicked == 11) {
@@ -382,7 +382,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     answer2.setClickable(false);
                     answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
                     answer3.setClickable(false);
-                    progress = progress + 10;
+                    progress += 10;
                     progressBar.setProgress(progress);
                     clicked++;
                 } else {

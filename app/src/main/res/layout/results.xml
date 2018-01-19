@@ -19,21 +19,14 @@
 
             <ImageView
                 android:id="@+id/picture_finish"
-                android:layout_width="match_parent"
-                android:layout_height="230dp"
-                android:adjustViewBounds="true"
                 android:contentDescription="@string/sinatra"
-                android:scaleType="fitCenter"
-                android:src="@drawable/sinatra" />
+                android:src="@drawable/sinatra"
+                style="@style/question_picture_radiob" />
 
             <ImageView
                 android:id="@+id/arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_standard"
-                android:contentDescription="@string/arrow_picture" />
+                android:contentDescription="@string/arrow_picture"
+                style="@style/arrow_picture" />
 
             <TextView
                 android:id="@+id/score"

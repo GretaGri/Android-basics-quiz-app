@@ -18,4 +18,169 @@
     <item name="android:textSize">@dimen/text_size_landscape</item>
     <item name="android:fontFamily">serif</item>
     </style>
+
+    <style name="welcome_picture">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:padding">@dimen/padding_little</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="question_picture">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="question_picture_radiob">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">230dp</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="arrow_picture">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/margin_standard</item>
+    </style>
+
+    <style name="text_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignBottom">@id/picture_question1</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginBottom">@dimen/margin_bottom_name</item>
+        <item name="android:fontFamily">@font/grand_hotel</item>
+        <item name="android:textColor">@color/colorHeading</item>
+        <item name="android:textSize">@dimen/text_size_heading</item>
+    </style>
+
+    <style name="navigation_button">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_margin">@dimen/margin_standard</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="text_description">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_below">@+id/picture_question1</item>
+        <item name="android:layout_marginBottom">@dimen/margin_standard</item>
+        <item name="android:layout_marginEnd">@dimen/margin_standard</item>
+        <item name="android:layout_marginLeft">@dimen/margin_standard</item>
+        <item name="android:layout_marginRight">@dimen/margin_standard</item>
+        <item name="android:layout_marginStart">@dimen/margin_standard</item>
+        <item name="android:layout_marginTop">@dimen/halfmargin_standard</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/TextAppearance</item>
+    </style>
+
+    <style name="text_instructions">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_below">@+id/description</item>
+        <item name="android:layout_marginBottom">@dimen/margin_standard</item>
+        <item name="android:layout_marginEnd">@dimen/margin_standard</item>
+        <item name="android:layout_marginLeft">@dimen/margin_standard</item>
+        <item name="android:layout_marginRight">@dimen/margin_standard</item>
+        <item name="android:layout_marginStart">@dimen/margin_standard</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/TextAppearance</item>
+    </style>
+
+    <style name="cardview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_below">@+id/et_instructions</item>
+        <item name="android:layout_marginEnd">@dimen/margin_standard</item>
+        <item name="android:layout_marginLeft">@dimen/margin_standard</item>
+        <item name="android:layout_marginRight">@dimen/margin_standard</item>
+        <item name="android:layout_marginStart">@dimen/margin_standard</item>
+    </style>
+
+    <style name="cardview_checkbox_radiobutton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_below">@+id/picture_question2</item>
+        <item name="android:layout_margin">@dimen/margin_standard</item>
+    </style>
+
+    <style name="checkbox_portrait">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:paddingEnd">@dimen/padding_little</item>
+        <item name="android:paddingLeft">@dimen/padding_little</item>
+        <item name="android:paddingRight">@dimen/padding_little</item>
+        <item name="android:paddingStart">@dimen/padding_little</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">@dimen/text_size_answers</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="checkbox_land">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:paddingStart">@dimen/padding_standard</item>
+        <item name="android:paddingLeft">@dimen/padding_standard</item>
+        <item name="android:paddingEnd">@dimen/padding_standard</item>
+        <item name="android:paddingRight">@dimen/padding_standard</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="progressbar_description">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/halfmargin_standard</item>
+        <item name="android:layout_marginLeft">@dimen/margin_standard</item>
+        <item name="android:layout_marginStart">@dimen/margin_standard</item>
+        <item name="android:layout_marginTop">@dimen/margin_standard</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textColor">@color/colorHeading</item>
+        <item name="android:textSize">@dimen/text_size_progress</item>
+    </style>
+
+    <style name="progressbar" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_standard</item>
+        <item name="android:layout_marginStart">@dimen/margin_standard</item>
+        <item name="android:layout_marginRight">@dimen/margin_standard</item>
+        <item name="android:progress">0</item>
+    </style>
+
+    <style name="radiobutton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:paddingEnd">@dimen/padding_standard</item>
+        <item name="android:paddingLeft">@dimen/padding_little</item>
+        <item name="android:paddingRight">@dimen/padding_standard</item>
+        <item name="android:paddingStart">@dimen/padding_little</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">@dimen/text_size_answers</item>
+        <item name="android:textStyle">italic</item>
+    </style>
 </resources>

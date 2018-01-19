@@ -9,8 +9,8 @@
 
     <string name="description_of_bar">Atsakyti klausimai</string>
 
-    <string name="firstQuestionAnswered1">Gražus vardas ir puiki pradžia! \n Jau gavote</string>
-    <string name="firstQuestionAnswered2">tašką! \nPrašau, paspauskite mygtuką, kad tęstumėte.</string>
+    <string name="firstQuestionAnswered1">"Gražus vardas ir puiki pradžia! \n Jau gavote "</string>
+    <string name="firstQuestionAnswered2">" tašką! \nPrašau, paspauskite mygtuką, kad tęstumėte."</string>
 
     <string name="toastNoName">Neįrašėte savo vardo!</string>
     <string name="toastNoAnswer">, jūsų atsakymas tuščias! \nPrašau, pažymėkite bent vieną atsakymą.</string>

@@ -19,81 +19,35 @@
 
             <ImageView
                 android:id="@+id/picture_question1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/welcome_picture"
-                android:padding="@dimen/padding_little"
-                android:scaleType="centerCrop"
-                android:src="@drawable/question1" />
+                style="@style/welcome_picture"
+                android:src="@drawable/question1"
+                android:contentDescription="@string/welcome_picture"/>
 
             <ImageView
                 android:id="@+id/arrow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/margin_standard" />
+                style="@style/arrow_picture" />
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/picture_question1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/margin_bottom_name"
-                android:fontFamily="@font/grand_hotel"
                 android:text=""
-                android:textColor="@color/colorHeading"
-                android:textSize="@dimen/text_size_heading" />
+                style="@style/text_name" />
 
             <TextView
                 android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/picture_question1"
-                android:layout_marginBottom="@dimen/margin_standard"
-                android:layout_marginEnd="@dimen/margin_standard"
-                android:layout_marginLeft="@dimen/margin_standard"
-                android:layout_marginRight="@dimen/margin_standard"
-                android:layout_marginStart="@dimen/margin_standard"
-                android:layout_marginTop="@dimen/halfmargin_standard"
-                android:gravity="center"
                 android:text="@string/description"
-                android:textAppearance="@style/TextAppearance" />
+                style="@style/text_description" />
 
             <TextView
                 android:id="@+id/et_instructions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/description"
-                android:layout_marginBottom="@dimen/margin_standard"
-                android:layout_marginEnd="@dimen/margin_standard"
-                android:layout_marginLeft="@dimen/margin_standard"
-                android:layout_marginRight="@dimen/margin_standard"
-                android:layout_marginStart="@dimen/margin_standard"
-                android:gravity="center"
                 android:text="@string/rules"
-                android:textAppearance="@style/TextAppearance" />
+                style="@style/text_instructions" />
 
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/cw_question1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/et_instructions"
-                android:layout_marginEnd="@dimen/margin_standard"
-                android:layout_marginLeft="@dimen/margin_standard"
-                android:layout_marginRight="@dimen/margin_standard"
-                android:layout_marginStart="@dimen/margin_standard"
                 card_view:cardBackgroundColor="@color/cardview_light_background"
                 card_view:cardElevation="@dimen/halfmargin_standard"
-                card_view:contentPadding="@dimen/padding_standard">
+                card_view:contentPadding="@dimen/padding_standard"
+                style="@style/cardview">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -131,44 +85,21 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/navigation"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/margin_standard"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="visible"
         app:elevation="8dp"
         app:fabSize="normal"
         app:rippleColor="@color/colorHeading"
-        app:srcCompat="@drawable/checksign" />
+        app:srcCompat="@drawable/checksign"
+        style="@style/navigation_button" />
 
     <TextView
         android:id="@+id/descriptionBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@id/determinateBar"
-        android:layout_marginBottom="@dimen/halfmargin_standard"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:layout_marginTop="@dimen/margin_standard"
-        android:fontFamily="serif"
         android:text="@string/description_of_bar"
-        android:textColor="@color/colorHeading"
-        android:textSize="14sp" />
+        style="@style/progressbar_description" />
 
     <ProgressBar
         android:id="@+id/determinateBar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginRight="@dimen/margin_standard"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:progress="0" />
+        style="@style/progressbar"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
