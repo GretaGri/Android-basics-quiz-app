@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     boolean clicked = false;
     String userName = "";
     int progress = 0;
+    String toast_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
                     EditText answer1 = (EditText) findViewById(R.id.et_answer);
                     userName = answer1.getText().toString();
                     if (userName.matches("")) {
-                        Toast.makeText(MainActivity.this, R.string.toastNoName, Toast.LENGTH_SHORT).show(); // Toast message, if user didn't enter name.
+                        toast_text = getText(R.string.toastNoName).toString();
+                        toast(); // Toast message, if user didn't enter name.
                         return;
                     } else {
                         displayName(userName); // Show users name in Welcome picture.
@@ -154,6 +158,23 @@ public class MainActivity extends AppCompatActivity {
     public void displayName(String userName) {
         TextView name = (TextView) findViewById(R.id.name);
         name.setText(userName);
+    }
+    // Method for displaying custom toast
+    public void toast () {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup)findViewById(R.id.custom_toast));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0,300);
+
+        ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
+        image.setImageResource(R.drawable.ic_not_found);
+
+        TextView textV = (TextView) layout.findViewById(R.id.toast);
+        textV.setText(toast_text);
+
+        toast.setView(layout);
+        toast.show();
     }
 
 }

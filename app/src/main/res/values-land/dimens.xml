@@ -7,4 +7,5 @@
     <dimen name="text_size_answers">16sp</dimen>
     <dimen name="text_size_open">40sp</dimen>
     <dimen name="text_size_lyrics">30sp</dimen>
+    <dimen name="margin_bottom_toast">40dp</dimen>
 </resources>

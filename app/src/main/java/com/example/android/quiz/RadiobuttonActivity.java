@@ -6,7 +6,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -37,6 +40,7 @@ public class RadiobuttonActivity extends AppCompatActivity {
     String toast_message1;
     String toast_message2;
     String toast_message3;
+    int toast_no = 0;
     int progress;
     int clicked = 0;
     boolean back_pressed = false;
@@ -83,13 +87,16 @@ public class RadiobuttonActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (clicked == 0) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show(); //Toast message, if user didn't check any answer.
+                        toast_no = 1;
+                        toast (toast_message1, toast_no); // Toast message, if user didn't check any answer.
                         return;
                     } else if (answer3.isChecked()) {
                         points++; //add points for correct answer
-                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show(); // Toast message, when the answer is correct.
+                        toast_no = 2;
+                        toast (toast_message2, toast_no); // Toast message, when the answer is correct.
                     } else {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show(); // Toast message, when the answer is wrong.
+                        toast_no = 3;
+                        toast(toast_message3, toast_no); // Toast message, when the answer is wrong.
                     }
 
                     // Set scrollview that after pushing button the layout top is visible.
@@ -137,13 +144,16 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     clicked++;
                 } else if (clicked == 2) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show();
+                        toast_no = 1;
+                        toast (toast_message1, toast_no);;
                         return;
                     } else if (answer2.isChecked()) {
                         points++;
-                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        toast_no = 2;
+                        toast (toast_message2, toast_no);
                     } else {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        toast_no = 3;
+                        toast(toast_message3, toast_no);
                     }
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
@@ -181,13 +191,16 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     clicked++;
                 } else if (clicked == 4) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show();
+                        toast_no = 1;
+                        toast (toast_message1, toast_no);
                         return;
                     } else if (answer1.isChecked()) {
                         points++;
-                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        toast_no = 2;
+                        toast (toast_message2, toast_no);
                     } else {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        toast_no = 3;
+                        toast(toast_message3, toast_no);
                     }
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
@@ -225,13 +238,16 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     clicked++;
                 } else if (clicked == 6) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show();
+                        toast_no = 1;
+                        toast (toast_message1, toast_no);;
                         return;
                     } else if (answer2.isChecked()) {
                         points++;
-                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        toast_no = 2;
+                        toast (toast_message2, toast_no);
                     } else {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        toast_no = 3;
+                        toast(toast_message3, toast_no);
                     }
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
@@ -269,13 +285,16 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     clicked++;
                 } else if (clicked == 8) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show();
+                        toast_no = 1;
+                        toast (toast_message1, toast_no);
                         return;
                     } else if (answer3.isChecked()) {
                         points++;
-                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        toast_no = 2;
+                        toast (toast_message2, toast_no);
                     } else {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        toast_no = 3;
+                        toast(toast_message3, toast_no);
                     }
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
@@ -313,13 +332,16 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     clicked++;
                 } else if (clicked == 10) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show();
+                        toast_no = 1;
+                        toast (toast_message1, toast_no);
                         return;
                     } else if (answer3.isChecked()) {
                         points++;
-                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        toast_no = 2;
+                        toast (toast_message2, toast_no);
                     } else {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        toast_no = 3;
+                        toast(toast_message3, toast_no);
                     }
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
@@ -357,13 +379,16 @@ public class RadiobuttonActivity extends AppCompatActivity {
                     clicked++;
                 } else if (clicked == 12) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message1, Toast.LENGTH_SHORT).show();
+                        toast_no = 1;
+                        toast (toast_message1, toast_no);
                         return;
                     } else if (answer1.isChecked()) {
                         points++;
-                        Toast.makeText(RadiobuttonActivity.this, toast_message2, Toast.LENGTH_SHORT).show();
+                        toast_no = 2;
+                        toast (toast_message2, toast_no);
                     } else {
-                        Toast.makeText(RadiobuttonActivity.this, toast_message3, Toast.LENGTH_SHORT).show();
+                        toast_no = 3;
+                        toast(toast_message3, toast_no);
                     }
                     scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @SuppressLint("NewApi")
@@ -572,7 +597,9 @@ public class RadiobuttonActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
-            Toast.makeText(RadiobuttonActivity.this, getString(R.string.toastRestart), Toast.LENGTH_SHORT).show();
+            String restart = getString(R.string.toastRestart);
+            toast_no = 4;
+            toast (restart, toast_no); // Toast message, when the back button is pressed.
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(RadiobuttonActivity.this, MainActivity.class);
@@ -580,5 +607,31 @@ public class RadiobuttonActivity extends AppCompatActivity {
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
         }
+    }
+    // Method for displaying custom toast
+    public void toast (String toast_text, int toast_no) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup)findViewById(R.id.custom_toast));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0,250);
+        ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
+        if (toast_no == 1) {
+            image.setImageResource(R.drawable.ic_not_found);
+        }
+        else if (toast_no == 2){
+            image.setImageResource(R.drawable.ic_happy);
+        }
+        else if (toast_no == 3){
+            image.setImageResource(R.drawable.ic_sad);
+        }
+        else if (toast_no == 4){
+            image.setImageResource(R.drawable.ic_return);
+        }
+        TextView textV = (TextView) layout.findViewById(R.id.toast);
+        textV.setText(toast_text);
+
+        toast.setView(layout);
+        toast.show();
     }
 }

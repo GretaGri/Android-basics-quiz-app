@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -91,7 +94,8 @@ public class Results extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
-            Toast.makeText(Results.this, getString(R.string.toastRestart), Toast.LENGTH_SHORT).show();
+            String restart = getString(R.string.toastRestart);
+            toast (restart); // Toast message, when the back button is pressed.;
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(Results.this, MainActivity.class);
@@ -99,5 +103,21 @@ public class Results extends AppCompatActivity {
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
         }
+    }
+    // Method for displaying custom toast
+    public void toast (String toast_text) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup)findViewById(R.id.custom_toast));
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0,250);
+        ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
+        image.setImageResource(R.drawable.ic_return);
+
+        TextView textV = (TextView) layout.findViewById(R.id.toast);
+        textV.setText(toast_text);
+
+        toast.setView(layout);
+        toast.show();
     }
 }
