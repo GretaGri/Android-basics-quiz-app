@@ -19,7 +19,7 @@ import android.widget.Toast;
  * Created by Greta on 2018-01-13.
  */
 
-public class Results extends AppCompatActivity {
+public class Results extends CustomToast {
 
     private static final String TAG = "ResultsActivity";
 
@@ -28,6 +28,8 @@ public class Results extends AppCompatActivity {
     String userName;
     boolean back_pressed = false;
     String message;
+    int toast_no = 0;
+    String toast_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +96,9 @@ public class Results extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
-            String restart = getString(R.string.toastRestart);
-            toast (restart); // Toast message, when the back button is pressed.;
+            toast_no = 4;
+            toast_text = getString(R.string.toastRestart);
+            toast (toast_text, toast_no); // Toast message, when the back button is pressed.;
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(Results.this, MainActivity.class);
@@ -104,20 +107,5 @@ public class Results extends AppCompatActivity {
             startActivity(homeIntent);
         }
     }
-    // Method for displaying custom toast
-    public void toast (String toast_text) {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup)findViewById(R.id.custom_toast));
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0,250);
-        ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
-        image.setImageResource(R.drawable.ic_return);
 
-        TextView textV = (TextView) layout.findViewById(R.id.toast);
-        textV.setText(toast_text);
-
-        toast.setView(layout);
-        toast.show();
-    }
 }

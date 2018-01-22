@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CustomToast {
 
     // Saves clicked navigation button count (boolean), points, name and progress in case of changing activity.
     static final String STATE_MESSAGE = "results";
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     String userName = "";
     int progress = 0;
     String toast_text;
+    int toast_no = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
                     userName = answer1.getText().toString();
                     if (userName.matches("")) {
                         toast_text = getText(R.string.toastNoName).toString();
-                        toast(); // Toast message, if user didn't enter name.
+                        toast_no = 1;
+                        toast(toast_text, toast_no); // Toast message, if user didn't enter name.
                         return;
                     } else {
                         displayName(userName); // Show users name in Welcome picture.
@@ -159,22 +161,4 @@ public class MainActivity extends AppCompatActivity {
         TextView name = (TextView) findViewById(R.id.name);
         name.setText(userName);
     }
-    // Method for displaying custom toast
-    public void toast () {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup)findViewById(R.id.custom_toast));
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0,300);
-
-        ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
-        image.setImageResource(R.drawable.ic_not_found);
-
-        TextView textV = (TextView) layout.findViewById(R.id.toast);
-        textV.setText(toast_text);
-
-        toast.setView(layout);
-        toast.show();
-    }
-
 }
