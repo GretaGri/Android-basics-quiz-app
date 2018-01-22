@@ -22,6 +22,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * Created by Greta on 2018-01-13.
  */
@@ -77,7 +80,7 @@ public class RadiobuttonActivity extends CustomToast {
         answer1 = findViewById(R.id.rb_answer_1);
         answer2 = findViewById(R.id.rb_answer_2);
         answer3 = findViewById(R.id.rb_answer_3);
-        group =  findViewById(R.id.rg_question);
+        group = findViewById(R.id.rg_question);
         progressBar = findViewById(R.id.determinateBar);
         scrollView = findViewById(R.id.mainScrollView);
 
@@ -100,43 +103,70 @@ public class RadiobuttonActivity extends CustomToast {
         progress = extras.getInt("progress");
         progressBar.setProgress(progress); // Show progress on progress bar.
 
+        question_no = 4;
+        new_question();
+
         // Set on click listener to navigation button.
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (clicked == 0) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question4_answer3_correct))) {
+                        correct1 = true;
+                    } else if (answer2.getText().toString().equals(getString(R.string.question4_answer3_correct))) {
+                        correct2 = true;
+                    } else if (answer3.getText().toString().equals(getString(R.string.question4_answer3_correct))) {
+                        correct3 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no); // Toast message, if user didn't check any answer.
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer3.isChecked()) {
+                    } else if (answer1.isChecked() & correct1) {
+                        correct = true;
+                    } else if (answer2.isChecked() & correct2) {
+                        correct = true;
+                    } else if (answer3.isChecked() & correct3) {
                         correct = true;
                     }
                     image_no = 1;
-                    correct3 = true;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
                     setScrollView(); // Set scrollview to the top.
                     clicked++; // Count navigation button clicks.
-                 } else if (clicked == 1) {
+                } else if (clicked == 1) {
                     // Set new question picture/question/answers, radiobuttons clickable/empty, color black.
                     question_no = 5;
                     new_question();
                     new_question2();
                     clicked++;// Count navigation button clicks.
                 } else if (clicked == 2) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question5_answer2_correct))) {
+                        correct1 = true;
+                    } else if (answer2.getText().toString().equals(getString(R.string.question5_answer2_correct))) {
+                        correct2 = true;
+                    } else if (answer3.getText().toString().equals(getString(R.string.question5_answer2_correct))) {
+                        correct3 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no);;
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer2.isChecked()) {
+                    } else if (answer1.isChecked() & correct1) {
+                        correct = true;
+                    } else if (answer2.isChecked() & correct2) {
+                        correct = true;
+                    } else if (answer3.isChecked() & correct3) {
                         correct = true;
                     }
                     image_no = 2;
-                    correct1 = false;
-                    correct2 = true;
-                    correct3 = false;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
@@ -148,17 +178,28 @@ public class RadiobuttonActivity extends CustomToast {
                     new_question2();
                     clicked++;
                 } else if (clicked == 4) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question6_answer1_correct))) {
+                        correct1 = true;
+                    } else if (answer2.getText().toString().equals(getString(R.string.question6_answer1_correct))) {
+                        correct2 = true;
+                    } else if (answer3.getText().toString().equals(getString(R.string.question6_answer1_correct))) {
+                        correct3 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no);
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer1.isChecked()) {
+                    } else if (answer1.isChecked() & correct1) {
+                        correct = true;
+                    } else if (answer2.isChecked() & correct2) {
+                        correct = true;
+                    } else if (answer3.isChecked() & correct3) {
                         correct = true;
                     }
                     image_no = 3;
-                    correct1 = true;
-                    correct2 = false;
-                    correct3 = false;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
@@ -170,17 +211,28 @@ public class RadiobuttonActivity extends CustomToast {
                     new_question2();
                     clicked++;
                 } else if (clicked == 6) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question7_answer2_correct))) {
+                        correct1 = true;
+                    } else if (answer2.getText().toString().equals(getString(R.string.question7_answer2_correct))) {
+                        correct2 = true;
+                    } else if (answer3.getText().toString().equals(getString(R.string.question7_answer2_correct))) {
+                        correct3 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no);;
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer2.isChecked()) {
+                    } else if (answer1.isChecked() & correct1) {
+                        correct = true;
+                    } else if (answer2.isChecked() & correct2) {
+                        correct = true;
+                    } else if (answer3.isChecked() & correct3) {
                         correct = true;
                     }
                     image_no = 4;
-                    correct1 = false;
-                    correct2 = true;
-                    correct3 = false;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
@@ -192,17 +244,28 @@ public class RadiobuttonActivity extends CustomToast {
                     new_question2();
                     clicked++;
                 } else if (clicked == 8) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question8_answer3_correct))) {
+                        correct1 = true;
+                    } else if (answer2.getText().toString().equals(getString(R.string.question8_answer3_correct))) {
+                        correct2 = true;
+                    } else if (answer3.getText().toString().equals(getString(R.string.question8_answer3_correct))) {
+                        correct3 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no);
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer3.isChecked()) {
+                    } else if (answer1.isChecked() & correct1) {
+                        correct = true;
+                    } else if (answer2.isChecked() & correct2) {
+                        correct = true;
+                    } else if (answer3.isChecked() & correct3) {
                         correct = true;
                     }
                     image_no = 5;
-                    correct1 = false;
-                    correct2 = false;
-                    correct3 = true;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
@@ -214,17 +277,28 @@ public class RadiobuttonActivity extends CustomToast {
                     new_question2();
                     clicked++;
                 } else if (clicked == 10) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question9_answer3_correct))) {
+                        correct1 = true;
+                    } else if (answer2.getText().toString().equals(getString(R.string.question9_answer3_correct))) {
+                        correct2 = true;
+                    } else if (answer3.getText().toString().equals(getString(R.string.question9_answer3_correct))) {
+                        correct3 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no);
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer3.isChecked()) {
+                    } else if (answer1.isChecked() & correct1) {
+                        correct = true;
+                    } else if (answer2.isChecked() & correct2) {
+                        correct = true;
+                    } else if (answer3.isChecked() & correct3) {
                         correct = true;
                     }
                     image_no = 6;
-                    correct1 = false;
-                    correct2 = false;
-                    correct3 = true;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
@@ -236,17 +310,28 @@ public class RadiobuttonActivity extends CustomToast {
                     new_question2();
                     clicked++;
                 } else if (clicked == 12) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question10_answer1_correct))) {
+                        correct1 = true;
+                    } else if (answer2.getText().toString().equals(getString(R.string.question10_answer1_correct))) {
+                        correct2 = true;
+                    } else if (answer3.getText().toString().equals(getString(R.string.question10_answer1_correct))) {
+                        correct3 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no);
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer1.isChecked()) {
+                    } else if (answer1.isChecked() & correct1) {
+                        correct = true;
+                    } else if (answer2.isChecked() & correct2) {
+                        correct = true;
+                    } else if (answer3.isChecked() & correct3) {
                         correct = true;
                     }
                     image_no = 7;
-                    correct1 = true;
-                    correct2 = false;
-                    correct3 = false;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
@@ -287,7 +372,7 @@ public class RadiobuttonActivity extends CustomToast {
         progress = savedInstanceState.getInt(STATE_PROGRESS);
         correct1 = savedInstanceState.getBoolean(STATE_CORRECT1);
         correct2 = savedInstanceState.getBoolean(STATE_CORRECT2);
-        correct3 =savedInstanceState.getBoolean(STATE_CORRECT3);
+        correct3 = savedInstanceState.getBoolean(STATE_CORRECT3);
 
         // Locate views.
         progressBar = findViewById(R.id.determinateBar);
@@ -354,7 +439,7 @@ public class RadiobuttonActivity extends CustomToast {
         if (!back_pressed) {
             String restart = getString(R.string.toastRestart);
             toast_no = 4;
-            toast (restart, toast_no); // Toast message, when the back button is pressed.
+            toast(restart, toast_no); // Toast message, when the back button is pressed.
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(RadiobuttonActivity.this, MainActivity.class);
@@ -363,49 +448,87 @@ public class RadiobuttonActivity extends CustomToast {
             startActivity(homeIntent);
         }
     }
+
     // Set new question picture/question/answers color black.
     public void new_question() {
+        if (question_no == 4) {
+            picture.setImageResource(R.drawable.question4);
+            question.setText(R.string.question4);
+            ArrayList<String> question4answers = new ArrayList<String>();
+            question4answers.add(getText(R.string.question4_answer1).toString());
+            question4answers.add(getText(R.string.question4_answer2).toString());
+            question4answers.add(getText(R.string.question4_answer3_correct).toString());
+            Collections.shuffle(question4answers);
+            answer1.setText(question4answers.get(0));
+            answer2.setText(question4answers.get(1));
+            answer3.setText(question4answers.get(2));
+        }
         if (question_no == 5) {
             picture.setImageResource(R.drawable.question5);
             question.setText(R.string.question5);
-            answer1.setText(R.string.question5_answer1);
-            answer2.setText(R.string.question5_answer2_correct);
-            answer3.setText(R.string.question5_answer3);
-        }
-        else if (question_no == 6) {
+            ArrayList<String> question5answers = new ArrayList<String>();
+            question5answers.add(getText(R.string.question5_answer1).toString());
+            question5answers.add(getText(R.string.question5_answer2_correct).toString());
+            question5answers.add(getText(R.string.question5_answer3).toString());
+            Collections.shuffle(question5answers);
+            answer1.setText(question5answers.get(0));
+            answer2.setText(question5answers.get(1));
+            answer3.setText(question5answers.get(2));
+        } else if (question_no == 6) {
             picture.setImageResource(R.drawable.question6);
             question.setText(R.string.question6);
-            answer1.setText(R.string.question6_answer1_correct);
-            answer2.setText(R.string.question6_answer2);
-            answer3.setText(R.string.question6_answer3);
-        }
-        else if (question_no == 7) {
+            ArrayList<String> question6answers = new ArrayList<String>();
+            question6answers.add(getText(R.string.question6_answer1_correct).toString());
+            question6answers.add(getText(R.string.question6_answer2).toString());
+            question6answers.add(getText(R.string.question6_answer3).toString());
+            Collections.shuffle(question6answers);
+            answer1.setText(question6answers.get(0));
+            answer2.setText(question6answers.get(1));
+            answer3.setText(question6answers.get(2));
+        } else if (question_no == 7) {
             picture.setImageResource(R.drawable.question7);
             question.setText(R.string.question7);
-            answer1.setText(R.string.question7_answer1);
-            answer2.setText(R.string.question7_answer2_correct);
-            answer3.setText(R.string.question7_answer3);
-        }
-        else if (question_no == 8) {
+            ArrayList<String> question7answers = new ArrayList<String>();
+            question7answers.add(getText(R.string.question7_answer1).toString());
+            question7answers.add(getText(R.string.question7_answer2_correct).toString());
+            question7answers.add(getText(R.string.question7_answer3).toString());
+            Collections.shuffle(question7answers);
+            answer1.setText(question7answers.get(0));
+            answer2.setText(question7answers.get(1));
+            answer3.setText(question7answers.get(2));
+        } else if (question_no == 8) {
             picture.setImageResource(R.drawable.question8);
             question.setText(R.string.question8);
-            answer1.setText(R.string.question8_answer1);
-            answer2.setText(R.string.question8_answer2);
-            answer3.setText(R.string.question8_answer3_correct);
-        }
-        else if (question_no == 9) {
+            ArrayList<String> question8answers = new ArrayList<String>();
+            question8answers.add(getText(R.string.question8_answer1).toString());
+            question8answers.add(getText(R.string.question8_answer2).toString());
+            question8answers.add(getText(R.string.question8_answer3_correct).toString());
+            Collections.shuffle(question8answers);
+            answer1.setText(question8answers.get(0));
+            answer2.setText(question8answers.get(1));
+            answer3.setText(question8answers.get(2));
+        } else if (question_no == 9) {
             picture.setImageResource(R.drawable.question9);
             question.setText(R.string.question9);
-            answer1.setText(R.string.question9_answer1);
-            answer2.setText(R.string.question9_answer2);
-            answer3.setText(R.string.question9_answer3_correct);
-        }
-        else if (question_no == 10) {
+            ArrayList<String> question9answers = new ArrayList<String>();
+            question9answers.add(getText(R.string.question9_answer1).toString());
+            question9answers.add(getText(R.string.question9_answer2).toString());
+            question9answers.add(getText(R.string.question9_answer3_correct).toString());
+            Collections.shuffle(question9answers);
+            answer1.setText(question9answers.get(0));
+            answer2.setText(question9answers.get(1));
+            answer3.setText(question9answers.get(2));
+        } else if (question_no == 10) {
             picture.setImageResource(R.drawable.question10);
             question.setText(R.string.question10);
-            answer1.setText(R.string.question10_answer1_correct);
-            answer2.setText(R.string.question10_answer2);
-            answer3.setText(R.string.question10_answer3);
+            ArrayList<String> question10answers = new ArrayList<String>();
+            question10answers.add(getText(R.string.question10_answer1_correct).toString());
+            question10answers.add(getText(R.string.question10_answer2).toString());
+            question10answers.add(getText(R.string.question10_answer3).toString());
+            Collections.shuffle(question10answers);
+            answer1.setText(question10answers.get(0));
+            answer2.setText(question10answers.get(1));
+            answer3.setText(question10answers.get(2));
         }
         answer1.setTextColor(getResources().getColor(R.color.colorText));
         answer2.setTextColor(getResources().getColor(R.color.colorText));
@@ -439,14 +562,14 @@ public class RadiobuttonActivity extends CustomToast {
         } else if (image_no == 2) {
             picture.setImageResource(R.drawable.question5_answer);
         } else if (image_no == 3) {
-        picture.setImageResource(R.drawable.question6_answer);
-    } else if (image_no == 4) {
-        picture.setImageResource(R.drawable.question7_answer);
-    }else if (image_no == 5) {
+            picture.setImageResource(R.drawable.question6_answer);
+        } else if (image_no == 4) {
+            picture.setImageResource(R.drawable.question7_answer);
+        } else if (image_no == 5) {
             picture.setImageResource(R.drawable.question8_answer);
-        }else if (image_no == 6) {
+        } else if (image_no == 6) {
             picture.setImageResource(R.drawable.question9_answer);
-        }else if (image_no == 7) {
+        } else if (image_no == 7) {
             picture.setImageResource(R.drawable.question10_answer);
         }
         answer1.setClickable(false);

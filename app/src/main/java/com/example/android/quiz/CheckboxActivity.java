@@ -28,6 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ProgressBar;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class CheckboxActivity extends CustomToast {
 
@@ -63,6 +66,7 @@ public class CheckboxActivity extends CustomToast {
     Boolean correct2 = false;
     Boolean correct3 = false;
     Boolean correct4 = false;
+    int checkIfCorrect = 0;
     int question_no = 0;
 
     @Override
@@ -101,21 +105,53 @@ public class CheckboxActivity extends CustomToast {
         progress = extras.getInt("progress");
         progressBar.setProgress(progress); // Show progress on progress bar.
 
+        // Set new question picture/question/answers color black.
+        question_no = 2;
+        new_question();
+
         // Set on click listener to navigation button.
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (clicked == 0) {
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    correct4 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer1.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                        correct1 = true;
+                    }
+                    if (answer2.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer2.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                        correct2 = true;
+                    }
+                    if (answer3.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer3.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                        correct3 = true;
+                    }
+                    if (answer4.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer4.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                        correct4 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
                         toast_no = 1;
-                        toast(toast_message1, toast_no); // Toast message, if user didn't check any answer.
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (answer1.isChecked() & !answer2.isChecked() & answer3.isChecked() & !answer4.isChecked()) {
+                    }
+                    checkIfCorrect = 0;
+                    if (answer1.isChecked() & correct1) {
+                        checkIfCorrect++;
+                    }
+                    if (answer2.isChecked() & correct2) {
+                        checkIfCorrect++;
+                    }
+                    if (answer3.isChecked() & correct3) {
+                        checkIfCorrect++;
+                    }
+                    if (answer4.isChecked() & correct4) {
+                        checkIfCorrect++;
+                    }
+                    if (checkIfCorrect == 4) {
                         correct = true;
                     }
                     image_no = 1;
-                    correct1 = true;
-                    correct3 = true;
                     check_answers(); // Check answers.
                     set_answers(); // Show the correct answers.
                     calculateProgress(); // Add and set progress.
@@ -131,18 +167,44 @@ public class CheckboxActivity extends CustomToast {
                     // Count navigation button clicks.
                     clicked++;
                 } else if (clicked == 2) {
+                    // Set new question picture/question/answers color black.
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = false;
+                    correct4 = false;
+                    if (answer1.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer1.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                        correct1 = true;
+                    }
+                    if (answer2.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer2.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                        correct2 = true;
+                    }
+                    if (answer3.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer3.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                        correct3 = true;
+                    }
+                    if (answer4.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer4.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                        correct4 = true;
+                    }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
                         toast_no = 1;
-                        toast(toast_message1, toast_no); // Toast message, if user didn't check any answer.
+                        toast(toast_message1, toast_no);
                         return;
-                    } else if (!answer1.isChecked() & answer2.isChecked() & !answer3.isChecked() & answer4.isChecked()) {
+                    }
+                    if (answer1.isChecked() & correct1) {
+                        checkIfCorrect++;
+                    }
+                    if (answer2.isChecked() & correct2) {
+                        checkIfCorrect++;
+                    }
+                    if (answer3.isChecked() & correct3) {
+                        checkIfCorrect++;
+                    }
+                    if (answer4.isChecked() & correct4) {
+                        checkIfCorrect++;
+                    }
+                    if (checkIfCorrect == 2) {
                         correct = true;
                     }
                     image_no = 2;
-                    correct1 = false;
-                    correct2 = true;
-                    correct3 = false;
-                    correct4 = true;
                     check_answers();
                     set_answers(); // Set wrong/correct answers and answer picture.
                     calculateProgress(); // Add and set progress.
@@ -223,18 +285,38 @@ public class CheckboxActivity extends CustomToast {
 
     // Set new question picture/question/answers color black.
     public void new_question() {
+        if (question_no == 2) {
+            picture.setImageResource(R.drawable.question2);
+            question.setText(R.string.question2);
+            ArrayList<String> question2answers = new ArrayList<String>();
+            question2answers.add(getText(R.string.question2_answer1_correct).toString());
+            question2answers.add(getText(R.string.question2_answer2).toString());
+            question2answers.add(getText(R.string.question2_answer3_correct).toString());
+            question2answers.add(getText(R.string.question2_answer4).toString());
+            Collections.shuffle(question2answers);
+            answer1.setText(question2answers.get(0));
+            answer2.setText(question2answers.get(1));
+            answer3.setText(question2answers.get(2));
+            answer4.setText(question2answers.get(3));
+        }
         if (question_no == 3) {
             picture.setImageResource(R.drawable.question3);
             question.setText(R.string.question3);
-            answer1.setText(R.string.question3_answer1);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setText(R.string.question3_answer2_correct);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setText(R.string.question3_answer3);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer4.setText(R.string.question3_answer4_correct);
-            answer4.setTextColor(getResources().getColor(R.color.colorText));
+            ArrayList<String> question3answers = new ArrayList<String>();
+            question3answers.add(getText(R.string.question3_answer1).toString());
+            question3answers.add(getText(R.string.question3_answer2_correct).toString());
+            question3answers.add(getText(R.string.question3_answer3).toString());
+            question3answers.add(getText(R.string.question3_answer4_correct).toString());
+            Collections.shuffle(question3answers);
+            answer1.setText(question3answers.get(0));
+            answer2.setText(question3answers.get(1));
+            answer3.setText(question3answers.get(2));
+            answer4.setText(question3answers.get(3));
         }
+        answer1.setTextColor(getResources().getColor(R.color.colorText));
+        answer2.setTextColor(getResources().getColor(R.color.colorText));
+        answer3.setTextColor(getResources().getColor(R.color.colorText));
+        answer4.setTextColor(getResources().getColor(R.color.colorText));
     }
 
     // Set  checkboxes clickable/empty,
