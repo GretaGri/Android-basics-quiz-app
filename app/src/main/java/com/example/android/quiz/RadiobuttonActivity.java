@@ -33,6 +33,9 @@ public class RadiobuttonActivity extends CustomToast {
     static final String STATE_SCORE = "score";
     static final String STATE_NAME = "name";
     static final String STATE_PROGRESS = "progress";
+    static final String STATE_CORRECT1 = "correct1";
+    static final String STATE_CORRECT2 = "correct2";
+    static final String STATE_CORRECT3 = "correct3";
 
     // Declare variables.
     int points;
@@ -44,6 +47,22 @@ public class RadiobuttonActivity extends CustomToast {
     int progress;
     int clicked = 0;
     boolean back_pressed = false;
+    ImageView animeView;
+    ProgressBar progressBar;
+    ScrollView scrollView;
+    ImageView navigation;
+    ImageView picture;
+    TextView question;
+    RadioGroup group;
+    RadioButton answer1;
+    RadioButton answer2;
+    RadioButton answer3;
+    Boolean correct = false;
+    int image_no = 0;
+    Boolean correct1 = false;
+    Boolean correct2 = false;
+    Boolean correct3 = false;
+    int question_no = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +70,16 @@ public class RadiobuttonActivity extends CustomToast {
         setContentView(R.layout.question_radiobutton);
 
         // Locate views.
-        final ImageView animeView = (ImageView) findViewById(R.id.arrow);
-        final ImageView navigation = (ImageView) findViewById(R.id.navigation);
-        final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
-        final TextView question = (TextView) findViewById(R.id.tv_rb_question);
-        final RadioButton answer1 = (RadioButton) findViewById(R.id.rb_answer_1);
-        final RadioButton answer2 = (RadioButton) findViewById(R.id.rb_answer_2);
-        final RadioButton answer3 = (RadioButton) findViewById(R.id.rb_answer_3);
-        final RadioGroup group = (RadioGroup) findViewById(R.id.rg_question);
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
-        final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
+        animeView = findViewById(R.id.arrow);
+        navigation = findViewById(R.id.navigation);
+        picture = findViewById(R.id.picture_question2);
+        question = findViewById(R.id.tv_rb_question);
+        answer1 = findViewById(R.id.rb_answer_1);
+        answer2 = findViewById(R.id.rb_answer_2);
+        answer3 = findViewById(R.id.rb_answer_3);
+        group =  findViewById(R.id.rg_question);
+        progressBar = findViewById(R.id.determinateBar);
+        scrollView = findViewById(R.id.mainScrollView);
 
         // Apply animation to animeView.
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
@@ -91,103 +110,42 @@ public class RadiobuttonActivity extends CustomToast {
                         toast (toast_message1, toast_no); // Toast message, if user didn't check any answer.
                         return;
                     } else if (answer3.isChecked()) {
-                        points++; //add points for correct answer
-                        toast_no = 2;
-                        toast (toast_message2, toast_no); // Toast message, when the answer is correct.
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no); // Toast message, when the answer is wrong.
+                        correct = true;
                     }
-
-                    // Set scrollview that after pushing button the layout top is visible.
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            // Ready, move up.
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-                    // Show correct/wrong answers, check boxes is not clickable.
-                    picture.setImageResource(R.drawable.question4_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer3.setClickable(false);
-
-                    // Calculate progress and show it on progress bar
-                    progress +=  10;
-                    progressBar.setProgress(progress);
-
-                    // Count navigation button clicks.
-                    clicked++;
-                } else if (clicked == 1) {
+                    image_no = 1;
+                    correct3 = true;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
+                    clicked++; // Count navigation button clicks.
+                 } else if (clicked == 1) {
                     // Set new question picture/question/answers, radiobuttons clickable/empty, color black.
-                    group.clearCheck();
-                    picture.setImageResource(R.drawable.question5);
-                    question.setText(R.string.question5);
-                    answer1.setText(R.string.question5_answer1);
-                    answer1.setTextColor(getResources().getColor(R.color.colorText));
-                    answer1.setClickable(true);
-                    answer2.setText(R.string.question5_answer2_correct);
-                    answer2.setTextColor(getResources().getColor(R.color.colorText));
-                    answer2.setClickable(true);
-                    answer3.setText(R.string.question5_answer3);
-                    answer3.setTextColor(getResources().getColor(R.color.colorText));
-                    answer3.setClickable(true);
-                    // Count navigation button clicks.
-                    clicked++;
+                    question_no = 5;
+                    new_question();
+                    new_question2();
+                    clicked++;// Count navigation button clicks.
                 } else if (clicked == 2) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
                         toast_no = 1;
                         toast (toast_message1, toast_no);;
                         return;
                     } else if (answer2.isChecked()) {
-                        points++;
-                        toast_no = 2;
-                        toast (toast_message2, toast_no);
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no);
+                        correct = true;
                     }
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-                    picture.setImageResource(R.drawable.question5_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer3.setClickable(false);
-                    progress +=  10;
-                    progressBar.setProgress(progress);
+                    image_no = 2;
+                    correct1 = false;
+                    correct2 = true;
+                    correct3 = false;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
                     clicked++;
                 } else if (clicked == 3) {
-                    group.clearCheck();
-                    picture.setImageResource(R.drawable.question6);
-                    question.setText(R.string.question6);
-                    answer1.setText(R.string.question6_answer1_correct);
-                    answer1.setTextColor(getResources().getColor(R.color.colorText));
-                    answer1.setClickable(true);
-                    answer2.setText(R.string.question6_answer2);
-                    answer2.setTextColor(getResources().getColor(R.color.colorText));
-                    answer2.setClickable(true);
-                    answer3.setText(R.string.question6_answer3);
-                    answer3.setTextColor(getResources().getColor(R.color.colorText));
-                    answer3.setClickable(true);
+                    question_no = 6;
+                    new_question();
+                    new_question2();
                     clicked++;
                 } else if (clicked == 4) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -195,46 +153,21 @@ public class RadiobuttonActivity extends CustomToast {
                         toast (toast_message1, toast_no);
                         return;
                     } else if (answer1.isChecked()) {
-                        points++;
-                        toast_no = 2;
-                        toast (toast_message2, toast_no);
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no);
+                        correct = true;
                     }
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-                    picture.setImageResource(R.drawable.question6_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer3.setClickable(false);
-                    progress +=  10;
-                    progressBar.setProgress(progress);
+                    image_no = 3;
+                    correct1 = true;
+                    correct2 = false;
+                    correct3 = false;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
                     clicked++;
                 } else if (clicked == 5) {
-                    group.clearCheck();
-                    picture.setImageResource(R.drawable.question7);
-                    question.setText(R.string.question7);
-                    answer1.setText(R.string.question7_answer1);
-                    answer1.setTextColor(getResources().getColor(R.color.colorText));
-                    answer1.setClickable(true);
-                    answer2.setText(R.string.question7_answer2_correct);
-                    answer2.setTextColor(getResources().getColor(R.color.colorText));
-                    answer2.setClickable(true);
-                    answer3.setText(R.string.question7_answer3);
-                    answer3.setTextColor(getResources().getColor(R.color.colorText));
-                    answer3.setClickable(true);
+                    question_no = 7;
+                    new_question();
+                    new_question2();
                     clicked++;
                 } else if (clicked == 6) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -242,46 +175,21 @@ public class RadiobuttonActivity extends CustomToast {
                         toast (toast_message1, toast_no);;
                         return;
                     } else if (answer2.isChecked()) {
-                        points++;
-                        toast_no = 2;
-                        toast (toast_message2, toast_no);
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no);
+                        correct = true;
                     }
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-                    picture.setImageResource(R.drawable.question7_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer3.setClickable(false);
-                    progress +=  10;
-                    progressBar.setProgress(progress);
+                    image_no = 4;
+                    correct1 = false;
+                    correct2 = true;
+                    correct3 = false;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
                     clicked++;
                 } else if (clicked == 7) {
-                    group.clearCheck();
-                    picture.setImageResource(R.drawable.question8);
-                    question.setText(R.string.question8);
-                    answer1.setText(R.string.question8_answer1);
-                    answer1.setTextColor(getResources().getColor(R.color.colorText));
-                    answer1.setClickable(true);
-                    answer2.setText(R.string.question8_answer2);
-                    answer2.setTextColor(getResources().getColor(R.color.colorText));
-                    answer2.setClickable(true);
-                    answer3.setText(R.string.question8_answer3_correct);
-                    answer3.setTextColor(getResources().getColor(R.color.colorText));
-                    answer3.setClickable(true);
+                    question_no = 8;
+                    new_question();
+                    new_question2();
                     clicked++;
                 } else if (clicked == 8) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -289,46 +197,21 @@ public class RadiobuttonActivity extends CustomToast {
                         toast (toast_message1, toast_no);
                         return;
                     } else if (answer3.isChecked()) {
-                        points++;
-                        toast_no = 2;
-                        toast (toast_message2, toast_no);
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no);
+                        correct = true;
                     }
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-                    picture.setImageResource(R.drawable.question8_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer3.setClickable(false);
-                    progress += 10;
-                    progressBar.setProgress(progress);
+                    image_no = 5;
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = true;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
                     clicked++;
                 } else if (clicked == 9) {
-                    group.clearCheck();
-                    picture.setImageResource(R.drawable.question9);
-                    question.setText(R.string.question9);
-                    answer1.setText(R.string.question9_answer1);
-                    answer1.setTextColor(getResources().getColor(R.color.colorText));
-                    answer1.setClickable(true);
-                    answer2.setText(R.string.question9_answer2);
-                    answer2.setTextColor(getResources().getColor(R.color.colorText));
-                    answer2.setClickable(true);
-                    answer3.setText(R.string.question9_answer3_correct);
-                    answer3.setTextColor(getResources().getColor(R.color.colorText));
-                    answer3.setClickable(true);
+                    question_no = 9;
+                    new_question();
+                    new_question2();
                     clicked++;
                 } else if (clicked == 10) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -336,46 +219,21 @@ public class RadiobuttonActivity extends CustomToast {
                         toast (toast_message1, toast_no);
                         return;
                     } else if (answer3.isChecked()) {
-                        points++;
-                        toast_no = 2;
-                        toast (toast_message2, toast_no);
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no);
+                        correct = true;
                     }
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-                    picture.setImageResource(R.drawable.question9_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer3.setClickable(false);
-                    progress += 10;
-                    progressBar.setProgress(progress);
+                    image_no = 6;
+                    correct1 = false;
+                    correct2 = false;
+                    correct3 = true;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
                     clicked++;
                 } else if (clicked == 11) {
-                    group.clearCheck();
-                    picture.setImageResource(R.drawable.question10);
-                    question.setText(R.string.question10);
-                    answer1.setText(R.string.question10_answer1_correct);
-                    answer1.setTextColor(getResources().getColor(R.color.colorText));
-                    answer1.setClickable(true);
-                    answer2.setText(R.string.question10_answer2);
-                    answer2.setTextColor(getResources().getColor(R.color.colorText));
-                    answer2.setClickable(true);
-                    answer3.setText(R.string.question10_answer3);
-                    answer3.setTextColor(getResources().getColor(R.color.colorText));
-                    answer3.setClickable(true);
+                    question_no = 10;
+                    new_question();
+                    new_question2();
                     clicked++;
                 } else if (clicked == 12) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -383,32 +241,16 @@ public class RadiobuttonActivity extends CustomToast {
                         toast (toast_message1, toast_no);
                         return;
                     } else if (answer1.isChecked()) {
-                        points++;
-                        toast_no = 2;
-                        toast (toast_message2, toast_no);
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no);
+                        correct = true;
                     }
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-                    picture.setImageResource(R.drawable.question10_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer3.setClickable(false);
-                    progress += 10;
-                    progressBar.setProgress(progress);
+                    image_no = 7;
+                    correct1 = true;
+                    correct2 = false;
+                    correct3 = false;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
                     clicked++;
                 } else {
                     Intent myIntent = new Intent(RadiobuttonActivity.this, Results.class); // Go to another activity, send extra variables with points, progress and name.
@@ -428,6 +270,9 @@ public class RadiobuttonActivity extends CustomToast {
         savedInstanceState.putInt(STATE_SCORE, points);
         savedInstanceState.putString(STATE_NAME, userName);
         savedInstanceState.putInt(STATE_PROGRESS, progress);
+        savedInstanceState.putBoolean(STATE_CORRECT1, correct1);
+        savedInstanceState.putBoolean(STATE_CORRECT2, correct2);
+        savedInstanceState.putBoolean(STATE_CORRECT3, correct3);
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -440,156 +285,66 @@ public class RadiobuttonActivity extends CustomToast {
         clicked = savedInstanceState.getInt(STATE_CLICKED);
         userName = savedInstanceState.getString(STATE_NAME);
         progress = savedInstanceState.getInt(STATE_PROGRESS);
+        correct1 = savedInstanceState.getBoolean(STATE_CORRECT1);
+        correct2 = savedInstanceState.getBoolean(STATE_CORRECT2);
+        correct3 =savedInstanceState.getBoolean(STATE_CORRECT3);
 
         // Locate views.
-        final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
-        final TextView question = (TextView) findViewById(R.id.tv_rb_question);
-        final RadioButton answer1 = (RadioButton) findViewById(R.id.rb_answer_1);
-        final RadioButton answer2 = (RadioButton) findViewById(R.id.rb_answer_2);
-        final RadioButton answer3 = (RadioButton) findViewById(R.id.rb_answer_3);
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
-        final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
-
-        scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onGlobalLayout() {
-                // Ready, move up
-                scrollView.fullScroll(View.FOCUS_UP);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }
-            }
-        });
+        progressBar = findViewById(R.id.determinateBar);
         progressBar.setProgress(progress);
+        setScrollView();
         if (clicked == 1) {
-            picture.setImageResource(R.drawable.question4_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer3.setClickable(false);
+            image_no = 1;
+            set_answers();
         } else if (clicked == 2) {
-            picture.setImageResource(R.drawable.question5);
-            question.setText(R.string.question5);
-            answer1.setText(R.string.question5_answer1);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer1.setClickable(true);
-            answer2.setText(R.string.question5_answer2_correct);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setClickable(true);
-            answer3.setText(R.string.question5_answer3);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setClickable(true);
+            question_no = 5;
+            new_question();
         } else if (clicked == 3) {
-            picture.setImageResource(R.drawable.question5_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer3.setClickable(false);
+            question_no = 5;
+            new_question();
+            image_no = 2;
+            set_answers();
         } else if (clicked == 4) {
-            picture.setImageResource(R.drawable.question6);
-            question.setText(R.string.question6);
-            answer1.setText(R.string.question6_answer1_correct);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer1.setClickable(true);
-            answer2.setText(R.string.question6_answer2);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setClickable(true);
-            answer3.setText(R.string.question6_answer3);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setClickable(true);
+            question_no = 6;
+            new_question();
         } else if (clicked == 5) {
-            picture.setImageResource(R.drawable.question6_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer3.setClickable(false);
+            question_no = 6;
+            new_question();
+            image_no = 3;
+            set_answers();
         } else if (clicked == 6) {
-            picture.setImageResource(R.drawable.question7);
-            question.setText(R.string.question7);
-            answer1.setText(R.string.question7_answer1);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer1.setClickable(true);
-            answer2.setText(R.string.question7_answer2_correct);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setClickable(true);
-            answer3.setText(R.string.question7_answer3);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setClickable(true);
+            question_no = 7;
+            new_question();
+            //answer3.setClickable(true);
         } else if (clicked == 7) {
-            picture.setImageResource(R.drawable.question7_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer3.setClickable(false);
+            question_no = 7;
+            new_question();
+            image_no = 4;
+            set_answers();
         } else if (clicked == 8) {
-            picture.setImageResource(R.drawable.question8);
-            question.setText(R.string.question8);
-            answer1.setText(R.string.question8_answer1);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer1.setClickable(true);
-            answer2.setText(R.string.question8_answer2);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setClickable(true);
-            answer3.setText(R.string.question8_answer3_correct);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setClickable(true);
+            question_no = 8;
+            new_question();
         } else if (clicked == 9) {
-            picture.setImageResource(R.drawable.question8_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer3.setClickable(false);
+            question_no = 8;
+            new_question();
+            image_no = 5;
+            set_answers();
         } else if (clicked == 10) {
-            picture.setImageResource(R.drawable.question9);
-            question.setText(R.string.question9);
-            answer1.setText(R.string.question9_answer1);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer1.setClickable(true);
-            answer2.setText(R.string.question9_answer2);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setClickable(true);
-            answer3.setText(R.string.question9_answer3_correct);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setClickable(true);
+            question_no = 9;
+            new_question();
         } else if (clicked == 11) {
-            picture.setImageResource(R.drawable.question9_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer3.setClickable(false);
+            question_no = 9;
+            new_question();
+            image_no = 6;
+            set_answers();
         } else if (clicked == 12) {
-            picture.setImageResource(R.drawable.question10);
-            question.setText(R.string.question10);
-            answer1.setText(R.string.question10_answer1_correct);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer1.setClickable(true);
-            answer2.setText(R.string.question10_answer2);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setClickable(true);
-            answer3.setText(R.string.question10_answer3);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setClickable(true);
+            question_no = 10;
+            new_question();
         } else if (clicked == 13) {
-            picture.setImageResource(R.drawable.question10_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer3.setClickable(false);
+            question_no = 10;
+            new_question();
+            image_no = 7;
+            set_answers();
         }
     }
 
@@ -607,6 +362,133 @@ public class RadiobuttonActivity extends CustomToast {
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
         }
+    }
+    // Set new question picture/question/answers color black.
+    public void new_question() {
+        if (question_no == 5) {
+            picture.setImageResource(R.drawable.question5);
+            question.setText(R.string.question5);
+            answer1.setText(R.string.question5_answer1);
+            answer2.setText(R.string.question5_answer2_correct);
+            answer3.setText(R.string.question5_answer3);
+        }
+        else if (question_no == 6) {
+            picture.setImageResource(R.drawable.question6);
+            question.setText(R.string.question6);
+            answer1.setText(R.string.question6_answer1_correct);
+            answer2.setText(R.string.question6_answer2);
+            answer3.setText(R.string.question6_answer3);
+        }
+        else if (question_no == 7) {
+            picture.setImageResource(R.drawable.question7);
+            question.setText(R.string.question7);
+            answer1.setText(R.string.question7_answer1);
+            answer2.setText(R.string.question7_answer2_correct);
+            answer3.setText(R.string.question7_answer3);
+        }
+        else if (question_no == 8) {
+            picture.setImageResource(R.drawable.question8);
+            question.setText(R.string.question8);
+            answer1.setText(R.string.question8_answer1);
+            answer2.setText(R.string.question8_answer2);
+            answer3.setText(R.string.question8_answer3_correct);
+        }
+        else if (question_no == 9) {
+            picture.setImageResource(R.drawable.question9);
+            question.setText(R.string.question9);
+            answer1.setText(R.string.question9_answer1);
+            answer2.setText(R.string.question9_answer2);
+            answer3.setText(R.string.question9_answer3_correct);
+        }
+        else if (question_no == 10) {
+            picture.setImageResource(R.drawable.question10);
+            question.setText(R.string.question10);
+            answer1.setText(R.string.question10_answer1_correct);
+            answer2.setText(R.string.question10_answer2);
+            answer3.setText(R.string.question10_answer3);
+        }
+        answer1.setTextColor(getResources().getColor(R.color.colorText));
+        answer2.setTextColor(getResources().getColor(R.color.colorText));
+        answer3.setTextColor(getResources().getColor(R.color.colorText));
+    }
+
+    // Set  checkboxes clickable/empty,
+    public void new_question2() {
+        answer1.setClickable(true);
+        answer2.setClickable(true);
+        answer3.setClickable(true);
+        group.clearCheck();
+        correct = false;
+    }
+
+    public void check_answers() {
+        if (correct) {
+            points++; // Add points for correct answer.
+            toast_no = 2;
+            toast(toast_message2, toast_no); // Toast message, when the answer is correct.
+        } else {
+            toast_no = 3;
+            toast(toast_message3, toast_no); // Toast message, when the answer is wrong.
+        }
+    }
+
+    public void set_answers() {
+        // Show correct/wrong answers, check boxes is not clickable.
+        if (image_no == 1) {
+            picture.setImageResource(R.drawable.question4_answer);
+        } else if (image_no == 2) {
+            picture.setImageResource(R.drawable.question5_answer);
+        } else if (image_no == 3) {
+        picture.setImageResource(R.drawable.question6_answer);
+    } else if (image_no == 4) {
+        picture.setImageResource(R.drawable.question7_answer);
+    }else if (image_no == 5) {
+            picture.setImageResource(R.drawable.question8_answer);
+        }else if (image_no == 6) {
+            picture.setImageResource(R.drawable.question9_answer);
+        }else if (image_no == 7) {
+            picture.setImageResource(R.drawable.question10_answer);
+        }
+        answer1.setClickable(false);
+        answer2.setClickable(false);
+        answer3.setClickable(false);
+
+        if (correct1) {
+            answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+        } else {
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+        }
+        if (correct2) {
+            answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+        } else {
+            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+        }
+        if (correct3) {
+            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+        } else {
+            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+        }
+    }
+
+    // Calculate progress and show it on progress bar
+    public void calculateProgress() {
+        progress = progress + 10;
+        progressBar.setProgress(progress);
+    }
+
+    // Set scrollview that after pushing button the layout top is visible.
+    public void setScrollView() {
+        scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onGlobalLayout() {
+                // Ready, move up
+                scrollView.fullScroll(View.FOCUS_UP);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
+            }
+        });
     }
 
 }

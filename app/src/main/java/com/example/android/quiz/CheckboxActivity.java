@@ -6,6 +6,7 @@ package com.example.android.quiz;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,23 @@ public class CheckboxActivity extends CustomToast {
     int progress;
     int clicked = 0;
     boolean back_pressed = false;
+    ImageView animeView;
+    ProgressBar progressBar;
+    ScrollView scrollView;
+    ImageView navigation;
+    ImageView picture;
+    TextView question;
+    CheckBox answer1;
+    CheckBox answer2;
+    CheckBox answer3;
+    CheckBox answer4;
+    Boolean correct = false;
+    int image_no = 0;
+    Boolean correct1 = false;
+    Boolean correct2 = false;
+    Boolean correct3 = false;
+    Boolean correct4 = false;
+    int question_no = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +71,16 @@ public class CheckboxActivity extends CustomToast {
         setContentView(R.layout.question_checkbox);
 
         // Locate views.
-        final ImageView animeView = (ImageView) findViewById(R.id.arrow);
-        final ImageView navigation = (ImageView) findViewById(R.id.navigation);
-        final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
-        final TextView question = (TextView) findViewById(R.id.cb_question);
-        final CheckBox answer1 = (CheckBox) findViewById(R.id.cb_answer_1);
-        final CheckBox answer2 = (CheckBox) findViewById(R.id.cb_answer_2);
-        final CheckBox answer3 = (CheckBox) findViewById(R.id.cb_answer_3);
-        final CheckBox answer4 = (CheckBox) findViewById(R.id.cb_answer_4);
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
-        final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
+        animeView = findViewById(R.id.arrow);
+        navigation = findViewById(R.id.navigation);
+        picture = findViewById(R.id.picture_question2);
+        question = findViewById(R.id.cb_question);
+        answer1 = findViewById(R.id.cb_answer_1);
+        answer2 = findViewById(R.id.cb_answer_2);
+        answer3 = findViewById(R.id.cb_answer_3);
+        answer4 = findViewById(R.id.cb_answer_4);
+        progressBar = findViewById(R.id.determinateBar);
+        scrollView = findViewById(R.id.mainScrollView);
 
         // Apply animation to animeView.
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
@@ -90,110 +108,45 @@ public class CheckboxActivity extends CustomToast {
                 if (clicked == 0) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no); // Toast message, if user didn't check any answer.
+                        toast(toast_message1, toast_no); // Toast message, if user didn't check any answer.
                         return;
                     } else if (answer1.isChecked() & !answer2.isChecked() & answer3.isChecked() & !answer4.isChecked()) {
-                        points++; // Add points for correct answer.
-                        toast_no = 2;
-                        toast (toast_message2, toast_no); // Toast message, when the answer is correct.
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no); // Toast message, when the answer is wrong.
+                        correct = true;
                     }
-
-                    // Set scrollview that after pushing button the layout top is visible.
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            // Ready, move up
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-
-                    // Show correct/wrong answers, check boxes is not clickable.
-                    picture.setImageResource(R.drawable.question2_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer3.setClickable(false);
-                    answer4.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer4.setClickable(false);
-
-                    // Calculate progress and show it on progress bar
-                    progress = progress + 10;
-                    progressBar.setProgress(progress);
-
-                    // Count navigation button clicks
-                    clicked++;
+                    image_no = 1;
+                    correct1 = true;
+                    correct3 = true;
+                    check_answers(); // Check answers.
+                    set_answers(); // Show the correct answers.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
+                    clicked++; // Count navigation button clicks.
 
                 } else if (clicked == 1) {
-                    // Set new question picture/question/answers, checkboxes clickable/empty, color black.
-                    picture.setImageResource(R.drawable.question3);
-                    question.setText(R.string.question3);
-                    answer1.setText(R.string.question3_answer1);
-                    answer1.setTextColor(getResources().getColor(R.color.colorText));
-                    answer1.setClickable(true);
-                    answer1.setChecked(false);
-                    answer2.setText(R.string.question3_answer2_correct);
-                    answer2.setTextColor(getResources().getColor(R.color.colorText));
-                    answer2.setClickable(true);
-                    answer2.setChecked(false);
-                    answer3.setText(R.string.question3_answer3);
-                    answer3.setTextColor(getResources().getColor(R.color.colorText));
-                    answer3.setClickable(true);
-                    answer3.setChecked(false);
-                    answer4.setText(R.string.question3_answer4_correct);
-                    answer4.setTextColor(getResources().getColor(R.color.colorText));
-                    answer4.setClickable(true);
-                    answer4.setChecked(false);
-
+                    question_no = 3;
+                    // Set new question picture/question/answers color black.
+                    new_question();
+                    // Set checkboxes clickable/empty.
+                    new_question2();
                     // Count navigation button clicks.
                     clicked++;
                 } else if (clicked == 2) {
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
                         toast_no = 1;
-                        toast (toast_message1, toast_no); // Toast message, if user didn't check any answer.
+                        toast(toast_message1, toast_no); // Toast message, if user didn't check any answer.
                         return;
                     } else if (!answer1.isChecked() & answer2.isChecked() & !answer3.isChecked() & answer4.isChecked()) {
-                        points++; // Add points for correct answer.
-                        toast_no = 2;
-                        toast (toast_message2, toast_no); // Toast message, when the answer is correct.
-                    } else {
-                        toast_no = 3;
-                        toast(toast_message3, toast_no); // Toast message, when the answer is wrong.
+                        correct = true;
                     }
-
-                    // Set scrollview that after pushing button the layout top is visible.
-                    scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @SuppressLint("NewApi")
-                        @Override
-                        public void onGlobalLayout() {
-                            // Ready, move up
-                            scrollView.fullScroll(View.FOCUS_UP);
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                                scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            }
-                        }
-                    });
-
-                    // Show correct/wrong answers, check boxes is not clickable.
-                    picture.setImageResource(R.drawable.question3_answer);
-                    answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer1.setClickable(false);
-                    answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer2.setClickable(false);
-                    answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-                    answer3.setClickable(false);
-                    answer4.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-                    answer4.setClickable(false);
-                    progress += 10;
-                    progressBar.setProgress(progress);
+                    image_no = 2;
+                    correct1 = false;
+                    correct2 = true;
+                    correct3 = false;
+                    correct4 = true;
+                    check_answers();
+                    set_answers(); // Set wrong/correct answers and answer picture.
+                    calculateProgress(); // Add and set progress.
+                    setScrollView(); // Set scrollview to the top.
                     clicked++;
                 } else {
                     Intent myIntent = new Intent(CheckboxActivity.this, RadiobuttonActivity.class); // Go to another activity, send extra variables with points, progress and name.
@@ -226,64 +179,29 @@ public class CheckboxActivity extends CustomToast {
         userName = savedInstanceState.getString(STATE_NAME);
         progress = savedInstanceState.getInt(STATE_PROGRESS);
 
-        // Locate views.
-        final ImageView picture = (ImageView) findViewById(R.id.picture_question2);
-        final TextView question = (TextView) findViewById(R.id.cb_question);
-        final CheckBox answer1 = (CheckBox) findViewById(R.id.cb_answer_1);
-        final CheckBox answer2 = (CheckBox) findViewById(R.id.cb_answer_2);
-        final CheckBox answer3 = (CheckBox) findViewById(R.id.cb_answer_3);
-        final CheckBox answer4 = (CheckBox) findViewById(R.id.cb_answer_4);
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.determinateBar);
-        final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
+        setScrollView();
 
-        scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onGlobalLayout() {
-                // Ready, move up.
-                scrollView.fullScroll(View.FOCUS_UP);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }
-            }
-        });
         progressBar.setProgress(progress);
-        if (clicked == 1) {
-            picture.setImageResource(R.drawable.question2_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer3.setClickable(false);
-            answer4.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer4.setClickable(false);
-        } else if (clicked == 2) {
-            picture.setImageResource(R.drawable.question3);
-            question.setText(R.string.question3);
-            answer1.setText(R.string.question3_answer1);
-            answer1.setTextColor(getResources().getColor(R.color.colorText));
-            answer1.setClickable(true);
-            answer2.setText(R.string.question3_answer2_correct);
-            answer2.setTextColor(getResources().getColor(R.color.colorText));
-            answer2.setClickable(true);
-            answer3.setText(R.string.question3_answer3);
-            answer3.setTextColor(getResources().getColor(R.color.colorText));
-            answer3.setClickable(true);
-            answer4.setText(R.string.question3_answer4_correct);
-            answer4.setTextColor(getResources().getColor(R.color.colorText));
-            answer4.setClickable(true);
 
+        if (clicked == 1) {
+            image_no = 1;
+            correct1 = true;
+            correct2 = false;
+            correct3 = true;
+            correct4 = false;
+            set_answers();
+        } else if (clicked == 2) {
+            question_no = 3;
+            new_question();
         } else if (clicked == 3) {
-            picture.setImageResource(R.drawable.question3_answer);
-            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer1.setClickable(false);
-            answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer2.setClickable(false);
-            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
-            answer3.setClickable(false);
-            answer4.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
-            answer4.setClickable(false);
+            question_no = 3;
+            new_question();
+            image_no = 2;
+            correct1 = false;
+            correct2 = true;
+            correct3 = false;
+            correct4 = true;
+            set_answers();
         }
     }
 
@@ -293,7 +211,7 @@ public class CheckboxActivity extends CustomToast {
         if (!back_pressed) {
             String restart = getString(R.string.toastRestart);
             toast_no = 4;
-            toast (restart, toast_no); // Toast message, when the back button is pressed.
+            toast(restart, toast_no); // Toast message, when the back button is pressed.
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(CheckboxActivity.this, MainActivity.class);
@@ -301,6 +219,100 @@ public class CheckboxActivity extends CustomToast {
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
         }
+    }
+
+    // Set new question picture/question/answers color black.
+    public void new_question() {
+        if (question_no == 3) {
+            picture.setImageResource(R.drawable.question3);
+            question.setText(R.string.question3);
+            answer1.setText(R.string.question3_answer1);
+            answer1.setTextColor(getResources().getColor(R.color.colorText));
+            answer2.setText(R.string.question3_answer2_correct);
+            answer2.setTextColor(getResources().getColor(R.color.colorText));
+            answer3.setText(R.string.question3_answer3);
+            answer3.setTextColor(getResources().getColor(R.color.colorText));
+            answer4.setText(R.string.question3_answer4_correct);
+            answer4.setTextColor(getResources().getColor(R.color.colorText));
+        }
+    }
+
+    // Set  checkboxes clickable/empty,
+    public void new_question2() {
+        correct = false;
+        answer1.setClickable(true);
+        answer1.setChecked(false);
+        answer2.setClickable(true);
+        answer2.setChecked(false);
+        answer3.setClickable(true);
+        answer3.setChecked(false);
+        answer4.setClickable(true);
+        answer4.setChecked(false);
+    }
+
+    public void check_answers() {
+        if (correct) {
+            points++; // Add points for correct answer.
+            toast_no = 2;
+            toast(toast_message2, toast_no); // Toast message, when the answer is correct.
+        } else {
+            toast_no = 3;
+            toast(toast_message3, toast_no); // Toast message, when the answer is wrong.
+        }
+    }
+
+    public void set_answers() {
+        // Show correct/wrong answers, check boxes is not clickable.
+        if (image_no == 1) {
+            picture.setImageResource(R.drawable.question2_answer);
+        } else if (image_no == 2) {
+            picture.setImageResource(R.drawable.question3_answer);
+        }
+        answer1.setClickable(false);
+        answer2.setClickable(false);
+        answer3.setClickable(false);
+        answer4.setClickable(false);
+        if (correct1) {
+            answer1.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+        } else {
+            answer1.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+        }
+        if (correct2) {
+            answer2.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+        } else {
+            answer2.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+        }
+        if (correct3) {
+            answer3.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+        } else {
+            answer3.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+        }
+        if (correct4) {
+            answer4.setTextColor(getResources().getColor(R.color.colorCorrectAnswer));
+        } else {
+            answer4.setTextColor(getResources().getColor(R.color.colorWrongAnswer));
+        }
+    }
+
+    // Calculate progress and show it on progress bar
+    public void calculateProgress() {
+        progress = progress + 10;
+        progressBar.setProgress(progress);
+    }
+
+    // Set scrollview that after pushing button the layout top is visible.
+    public void setScrollView() {
+        scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onGlobalLayout() {
+                // Ready, move up
+                scrollView.fullScroll(View.FOCUS_UP);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    scrollView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                }
+            }
+        });
     }
 
 }
