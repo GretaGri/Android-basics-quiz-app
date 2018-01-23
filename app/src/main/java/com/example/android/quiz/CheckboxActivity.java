@@ -135,7 +135,6 @@ public class CheckboxActivity extends CustomToast {
                         toast(toast_message1, toast_no);
                         return;
                     }
-                    checkIfCorrect = 0;
                     if (answer1.isChecked() & correct1) {
                         checkIfCorrect++;
                     }
@@ -149,6 +148,9 @@ public class CheckboxActivity extends CustomToast {
                         checkIfCorrect++;
                     }
                     if (checkIfCorrect == 4) {
+                        correct = true;
+                    }
+                    if (checkIfCorrect == 2) {
                         correct = true;
                     }
                     image_no = 1;
@@ -189,6 +191,7 @@ public class CheckboxActivity extends CustomToast {
                         toast(toast_message1, toast_no);
                         return;
                     }
+                    checkIfCorrect = 0;
                     if (answer1.isChecked() & correct1) {
                         checkIfCorrect++;
                     }
