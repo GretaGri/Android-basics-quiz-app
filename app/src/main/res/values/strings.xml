@@ -88,4 +88,9 @@
 
     <string name="letter_subject">You have to try this app</string>
     <string name="letter_text">Hello, look I found a nice quiz app, you can download it here: https://drive.google.com/folderview?id=1E4StGQCzEgnRXHsryzt4zeupK6gBvBpw</string>
+    <string name="share_points">Share your results</string>
+    <string name="letter_results_subject">My results in Greta\'s Quiz</string>
+    <string name="letter_results_text1">"Hello, \nCan You imagine, I collected "</string>
+    <string name="letter_results_text2">" point."</string>
+    <string name="letter_results_text3">" points."</string>
 </resources>

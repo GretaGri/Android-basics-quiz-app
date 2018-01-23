@@ -36,9 +36,13 @@ public class RadiobuttonActivity extends CustomToast {
     static final String STATE_SCORE = "score";
     static final String STATE_NAME = "name";
     static final String STATE_PROGRESS = "progress";
+    static final String STATE_ANSWER1 = "answer1string";
+    static final String STATE_ANSWER2 = "answer2string";
+    static final String STATE_ANSWER3 = "answer3string";
     static final String STATE_CORRECT1 = "correct1";
     static final String STATE_CORRECT2 = "correct2";
     static final String STATE_CORRECT3 = "correct3";
+
 
     // Declare variables.
     int points;
@@ -62,6 +66,9 @@ public class RadiobuttonActivity extends CustomToast {
     RadioButton answer3;
     Boolean correct = false;
     int image_no = 0;
+    String answer1string;
+    String answer2string;
+    String answer3string;
     Boolean correct1 = false;
     Boolean correct2 = false;
     Boolean correct3 = false;
@@ -114,11 +121,16 @@ public class RadiobuttonActivity extends CustomToast {
                     correct1 = false;
                     correct2 = false;
                     correct3 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question4_answer3_correct))) {
+                    // save answers to string to save under rotation.
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+
+                    if (answer1string.equals(getString(R.string.question4_answer3_correct))) {
                         correct1 = true;
-                    } else if (answer2.getText().toString().equals(getString(R.string.question4_answer3_correct))) {
+                    } else if (answer2string.equals(getString(R.string.question4_answer3_correct))) {
                         correct2 = true;
-                    } else if (answer3.getText().toString().equals(getString(R.string.question4_answer3_correct))) {
+                    } else if (answer3string.equals(getString(R.string.question4_answer3_correct))) {
                         correct3 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -148,11 +160,15 @@ public class RadiobuttonActivity extends CustomToast {
                     correct1 = false;
                     correct2 = false;
                     correct3 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question5_answer2_correct))) {
+                    // save answers to string to save under rotation.
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    if (answer1string.equals(getString(R.string.question5_answer2_correct))) {
                         correct1 = true;
-                    } else if (answer2.getText().toString().equals(getString(R.string.question5_answer2_correct))) {
+                    } else if (answer2string.equals(getString(R.string.question5_answer2_correct))) {
                         correct2 = true;
-                    } else if (answer3.getText().toString().equals(getString(R.string.question5_answer2_correct))) {
+                    } else if (answer3string.equals(getString(R.string.question5_answer2_correct))) {
                         correct3 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -181,11 +197,15 @@ public class RadiobuttonActivity extends CustomToast {
                     correct1 = false;
                     correct2 = false;
                     correct3 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question6_answer1_correct))) {
+                    // save answers to string to save under rotation.
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    if (answer1string.equals(getString(R.string.question6_answer1_correct))) {
                         correct1 = true;
-                    } else if (answer2.getText().toString().equals(getString(R.string.question6_answer1_correct))) {
+                    } else if (answer2string.equals(getString(R.string.question6_answer1_correct))) {
                         correct2 = true;
-                    } else if (answer3.getText().toString().equals(getString(R.string.question6_answer1_correct))) {
+                    } else if (answer3string.equals(getString(R.string.question6_answer1_correct))) {
                         correct3 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -214,11 +234,15 @@ public class RadiobuttonActivity extends CustomToast {
                     correct1 = false;
                     correct2 = false;
                     correct3 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question7_answer2_correct))) {
+                    // save answers to string to save under rotation.
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    if (answer1string.equals(getString(R.string.question7_answer2_correct))) {
                         correct1 = true;
-                    } else if (answer2.getText().toString().equals(getString(R.string.question7_answer2_correct))) {
+                    } else if (answer2string.equals(getString(R.string.question7_answer2_correct))) {
                         correct2 = true;
-                    } else if (answer3.getText().toString().equals(getString(R.string.question7_answer2_correct))) {
+                    } else if (answer3string.equals(getString(R.string.question7_answer2_correct))) {
                         correct3 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -247,11 +271,15 @@ public class RadiobuttonActivity extends CustomToast {
                     correct1 = false;
                     correct2 = false;
                     correct3 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question8_answer3_correct))) {
+                    // save answers to string to save under rotation.
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    if (answer1string.equals(getString(R.string.question8_answer3_correct))) {
                         correct1 = true;
-                    } else if (answer2.getText().toString().equals(getString(R.string.question8_answer3_correct))) {
+                    } else if (answer2string.equals(getString(R.string.question8_answer3_correct))) {
                         correct2 = true;
-                    } else if (answer3.getText().toString().equals(getString(R.string.question8_answer3_correct))) {
+                    } else if (answer3string.equals(getString(R.string.question8_answer3_correct))) {
                         correct3 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -280,11 +308,15 @@ public class RadiobuttonActivity extends CustomToast {
                     correct1 = false;
                     correct2 = false;
                     correct3 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question9_answer3_correct))) {
+                    // save answers to string to save under rotation.
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    if (answer1string.equals(getString(R.string.question9_answer3_correct))) {
                         correct1 = true;
-                    } else if (answer2.getText().toString().equals(getString(R.string.question9_answer3_correct))) {
+                    } else if (answer2string.equals(getString(R.string.question9_answer3_correct))) {
                         correct2 = true;
-                    } else if (answer3.getText().toString().equals(getString(R.string.question9_answer3_correct))) {
+                    } else if (answer3string.equals(getString(R.string.question9_answer3_correct))) {
                         correct3 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -313,11 +345,15 @@ public class RadiobuttonActivity extends CustomToast {
                     correct1 = false;
                     correct2 = false;
                     correct3 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question10_answer1_correct))) {
+                    // save answers to string to save under rotation.
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    if (answer1string.equals(getString(R.string.question10_answer1_correct))) {
                         correct1 = true;
-                    } else if (answer2.getText().toString().equals(getString(R.string.question10_answer1_correct))) {
+                    } else if (answer2string.equals(getString(R.string.question10_answer1_correct))) {
                         correct2 = true;
-                    } else if (answer3.getText().toString().equals(getString(R.string.question10_answer1_correct))) {
+                    } else if (answer3string.equals(getString(R.string.question10_answer1_correct))) {
                         correct3 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked()) {
@@ -355,6 +391,9 @@ public class RadiobuttonActivity extends CustomToast {
         savedInstanceState.putInt(STATE_SCORE, points);
         savedInstanceState.putString(STATE_NAME, userName);
         savedInstanceState.putInt(STATE_PROGRESS, progress);
+        savedInstanceState.putString(STATE_ANSWER1,answer1string);
+        savedInstanceState.putString(STATE_ANSWER2,answer2string);
+        savedInstanceState.putString(STATE_ANSWER3,answer3string);
         savedInstanceState.putBoolean(STATE_CORRECT1, correct1);
         savedInstanceState.putBoolean(STATE_CORRECT2, correct2);
         savedInstanceState.putBoolean(STATE_CORRECT3, correct3);
@@ -370,17 +409,26 @@ public class RadiobuttonActivity extends CustomToast {
         clicked = savedInstanceState.getInt(STATE_CLICKED);
         userName = savedInstanceState.getString(STATE_NAME);
         progress = savedInstanceState.getInt(STATE_PROGRESS);
+        answer1string = savedInstanceState.getString(STATE_ANSWER1);
+        answer2string = savedInstanceState.getString(STATE_ANSWER2);
+        answer3string = savedInstanceState.getString(STATE_ANSWER3);
         correct1 = savedInstanceState.getBoolean(STATE_CORRECT1);
         correct2 = savedInstanceState.getBoolean(STATE_CORRECT2);
         correct3 = savedInstanceState.getBoolean(STATE_CORRECT3);
 
         // Locate views.
+        answer1 = findViewById(R.id.rb_answer_1);
+        answer2 = findViewById(R.id.rb_answer_2);
+        answer3 = findViewById(R.id.rb_answer_3);
         progressBar = findViewById(R.id.determinateBar);
         progressBar.setProgress(progress);
         setScrollView();
         if (clicked == 1) {
             image_no = 1;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
         } else if (clicked == 2) {
             question_no = 5;
             new_question();
@@ -389,6 +437,9 @@ public class RadiobuttonActivity extends CustomToast {
             new_question();
             image_no = 2;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
         } else if (clicked == 4) {
             question_no = 6;
             new_question();
@@ -397,6 +448,9 @@ public class RadiobuttonActivity extends CustomToast {
             new_question();
             image_no = 3;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
         } else if (clicked == 6) {
             question_no = 7;
             new_question();
@@ -406,6 +460,9 @@ public class RadiobuttonActivity extends CustomToast {
             new_question();
             image_no = 4;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
         } else if (clicked == 8) {
             question_no = 8;
             new_question();
@@ -414,6 +471,9 @@ public class RadiobuttonActivity extends CustomToast {
             new_question();
             image_no = 5;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
         } else if (clicked == 10) {
             question_no = 9;
             new_question();
@@ -422,6 +482,9 @@ public class RadiobuttonActivity extends CustomToast {
             new_question();
             image_no = 6;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
         } else if (clicked == 12) {
             question_no = 10;
             new_question();
@@ -430,6 +493,9 @@ public class RadiobuttonActivity extends CustomToast {
             new_question();
             image_no = 7;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
         }
     }
 

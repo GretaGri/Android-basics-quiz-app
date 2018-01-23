@@ -88,4 +88,9 @@
 
     <string name="letter_subject">Turi pabandyti šią programą</string>
     <string name="letter_text">Labas, žiūrėk, radau puikų testą, gali atsisiųsti jį čia: https://drive.google.com/folderview?id=1E4StGQCzEgnRXHsryzt4zeupK6gBvBpw</string>
+    <string name="share_points">Pasidalinkite rezultatais</string>
+    <string name="letter_results_subject">Mano rezultatai Gretos teste</string>
+    <string name="letter_results_text1">"Labas, n\ar gali įsivaidzduoti, surinkau "</string>
+    <string name="letter_results_text2">" tašką."</string>
+    <string name="letter_results_text3">" taškus."</string>
 </resources>

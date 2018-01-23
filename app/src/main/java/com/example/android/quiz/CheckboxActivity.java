@@ -39,6 +39,14 @@ public class CheckboxActivity extends CustomToast {
     static final String STATE_SCORE = "score";
     static final String STATE_NAME = "name";
     static final String STATE_PROGRESS = "progress";
+    static final String STATE_ANSWER1 = "answer1string";
+    static final String STATE_ANSWER2 = "answer2string";
+    static final String STATE_ANSWER3 = "answer3string";
+    static final String STATE_ANSWER4 = "answer4string";
+    static final String STATE_CORRECT1 = "correct1";
+    static final String STATE_CORRECT2 = "correct2";
+    static final String STATE_CORRECT3 = "correct3";
+    static final String STATE_CORRECT4 = "correct4";
 
     // Declare variables.
     int points;
@@ -66,6 +74,10 @@ public class CheckboxActivity extends CustomToast {
     Boolean correct2 = false;
     Boolean correct3 = false;
     Boolean correct4 = false;
+    String answer1string;
+    String answer2string;
+    String answer3string;
+    String answer4string;
     int checkIfCorrect = 0;
     int question_no = 0;
 
@@ -118,16 +130,20 @@ public class CheckboxActivity extends CustomToast {
                     correct2 = false;
                     correct3 = false;
                     correct4 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer1.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    answer4string = answer4.getText().toString();
+                    if (answer1string.equals(getString(R.string.question2_answer1_correct)) || answer1string.equals(getString(R.string.question2_answer3_correct))) {
                         correct1 = true;
                     }
-                    if (answer2.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer2.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                    if (answer2string.equals(getString(R.string.question2_answer1_correct)) || answer2string.equals(getString(R.string.question2_answer3_correct))) {
                         correct2 = true;
                     }
-                    if (answer3.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer3.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                    if (answer3string.equals(getString(R.string.question2_answer1_correct)) || answer3string.equals(getString(R.string.question2_answer3_correct))) {
                         correct3 = true;
                     }
-                    if (answer4.getText().toString().equals(getString(R.string.question2_answer1_correct)) || answer4.getText().toString().equals(getString(R.string.question2_answer3_correct))) {
+                    if (answer4string.equals(getString(R.string.question2_answer1_correct)) || answer4string.equals(getString(R.string.question2_answer3_correct))) {
                         correct4 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
@@ -174,16 +190,20 @@ public class CheckboxActivity extends CustomToast {
                     correct2 = false;
                     correct3 = false;
                     correct4 = false;
-                    if (answer1.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer1.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                    answer1string = answer1.getText().toString();
+                    answer2string = answer2.getText().toString();
+                    answer3string = answer3.getText().toString();
+                    answer4string = answer4.getText().toString();
+                    if (answer1string.equals(getString(R.string.question3_answer2_correct)) || answer1string.equals(getString(R.string.question3_answer4_correct))) {
                         correct1 = true;
                     }
-                    if (answer2.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer2.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                    if (answer2string.equals(getString(R.string.question3_answer2_correct)) || answer2string.equals(getString(R.string.question3_answer4_correct))) {
                         correct2 = true;
                     }
-                    if (answer3.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer3.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                    if (answer3string.equals(getString(R.string.question3_answer2_correct)) || answer3string.equals(getString(R.string.question3_answer4_correct))) {
                         correct3 = true;
                     }
-                    if (answer4.getText().toString().equals(getString(R.string.question3_answer2_correct)) || answer4.getText().toString().equals(getString(R.string.question3_answer4_correct))) {
+                    if (answer4string.equals(getString(R.string.question3_answer2_correct)) || answer4string.equals(getString(R.string.question3_answer4_correct))) {
                         correct4 = true;
                     }
                     if (!answer1.isChecked() & !answer2.isChecked() & !answer3.isChecked() & !answer4.isChecked()) {
@@ -231,6 +251,14 @@ public class CheckboxActivity extends CustomToast {
         savedInstanceState.putInt(STATE_SCORE, points);
         savedInstanceState.putString(STATE_NAME, userName);
         savedInstanceState.putInt(STATE_PROGRESS, progress);
+        savedInstanceState.putBoolean(STATE_CORRECT1, correct1);
+        savedInstanceState.putBoolean(STATE_CORRECT2, correct2);
+        savedInstanceState.putBoolean(STATE_CORRECT3, correct3);
+        savedInstanceState.putBoolean(STATE_CORRECT4, correct4);
+        savedInstanceState.putString(STATE_ANSWER1,answer1string);
+        savedInstanceState.putString(STATE_ANSWER2,answer2string);
+        savedInstanceState.putString(STATE_ANSWER3,answer3string);
+        savedInstanceState.putString(STATE_ANSWER4,answer4string);
         super.onSaveInstanceState(savedInstanceState);
     }
 
@@ -243,6 +271,19 @@ public class CheckboxActivity extends CustomToast {
         clicked = savedInstanceState.getInt(STATE_CLICKED);
         userName = savedInstanceState.getString(STATE_NAME);
         progress = savedInstanceState.getInt(STATE_PROGRESS);
+        correct1 = savedInstanceState.getBoolean(STATE_CORRECT1);
+        correct2 = savedInstanceState.getBoolean(STATE_CORRECT2);
+        correct3 = savedInstanceState.getBoolean(STATE_CORRECT3);
+        correct4 = savedInstanceState.getBoolean(STATE_CORRECT4);
+        answer1string = savedInstanceState.getString(STATE_ANSWER1);
+        answer2string = savedInstanceState.getString(STATE_ANSWER2);
+        answer3string = savedInstanceState.getString(STATE_ANSWER3);
+        answer4string = savedInstanceState.getString(STATE_ANSWER4);
+
+        answer1 = findViewById(R.id.cb_answer_1);
+        answer2 = findViewById(R.id.cb_answer_2);
+        answer3 = findViewById(R.id.cb_answer_3);
+        answer4 = findViewById(R.id.cb_answer_4);
 
         setScrollView();
 
@@ -250,11 +291,11 @@ public class CheckboxActivity extends CustomToast {
 
         if (clicked == 1) {
             image_no = 1;
-            correct1 = true;
-            correct2 = false;
-            correct3 = true;
-            correct4 = false;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
+            answer4.setText(answer4string);
         } else if (clicked == 2) {
             question_no = 3;
             new_question();
@@ -262,11 +303,11 @@ public class CheckboxActivity extends CustomToast {
             question_no = 3;
             new_question();
             image_no = 2;
-            correct1 = false;
-            correct2 = true;
-            correct3 = false;
-            correct4 = true;
             set_answers();
+            answer1.setText(answer1string);
+            answer2.setText(answer2string);
+            answer3.setText(answer3string);
+            answer4.setText(answer4string);
         }
     }
 
