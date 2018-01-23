@@ -51,24 +51,22 @@
                 android:textSize="@dimen/text_size_lyrics"
                 android:textStyle="italic" />
 
+            <Button
+                android:id="@+id/send_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lyrics"
+                android:layout_margin="@dimen/margin_standard"
+                android:background="@drawable/mybutton"
+                android:fontFamily="serif"
+                android:padding="@dimen/padding_little"
+                android:text="@string/share_points"
+                android:textAllCaps="false"
+                android:textColor="@color/colorToastText"
+                android:textSize="@dimen/text_size"
+                android:textStyle="italic" />
         </RelativeLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/send_letter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/open"
-        android:layout_marginLeft="@dimen/margin_standard"
-        android:layout_marginStart="@dimen/margin_standard"
-        android:background="@drawable/mybutton"
-        android:fontFamily="serif"
-        android:padding="@dimen/padding_little"
-        android:text="@string/share_points"
-        android:textAllCaps="false"
-        android:textColor="@color/colorToastText"
-        android:textSize="@dimen/text_size"
-        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/open"
