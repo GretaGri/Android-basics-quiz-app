@@ -49,7 +49,7 @@ public class VideoActivity extends YouTubeBaseActivity {
                 Log.d(TAG, "onclick: Done initializing.");
                 // Play different clip depending on points.
                 if (points == 1 || points == 2) {
-                    youTubePlayer.loadVideo("TVtyOQ8lP3c");
+                    youTubePlayer.loadVideo("3jHr5JbTeRY");
                 } else if (points == 3 || points == 4) {
                     youTubePlayer.loadVideo("sj43E1KIOf4");
                 } else if (points == 5 || points == 6) {

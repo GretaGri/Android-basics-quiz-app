@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,7 +21,7 @@ import android.widget.Toast;
  * Created by Greta on 2018-01-13.
  */
 
-public class Results extends AppCompatActivity {
+public class Results extends CustomToast {
 
     private static final String TAG = "ResultsActivity";
 
@@ -28,6 +30,9 @@ public class Results extends AppCompatActivity {
     String userName;
     boolean back_pressed = false;
     String message;
+    int toast_no = 0;
+    String toast_text;
+    String letter_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +40,10 @@ public class Results extends AppCompatActivity {
         setContentView(R.layout.results);
 
         // Locate views.
-        final ImageView animeView = (ImageView) findViewById(R.id.arrow);
-        final ImageView navigation = (ImageView) findViewById(R.id.navigation);
-        final TextView score = (TextView) findViewById(R.id.score);
-        final TextView lyrics = (TextView) findViewById(R.id.lyrics);
+        final ImageView animeView = findViewById(R.id.arrow);
+        final ImageView navigation = findViewById(R.id.navigation);
+        final TextView score = findViewById(R.id.score);
+        final TextView lyrics = findViewById(R.id.lyrics);
 
         // Apply animation to arrow.
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
@@ -88,14 +93,34 @@ public class Results extends AppCompatActivity {
             }
 
         });
+
+        Button send = findViewById(R.id.send_letter); // Locate button.
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND); // Create intent to send email with text set after letter button click.
+                intent.setType("text/html");
+                intent.putExtra(Intent.EXTRA_SUBJECT, getText(R.string.letter_results_subject));
+                letter_text = getText(R.string.letter_results_text1).toString() + points;
+                if (points == 1) {
+                    letter_text += getText(R.string.letter_results_text2).toString();
+                } else {
+                    letter_text += getText(R.string.letter_results_text3).toString();
+                }
+                intent.putExtra(Intent.EXTRA_TEXT, letter_text);
+
+                startActivity(Intent.createChooser(intent, "Send Email"));
+            }
+        });
     }
 
     // Go to the beginning/restart app when back button is pushed second time, first time - show toast with question if user wants to go back.
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
-            String restart = getString(R.string.toastRestart);
-            toast (restart); // Toast message, when the back button is pressed.;
+            toast_no = 4;
+            toast_text = getString(R.string.toastRestart);
+            toast(toast_text, toast_no); // Toast message, when the back button is pressed.;
             back_pressed = true;
         } else {
             Intent homeIntent = new Intent(Results.this, MainActivity.class);
@@ -103,21 +128,5 @@ public class Results extends AppCompatActivity {
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
         }
-    }
-    // Method for displaying custom toast
-    public void toast (String toast_text) {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup)findViewById(R.id.custom_toast));
-        Toast toast = new Toast(getApplicationContext());
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0,250);
-        ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
-        image.setImageResource(R.drawable.ic_return);
-
-        TextView textV = (TextView) layout.findViewById(R.id.toast);
-        textV.setText(toast_text);
-
-        toast.setView(layout);
-        toast.show();
     }
 }
