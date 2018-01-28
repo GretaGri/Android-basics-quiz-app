@@ -14,8 +14,8 @@
 
     <string name="toastNoName">You did not enter your name!</string>
     <string name="toastNoAnswer">, your answer is empty! \nPlease, check at least one option.</string>
-    <string name="toastCorrectAnswer">, your answer is correct! \nYou get plus 1 point.\nClick check button to proceed.</string>
-    <string name="toastWrongAnswer">, your answer is wrong! \nYou get 0 points.\nClick check button to proceed.</string>
+    <string name="toastCorrectAnswer">, that\'s awesome! \nYou get plus 1 point.\nClick check button to proceed.</string>
+    <string name="toastWrongAnswer">, oh, you missed that one! \nYou get 0 points.\nClick check button to proceed.</string>
     <string name="toastRestart">Do you really want to restart quiz? \nPlease, push back one more time.</string>
 
     <string name="question2">2.	Who welcomes students to Udacity and Google Developer Challenge Scholarship in introduction video? \n(please, check all correct answers)</string>

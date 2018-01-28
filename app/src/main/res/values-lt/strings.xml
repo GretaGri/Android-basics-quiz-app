@@ -14,8 +14,8 @@
 
     <string name="toastNoName">Neįrašėte savo vardo!</string>
     <string name="toastNoAnswer">, jūsų atsakymas tuščias! \nPrašau, pažymėkite bent vieną atsakymą.</string>
-    <string name="toastCorrectAnswer">, jūsų atsakymas teisingas! \nGaunate 1 tašką.\nPaspauskite mygtuką, kad tęstumėte.</string>
-    <string name="toastWrongAnswer">, jūsų atsakymas klaidingas!\nGaunate 0 taškų.\nPaspauskite mygtuką, kad tęstumėte.</string>
+    <string name="toastCorrectAnswer">, puiku! \nGaunate 1 tašką.\nPaspauskite mygtuką, kad tęstumėte.</string>
+    <string name="toastWrongAnswer">, oi, jūs nepataikėte!\nGaunate 0 taškų.\nPaspauskite mygtuką, kad tęstumėte.</string>
     <string name="toastRestart">Ar tikrai norite pradėti testą iš naujo? \nPrašau, paspauskyte mygtuką atgal dar kartą.</string>
 
     <string name="question2">2.	Kas pasveikina studentus Udacity ir Google Programuotojo iššūkio stipendijos prisistatymo video? \n(prašau, pažymėkite visus teisingus atsakymus)</string>

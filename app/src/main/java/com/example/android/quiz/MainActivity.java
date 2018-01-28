@@ -86,7 +86,8 @@ public class MainActivity extends CustomToast {
                     progressBar.setProgress(progress);
                     displayMessage(message); // Show points and answer.
                     TextView instructions = (TextView) findViewById(R.id.et_instructions);
-                    instructions.setVisibility(View.INVISIBLE); // Set textView et_instructions invisible.
+                    instructions.setVisibility(View.INVISIBLE);
+                    instructions.setText("");// Set textView et_instructions invisible.
                     CardView question1 = (CardView) findViewById(R.id.cw_question1);
                     question1.setVisibility(View.INVISIBLE); // Set textView cw_question1 invisible.
                     clicked = true;
@@ -140,6 +141,7 @@ public class MainActivity extends CustomToast {
             progressBar.setProgress(progress);
             displayName(userName);
             TextView instructions = (TextView) findViewById(R.id.et_instructions);
+            instructions.setText("");
             instructions.setVisibility(View.INVISIBLE); // Set textView et_instructions invisible.
             CardView question1 = (CardView) findViewById(R.id.cw_question1);
             question1.setVisibility(View.INVISIBLE); // Set textView cw_question1 invisible.
