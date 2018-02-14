@@ -151,22 +151,31 @@ public class CheckboxActivity extends CustomToast {
                         toast(toast_message1, toast_no);
                         return;
                     }
-                    if (answer1.isChecked() & correct1) {
+                    if (answer1.isChecked() && correct1) {
                         checkIfCorrect++;
                     }
-                    if (answer2.isChecked() & correct2) {
+                    if (answer2.isChecked() && correct2) {
                         checkIfCorrect++;
                     }
-                    if (answer3.isChecked() & correct3) {
+                    if (answer3.isChecked() && correct3) {
                         checkIfCorrect++;
                     }
-                    if (answer4.isChecked() & correct4) {
+                    if (answer4.isChecked() && correct4) {
                         checkIfCorrect++;
                     }
-                    if (checkIfCorrect == 4) {
-                        correct = true;
+                    if (answer1.isChecked() && !correct1) {
+                        checkIfCorrect--;
                     }
-                    if (checkIfCorrect == 2) {
+                    if (answer2.isChecked() && !correct2) {
+                        checkIfCorrect--;
+                    }
+                    if (answer3.isChecked() && !correct3) {
+                        checkIfCorrect--;
+                    }
+                    if (answer4.isChecked() && !correct4) {
+                        checkIfCorrect--;
+                    }
+                   if (checkIfCorrect == 2) {
                         correct = true;
                     }
                     image_no = 1;
@@ -190,6 +199,7 @@ public class CheckboxActivity extends CustomToast {
                     correct2 = false;
                     correct3 = false;
                     correct4 = false;
+                    checkIfCorrect = 0;
                     answer1string = answer1.getText().toString();
                     answer2string = answer2.getText().toString();
                     answer3string = answer3.getText().toString();
@@ -223,6 +233,18 @@ public class CheckboxActivity extends CustomToast {
                     }
                     if (answer4.isChecked() & correct4) {
                         checkIfCorrect++;
+                    }
+                    if (answer1.isChecked() && !correct1) {
+                        checkIfCorrect--;
+                    }
+                    if (answer2.isChecked() && !correct2) {
+                        checkIfCorrect--;
+                    }
+                    if (answer3.isChecked() && !correct3) {
+                        checkIfCorrect--;
+                    }
+                    if (answer4.isChecked() && !correct4) {
+                        checkIfCorrect--;
                     }
                     if (checkIfCorrect == 2) {
                         correct = true;
