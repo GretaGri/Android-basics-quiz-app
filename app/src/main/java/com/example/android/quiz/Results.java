@@ -23,14 +23,12 @@ import android.widget.Toast;
 
 public class Results extends CustomToast {
 
-    private static final String TAG = "ResultsActivity";
-
     // Declare variables.
     int points;
     String userName;
     boolean back_pressed = false;
     String message;
-    int toast_no = 0;
+    int toast_no;
     String toast_text;
     String letter_text;
 
@@ -55,8 +53,6 @@ public class Results extends CustomToast {
             return;
         }
         points = extras.getInt("points");
-        Log.d(TAG, "points" + points);
-
         userName = extras.getString("name");
         message = userName + getString(R.string.results) + points + getString(R.string.results2);
 
@@ -89,7 +85,6 @@ public class Results extends CustomToast {
                 Intent myIntent = new Intent(Results.this, VideoActivity.class); // Go to another activity, send extra variables with points.
                 myIntent.putExtra("points", points);
                 Results.this.startActivity(myIntent);
-
             }
 
         });
@@ -108,13 +103,12 @@ public class Results extends CustomToast {
                     letter_text += getText(R.string.letter_results_text3).toString();
                 }
                 intent.putExtra(Intent.EXTRA_TEXT, letter_text);
-
                 startActivity(Intent.createChooser(intent, "Send Email"));
             }
         });
     }
 
-    // Go to the beginning/restart app when back button is pushed second time, first time - show toast with question if user wants to go back.
+    // Go to the beginning/restart app when back button is pushed second time, first time - show toast with question if user wants to go back. Solution: https://stackoverflow.com/questions/4119441/how-to-scroll-to-top-of-long-scrollview-layout
     @Override
     public void onBackPressed() {
         if (!back_pressed) {
@@ -123,7 +117,7 @@ public class Results extends CustomToast {
             toast(toast_text, toast_no); // Toast message, when the back button is pressed.;
             back_pressed = true;
         } else {
-            Intent homeIntent = new Intent(Results.this, MainActivity.class);
+            Intent homeIntent = new Intent(Results.this, MainActivity.class); // Solution found here: https://stackoverflow.com/questions/4756835/how-to-launch-home-screen-programmatically-in-android.
             homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class CustomToast extends AppCompatActivity {
 
-    // Method for displaying custom toast
+    // Method for displaying custom toast, created by following tutorial made by Udacity student: https://discussions.udacity.com/t/custom-toast-tutorial/536961 and adapted for my project.
     public void toast (String toast_text, int toast_no) {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast,(ViewGroup)findViewById(R.id.custom_toast));

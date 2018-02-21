@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -16,12 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Greta on 2018-01-11.
+ * Created by Greta on 2018-01-11. Followed Youtube tutorial: https://www.youtube.com/watch?v=W4hTJybfU7s.
  */
 
 public class VideoActivity extends YouTubeBaseActivity {
-
-    private static final String TAG = "VideoActivity";
 
     // Declare variables.
     int points;
@@ -41,12 +40,10 @@ public class VideoActivity extends YouTubeBaseActivity {
         points = extras.getInt("points");
 
         // Start YouTube player.
-        Log.d(TAG, "onCreate: starting.");
-        mYouTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtubePlay);
+        mYouTubePlayerView = findViewById(R.id.youtubePlay);
         mOnInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                Log.d(TAG, "onclick: Done initializing.");
                 // Play different clip depending on points.
                 if (points == 1 || points == 2) {
                     youTubePlayer.loadVideo("3jHr5JbTeRY");
@@ -61,10 +58,12 @@ public class VideoActivity extends YouTubeBaseActivity {
                 }
             }
 
-            // Show log message if initialization of player fails.
+            // Show message if initialization of player fails.
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                Log.d(TAG, "onclick: Failed to initialize.");
+                String toast_message = getString(R.string.video_failure);
+                Toast.makeText(VideoActivity.this, toast_message, Toast.LENGTH_SHORT).show();
+                ;
             }
         };
         // Initialize YouTube player, get ApiKey.
@@ -74,7 +73,7 @@ public class VideoActivity extends YouTubeBaseActivity {
         Configuration conf = getResources().getConfiguration();
         boolean isLandscape = (conf.orientation == Configuration.ORIENTATION_LANDSCAPE);
         if (!isLandscape) {
-            ImageButton send = (ImageButton) findViewById(R.id.send_letter); // Locate button.
+            ImageButton send = findViewById(R.id.send_letter); // Locate button.
             send.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

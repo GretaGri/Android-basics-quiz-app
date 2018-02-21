@@ -32,25 +32,25 @@ public class MainActivity extends CustomToast {
     static final String STATE_PROGRESS = "progress";
 
     // Declare variables.
-    int points = 0;
+    int points;
     String message = "";
     boolean clicked = false;
     String userName = "";
-    int progress = 0;
+    int progress;
     String toast_text;
-    int toast_no = 0;
+    int toast_no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Apply animation to animeView.
+        // Apply animation to animeView (arrow).
         ImageView animeView = (ImageView) findViewById(R.id.arrow);
         Animation pulsingArrow = AnimationUtils.loadAnimation(this, R.anim.pulse);
         animeView.startAnimation(pulsingArrow);
 
-        //  Set on click listener to navigation button.
+        // Set on click listener to navigation button.
         ImageView navigation = (ImageView) findViewById(R.id.navigation);
         navigation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +124,7 @@ public class MainActivity extends CustomToast {
         userName = savedInstanceState.getString(STATE_NAME);
         progress = savedInstanceState.getInt(STATE_PROGRESS);
         if (clicked) {
-            ////after pushing button go to the screen top.
+            //after pushing button go to the screen top.
             final ScrollView scrollView = (ScrollView) findViewById(R.id.mainScrollView);
             scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @SuppressLint("NewApi")
@@ -147,7 +147,6 @@ public class MainActivity extends CustomToast {
             question1.setVisibility(View.INVISIBLE); // Set textView cw_question1 invisible.
             displayMessage(message);
         }
-
     }
 
     // Method for displaying answer message with points.

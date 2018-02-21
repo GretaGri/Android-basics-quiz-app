@@ -50,9 +50,9 @@ public class RadiobuttonActivity extends CustomToast {
     String toast_message1;
     String toast_message2;
     String toast_message3;
-    int toast_no = 0;
+    int toast_no;
     int progress;
-    int clicked = 0;
+    int clicked;
     boolean back_pressed = false;
     ImageView animeView;
     ProgressBar progressBar;
@@ -64,15 +64,15 @@ public class RadiobuttonActivity extends CustomToast {
     RadioButton answer1;
     RadioButton answer2;
     RadioButton answer3;
-    Boolean correct = false;
-    int image_no = 0;
+    boolean correct = false;
+    int image_no;
     String answer1string;
     String answer2string;
     String answer3string;
-    Boolean correct1 = false;
-    Boolean correct2 = false;
-    Boolean correct3 = false;
-    int question_no = 0;
+    boolean correct1 = false;
+    boolean correct2 = false;
+    boolean correct3 = false;
+    int question_no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -391,9 +391,9 @@ public class RadiobuttonActivity extends CustomToast {
         savedInstanceState.putInt(STATE_SCORE, points);
         savedInstanceState.putString(STATE_NAME, userName);
         savedInstanceState.putInt(STATE_PROGRESS, progress);
-        savedInstanceState.putString(STATE_ANSWER1,answer1string);
-        savedInstanceState.putString(STATE_ANSWER2,answer2string);
-        savedInstanceState.putString(STATE_ANSWER3,answer3string);
+        savedInstanceState.putString(STATE_ANSWER1, answer1string);
+        savedInstanceState.putString(STATE_ANSWER2, answer2string);
+        savedInstanceState.putString(STATE_ANSWER3, answer3string);
         savedInstanceState.putBoolean(STATE_CORRECT1, correct1);
         savedInstanceState.putBoolean(STATE_CORRECT2, correct2);
         savedInstanceState.putBoolean(STATE_CORRECT3, correct3);
@@ -508,7 +508,7 @@ public class RadiobuttonActivity extends CustomToast {
             toast(restart, toast_no); // Toast message, when the back button is pressed.
             back_pressed = true;
         } else {
-            Intent homeIntent = new Intent(RadiobuttonActivity.this, MainActivity.class);
+            Intent homeIntent = new Intent(RadiobuttonActivity.this, MainActivity.class); // Solution found here: https://stackoverflow.com/questions/4756835/how-to-launch-home-screen-programmatically-in-android.
             homeIntent.addCategory(Intent.CATEGORY_HOME);
             homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(homeIntent);
@@ -665,7 +665,7 @@ public class RadiobuttonActivity extends CustomToast {
         progressBar.setProgress(progress);
     }
 
-    // Set scrollview that after pushing button the layout top is visible.
+    // Set scrollview that after pushing button the layout top is visible. Solution: https://stackoverflow.com/questions/4119441/how-to-scroll-to-top-of-long-scrollview-layout
     public void setScrollView() {
         scrollView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @SuppressLint("NewApi")
