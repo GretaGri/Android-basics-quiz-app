@@ -21,7 +21,7 @@
         <item name="android:fontFamily">serif</item>
     </style>
 
-    <style name="welcome_picture">
+    <style name="welcome_picture" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:adjustViewBounds">true</item>
@@ -29,21 +29,21 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
-    <style name="question_picture">
+    <style name="question_picture" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 
-    <style name="question_picture_radiob">
+    <style name="question_picture_radiob" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">230dp</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:scaleType">fitCenter</item>
     </style>
 
-    <style name="arrow_picture">
+    <style name="arrow_picture" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentTop">true</item>
@@ -51,7 +51,7 @@
         <item name="android:layout_marginTop">@dimen/margin_standard</item>
     </style>
 
-    <style name="text_name">
+    <style name="text_name" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignBottom">@id/picture_question1</item>
@@ -62,7 +62,7 @@
         <item name="android:textSize">@dimen/text_size_heading</item>
     </style>
 
-    <style name="navigation_button">
+    <style name="navigation_button" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_alignParentBottom">true</item>
@@ -74,7 +74,7 @@
         <item name="android:visibility">visible</item>
     </style>
 
-    <style name="text_description">
+    <style name="text_description" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
@@ -90,7 +90,7 @@
         <item name="android:textAppearance">@style/TextAppearance</item>
     </style>
 
-    <style name="text_instructions">
+    <style name="text_instructions" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
@@ -105,7 +105,7 @@
         <item name="android:textAppearance">@style/TextAppearance</item>
     </style>
 
-    <style name="cardview">
+    <style name="cardview" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
@@ -117,7 +117,7 @@
         <item name="android:layout_marginStart">@dimen/margin_standard</item>
     </style>
 
-    <style name="cardview_checkbox_radiobutton">
+    <style name="cardview_checkbox_radiobutton" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
@@ -126,7 +126,7 @@
         <item name="android:layout_margin">@dimen/margin_standard</item>
     </style>
 
-    <style name="checkbox_portrait">
+    <style name="checkbox_portrait" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">serif</item>
@@ -139,7 +139,7 @@
         <item name="android:textStyle">italic</item>
     </style>
 
-    <style name="checkbox_land">
+    <style name="checkbox_land" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">serif</item>
@@ -151,7 +151,7 @@
         <item name="android:textStyle">italic</item>
     </style>
 
-    <style name="progressbar_description">
+    <style name="progressbar_description" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">@dimen/halfmargin_standard</item>
@@ -173,7 +173,7 @@
         <item name="android:progress">0</item>
     </style>
 
-    <style name="radiobutton">
+    <style name="radiobutton" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">serif</item>
