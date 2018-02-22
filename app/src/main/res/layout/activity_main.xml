@@ -46,7 +46,7 @@
                 android:id="@+id/cw_question1"
                 style="@style/cardview"
                 card_view:cardBackgroundColor="@color/cardview_light_background"
-                card_view:cardElevation="@dimen/halfmargin_standard"
+                card_view:cardElevation="@dimen/elevation"
                 card_view:contentPadding="@dimen/padding_standard">
 
                 <LinearLayout
@@ -58,7 +58,7 @@
                         android:id="@+id/et_question"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/question1"
+                        android:text="@string/question"
                         android:textAppearance="@style/TextAppearance"
                         android:textStyle="italic" />
 
@@ -76,7 +76,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="@dimen/view_height"
                 android:layout_below="@id/cw_question1" />
 
         </RelativeLayout>
@@ -86,7 +86,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/navigation"
         style="@style/navigation_button"
-        app:elevation="8dp"
+        app:elevation="@dimen/elevation"
         app:fabSize="normal"
         app:rippleColor="@color/colorHeading"
         app:srcCompat="@drawable/checksign" />

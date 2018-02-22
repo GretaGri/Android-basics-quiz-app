@@ -4,18 +4,19 @@
     <string name="description">This is a short quiz, which aims to check \nyour ability not only to learn to code well, \nbut to keep smiling all the way through \nthe Android Basic course by Udacity.</string>
     <string name="rules">Answer questions carefully, \nget 1 point for each correct answer. \nLet\'s start from the trickiest one! \nGood luck!</string>
 
-    <string name="question1">1. What is your name?</string>
+    <string name="question">What is your name?</string>
+    <string name="question1">1. Name the most popular smartphone operating system:</string>
     <string name="hint">Enter your answer here</string>
+    <string name="question1_answer">android</string>
 
     <string name="description_of_bar">Questions answered</string>
 
-    <string name="firstQuestionAnswered1">"Beautiful name and amazing start! \n You get "</string>
-    <string name="firstQuestionAnswered2">" point already! \nPlease, click check button to proceed."</string>
+    <string name="firstQuestionAnswered1">"Beautiful name and amazing start! \nAnd now answer the first quiz question. "</string>
 
     <string name="toastNoName">You did not enter your name!</string>
-    <string name="toastNoAnswer">, your answer is empty! \nPlease, check at least one option.</string>
-    <string name="toastCorrectAnswer">, that\'s awesome! \nYou get plus 1 point.\nClick check button to proceed.</string>
-    <string name="toastWrongAnswer">, oh, you missed that one! \nYou get 0 points.\nClick check button to proceed.</string>
+    <string name="toastNoAnswer">%1$s, your answer is empty! \nPlease, check at least one option.</string>
+    <string name="toastCorrectAnswer">%1$s, that\'s awesome! \nYou get plus 1 point.\nClick check button to proceed.</string>
+    <string name="toastWrongAnswer">%1$s, oh, you missed that one! \nYou get 0 points.\nClick check button to proceed.</string>
     <string name="toastRestart">Do you really want to restart quiz? \nPlease, push back one more time.</string>
 
     <string name="question2">2.	Who welcomes students to Udacity and Google Developer Challenge Scholarship in introduction video? \n(please, check all correct answers)</string>
@@ -65,9 +66,8 @@
     <string name="question10_answer2">Time for more cake</string>
     <string name="question10_answer3">Time to start learning</string>
 
-    <string name="results">", you scored "</string>
-    <string name="results1">" point"</string>
-    <string name="results2">" points"</string>
+    <string name="results1">"%1$s, you scored %2$d point"</string>
+    <string name="results2">""%1$s, you scored %2$d points"</string>
 
     <string name="lyrics9to10">You\'re just too marvelous,\nToo marvelous for words\nLike \"\glorious\", \"glamorous\"\nAnd that old standby \"amorous\".</string>
     <string name="lyrics7to8">When you\'re smilin\', when you\'re smilin\'\nThe whole world smiles with you\nBut when you\'re cryin\', you bring on the rain\nSo stop your sighin\', be happy again!</string>
@@ -76,6 +76,7 @@
     <string name="lyrics1to2">We\'re drinkin\', my friend,\nTo the end of a brief episode\nMake it one for my baby\nAnd one more for the road.</string>
 
     <string name="welcome_picture">Welcome picture</string>
+    <string name="android_picture">Smartphone, Photo by Rodion Kutsaev on Unsplash.</string>
     <string name="question_picture">Question picture</string>
     <string name="answer_picture">Answer picture</string>
     <string name="arrow_picture">Pulsing arrow pointing down</string>
@@ -90,8 +91,8 @@
     <string name="letter_text">Hello, look I found a nice quiz app, you can download it here: https://drive.google.com/folderview?id=1E4StGQCzEgnRXHsryzt4zeupK6gBvBpw</string>
     <string name="share_points">Share your results</string>
     <string name="letter_results_subject">My results in Greta\'s Quiz</string>
-    <string name="letter_results_text1">"Hello, \nCan You imagine, I collected "</string>
-    <string name="letter_results_text2">" point."</string>
-    <string name="letter_results_text3">" points."</string>
+    <string name="letter_results_text1">"Hello, \nCan You imagine, I collected %1$d point."</string>
+    <string name="letter_results_text2">"Hello, \nCan You imagine, I collected %1$d points."</string>
+
     <string name="video_failure">Sorry, initialization failure</string>
 </resources>

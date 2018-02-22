@@ -22,7 +22,7 @@ public class CustomToast extends AppCompatActivity {
         Toast toast = new Toast(getApplicationContext());
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM, 0,250);
-        ImageView image = (ImageView) layout.findViewById(R.id.toast_image);
+        ImageView image = layout.findViewById(R.id.toast_image);
         if (toast_no == 1) {
             image.setImageResource(R.drawable.ic_not_found);
         }
@@ -35,7 +35,7 @@ public class CustomToast extends AppCompatActivity {
         else if (toast_no == 4){
             image.setImageResource(R.drawable.ic_return);
         }
-        TextView textV = (TextView) layout.findViewById(R.id.toast);
+        TextView textV = layout.findViewById(R.id.toast);
         textV.setText(toast_text);
 
         toast.setView(layout);

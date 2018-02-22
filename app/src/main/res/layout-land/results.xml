@@ -66,7 +66,7 @@
         <TextView
             android:id="@+id/open"
             android:layout_width="wrap_content"
-            android:layout_height="140dp"
+            android:layout_height="@dimen/navigation_picture"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -83,8 +83,8 @@
 
         <ImageView
             android:id="@+id/navigation"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="@dimen/navigation_picture"
+            android:layout_height="@dimen/navigation_picture"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"

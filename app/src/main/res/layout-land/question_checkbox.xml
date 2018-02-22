@@ -34,7 +34,7 @@
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cw_question2"
             card_view:cardBackgroundColor="@color/cardview_light_background"
-            card_view:cardElevation="@dimen/halfmargin_standard"
+            card_view:cardElevation="@dimen/elevation"
             style="@style/cardview_checkbox_radiobutton">
 
         <LinearLayout
@@ -99,7 +99,7 @@
 </ScrollView>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/navigation"
-        app:elevation="8dp"
+        app:elevation="@dimen/elevation"
         app:fabSize="normal"
         app:rippleColor="@color/colorHeading"
         app:srcCompat="@drawable/checksign"

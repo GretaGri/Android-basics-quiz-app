@@ -2,6 +2,7 @@ package com.example.android.quiz;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -73,11 +74,14 @@ public class RadiobuttonActivity extends CustomToast {
     boolean correct2 = false;
     boolean correct3 = false;
     int question_no;
+    Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_radiobutton);
+
+        res = getResources();
 
         // Locate views.
         animeView = findViewById(R.id.arrow);
@@ -103,9 +107,9 @@ public class RadiobuttonActivity extends CustomToast {
         points = extras.getInt("points");
 
         userName = extras.getString("name");
-        toast_message1 = userName + getString(R.string.toastNoAnswer);
-        toast_message2 = userName + getString(R.string.toastCorrectAnswer);
-        toast_message3 = userName + getString(R.string.toastWrongAnswer);
+        toast_message1 = res.getString(R.string.toastNoAnswer,userName);
+        toast_message2 = res.getString(R.string.toastCorrectAnswer,userName);
+        toast_message3 = res.getString(R.string.toastWrongAnswer,userName);
 
         progress = extras.getInt("progress");
         progressBar.setProgress(progress); // Show progress on progress bar.

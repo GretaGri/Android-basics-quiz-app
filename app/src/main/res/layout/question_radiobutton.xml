@@ -32,7 +32,7 @@
             <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/cw_question4"
                 card_view:cardBackgroundColor="@color/cardview_light_background"
-                card_view:cardElevation="@dimen/halfmargin_standard"
+                card_view:cardElevation="@dimen/elevation"
                 style="@style/cardview_checkbox_radiobutton">
 
                 <RadioGroup
@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/picture_question2"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/margin_standard"
                     android:orientation="vertical">
 
                     <TextView
@@ -72,7 +72,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="@dimen/view_height"
                 android:layout_below="@id/cw_question4" />
 
         </RelativeLayout>
@@ -81,7 +81,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/navigation"
-        app:elevation="8dp"
+        app:elevation="@dimen/elevation"
         app:fabSize="normal"
         app:rippleColor="@color/colorHeading"
         app:srcCompat="@drawable/checksign"

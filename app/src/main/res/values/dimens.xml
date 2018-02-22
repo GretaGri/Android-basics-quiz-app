@@ -14,4 +14,7 @@
     <dimen name="text_size_open">30sp</dimen>
     <dimen name="text_size_lyrics">24sp</dimen>
     <dimen name="text_size_progress">15sp</dimen>
+    <dimen name="navigation_picture">90dp</dimen>
+    <dimen name="elevation">8dp</dimen>
+    <dimen name="view_height">120dp</dimen>
 </resources>

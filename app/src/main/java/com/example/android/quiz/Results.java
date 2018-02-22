@@ -1,6 +1,7 @@
 package com.example.android.quiz;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -31,11 +32,14 @@ public class Results extends CustomToast {
     int toast_no;
     String toast_text;
     String letter_text;
+    Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results);
+
+        res = getResources();
 
         // Locate views.
         final ImageView animeView = findViewById(R.id.arrow);
@@ -54,11 +58,11 @@ public class Results extends CustomToast {
         }
         points = extras.getInt("points");
         userName = extras.getString("name");
-        message = userName + getString(R.string.results) + points + getString(R.string.results2);
+        message = res.getString(R.string.results2,userName,points);
 
         // Show final result and message depending on points.
         if (points == 1) {
-            message = userName + getString(R.string.results) + points + getString(R.string.results1);
+            message = res.getString(R.string.results1,userName,points);
             lyrics.setText(R.string.lyrics1to2);
         } else if (points == 2) {
             lyrics.setText(R.string.lyrics1to2);
@@ -96,11 +100,10 @@ public class Results extends CustomToast {
                 Intent intent = new Intent(Intent.ACTION_SEND); // Create intent to send email with text set after letter button click.
                 intent.setType("text/html");
                 intent.putExtra(Intent.EXTRA_SUBJECT, getText(R.string.letter_results_subject));
-                letter_text = getText(R.string.letter_results_text1).toString() + points;
                 if (points == 1) {
-                    letter_text += getText(R.string.letter_results_text2).toString();
+                    letter_text = res.getString(R.string.letter_results_text1,points);
                 } else {
-                    letter_text += getText(R.string.letter_results_text3).toString();
+                    letter_text = res.getString(R.string.letter_results_text2,points);
                 }
                 intent.putExtra(Intent.EXTRA_TEXT, letter_text);
                 startActivity(Intent.createChooser(intent, "Send Email"));

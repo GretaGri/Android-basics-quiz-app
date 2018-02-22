@@ -4,18 +4,19 @@
     <string name="description">Tai nedidelės apimties testas, kuris siekia patikrinti jūsų gebėjimus ne tik gerai programuoti, bet ir šypsotis mokantis Androido pagrindus Udacity platformoje.</string>
     <string name="rules">Atsakykite į klausimus atidžiai, \ngaukite po 1 tašką už teisingą atsakymą. \nPradėkime nuo sudėtingiausio klausimo! \nSėkmės!</string>
 
-    <string name="question1">1. Koks jūsų vardas?</string>
+    <string name="question">Koks jūsų vardas?</string>
+    <string name="question1">1. Įvardinkite populiariausią išmaniųjų telefonų operacinę sistemą:</string>
     <string name="hint">Įveskite atsakymą čia</string>
+    <string name="question1_answer">android</string>
 
     <string name="description_of_bar">Atsakyti klausimai</string>
 
-    <string name="firstQuestionAnswered1">"Gražus vardas ir puiki pradžia! \n Jau gavote "</string>
-    <string name="firstQuestionAnswered2">" tašką! \nPrašau, paspauskite mygtuką, kad tęstumėte."</string>
+    <string name="firstQuestionAnswered1">"Gražus vardas ir puiki pradžia! \nO dabar atsakykite pirmajį testo klausimą."</string>
 
     <string name="toastNoName">Neįrašėte savo vardo!</string>
-    <string name="toastNoAnswer">, jūsų atsakymas tuščias! \nPrašau, pažymėkite bent vieną atsakymą.</string>
-    <string name="toastCorrectAnswer">, puiku! \nGaunate 1 tašką.\nPaspauskite mygtuką, kad tęstumėte.</string>
-    <string name="toastWrongAnswer">, oi, jūs nepataikėte!\nGaunate 0 taškų.\nPaspauskite mygtuką, kad tęstumėte.</string>
+    <string name="toastNoAnswer">%1$s, jūsų atsakymas tuščias! \nPrašau, pažymėkite bent vieną atsakymą.</string>
+    <string name="toastCorrectAnswer">%1$s, puiku! \nGaunate 1 tašką.\nPaspauskite mygtuką, kad tęstumėte.</string>
+    <string name="toastWrongAnswer">%1$s, oi, jūs nepataikėte!\nGaunate 0 taškų.\nPaspauskite mygtuką, kad tęstumėte.</string>
     <string name="toastRestart">Ar tikrai norite pradėti testą iš naujo? \nPrašau, paspauskyte mygtuką atgal dar kartą.</string>
 
     <string name="question2">2.	Kas pasveikina studentus Udacity ir Google Programuotojo iššūkio stipendijos prisistatymo video? \n(prašau, pažymėkite visus teisingus atsakymus)</string>
@@ -65,9 +66,9 @@
     <string name="question10_answer2">Valgyti dar torto</string>
     <string name="question10_answer3">Pradėti mokytis</string>
 
-    <string name="results">", jūs surinkote "</string>
-    <string name="results1">" tašką"</string>
-    <string name="results2">" taškus"</string>
+    <string name="results1">"%1$s, jūs surinkote %2$d tašką"</string>
+    <string name="results2">"%1$s, jūs surinkote %2$d taškus"</string>
+
 
     <string name="lyrics9to10">You\'re just too marvelous,\nToo marvelous for words\nLike \"\glorious\", \"glamorous\"\nAnd that old standby \"amorous\".</string>
     <string name="lyrics7to8">When you\'re smilin\', when you\'re smilin\'\nThe whole world smiles with you\nBut when you\'re cryin\', you bring on the rain\nSo stop your sighin\', be happy again!</string>
@@ -76,6 +77,7 @@
     <string name="lyrics1to2">We\'re drinkin\', my friend,\nTo the end of a brief episode\nMake it one for my baby\nAnd one more for the road.</string>
 
     <string name="welcome_picture">Pasveikinimo paveikslėlis</string>
+    <string name="android_picture">Išmanusis telefonas, Rodion Kutsaev nuotrauka iš Unsplash.</string>
     <string name="question_picture">Klausimo paveikslėlis</string>
     <string name="answer_picture">Atsakymo paveikslėlis</string>
     <string name="arrow_picture">Rodyklė rodanti žemyn</string>
@@ -90,8 +92,8 @@
     <string name="letter_text">Labas, žiūrėk, radau puikų testą, gali atsisiųsti jį čia: https://drive.google.com/folderview?id=1E4StGQCzEgnRXHsryzt4zeupK6gBvBpw</string>
     <string name="share_points">Pasidalinkite rezultatais</string>
     <string name="letter_results_subject">Mano rezultatai Gretos teste</string>
-    <string name="letter_results_text1">"Labas, n\ar gali įsivaidzduoti, surinkau "</string>
-    <string name="letter_results_text2">" tašką."</string>
-    <string name="letter_results_text3">" taškus."</string>
+    <string name="letter_results_text1">"Labas, \nar gali įsivaizduoti, surinkau %1$d tašką."</string>
+    <string name="letter_results_text2">"Labas, \nar gali įsivaizduoti, surinkau %1$d taškus."</string>
+
     <string name="video_failure">Atleiskite, inicijavimo klaida</string>
 </resources>
