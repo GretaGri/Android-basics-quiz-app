@@ -82,7 +82,7 @@ public class VideoActivity extends YouTubeBaseActivity {
                     intent.putExtra(Intent.EXTRA_SUBJECT, getText(R.string.letter_subject));
                     intent.putExtra(Intent.EXTRA_TEXT, getText(R.string.letter_text));
 
-                    startActivity(Intent.createChooser(intent, "Send Email"));
+                    startActivity(Intent.createChooser(intent,getString(R.string.send)));
                 }
             });
         }

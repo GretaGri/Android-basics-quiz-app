@@ -95,4 +95,5 @@
     <string name="letter_results_text2">"Hello, \nCan You imagine, I collected %1$d points."</string>
 
     <string name="video_failure">Sorry, initialization failure</string>
+    <string name="send">Send Email</string>
 </resources>

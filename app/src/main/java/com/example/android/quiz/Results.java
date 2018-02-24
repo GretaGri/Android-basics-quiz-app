@@ -106,7 +106,7 @@ public class Results extends CustomToast {
                     letter_text = res.getString(R.string.letter_results_text2,points);
                 }
                 intent.putExtra(Intent.EXTRA_TEXT, letter_text);
-                startActivity(Intent.createChooser(intent, "Send Email"));
+                startActivity(Intent.createChooser(intent, getString(R.string.send)));
             }
         });
     }
