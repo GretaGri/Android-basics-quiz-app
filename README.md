@@ -1,5 +1,7 @@
-# Android-basics-quiz-app
-#### Android Basics Udacity program 3rd project 
+<div align="center"><img src="app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"></div>
+<h1 align="center"> Android Basics Quiz App</h1>
+<p align="center"><strong>3rd Project of Google and Udacity Scholarship program 2017/2018: Android Basics Nanodegree.</strong></p>
+<p align="center">Application created by Greta Grigutė.</p>
 
 This is Quiz app about Android Basics Udacity and Google Scholarship program.
 
